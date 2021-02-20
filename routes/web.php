@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// FrontEnd
+
 Route::get('/', 'HomeController@index');
 
 Route::get('/home', 'HomeController@index');
@@ -26,3 +28,7 @@ Route::get('/product', 'ProductController@index');
 Route::get('/store', 'StoreController@index');
 
 Route::get('/user', 'UserController@index');
+
+//BackEnd Admin
+
+Route::get('/admin', 'AdminController@index');

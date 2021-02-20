@@ -1,0 +1,110 @@
+:root {
+    --color-1: #7AC5CD;
+    /*màu xanh tối */
+    --color-2: #8EE5EE;
+    /*màu xanh sáng */
+    --color-3: white;
+}
+
+/* @font-face {
+    src: url(./RobotoMono-VariableFont_wght.ttf);
+    font-family: RobotoMono;
+} */
+
+body {
+    padding: .5rem;
+}
+/* Class chung */
+
+.col-3, .col-md-3 {
+    padding-left: 0px !important; 
+    padding-right: 0px !important; 
+}
+
+.col-6 {
+    padding: .5rem !important;
+}
+
+.hr {
+    border-top: 2px solid var(--color-2);
+}
+
+/* thẻ button */
+
+.--btn {
+    display: inline-block;
+    padding: 0.4rem;
+    width: 100%;
+    text-align: center;
+}
+
+.--btn:hover {
+    text-decoration: none;
+}
+
+
+/* ---------Header---------- */
+/* ---------HeaderLogo---------- */
+/* __Logo */
+
+.header__logo {
+    background: linear-gradient(170deg, var(--color-2) 50%, white);
+    height: 6rem;
+}
+
+.header__logo--img {
+    margin-left: .5rem;
+    height: 5rem;
+    width: 16rem;
+}
+
+/* Title */
+
+.header_title {
+    color: var(--color-3);
+    margin-left: 2rem;
+    letter-spacing: .5rem;
+}
+/* ---------HeaderListTitle---------- */
+/* --btn */
+.header__list-title--btn {
+    border-radius: 20px;
+    border: 1px solid var(--color-3);
+    font-size: 0.7rem;
+    font-weight: 400;
+    color: var(--color-3);
+    background: linear-gradient(130deg, var(--color-2) 50%, white );
+    transition: all 1000ms;
+
+}
+
+.header__list-title--btn:hover {
+    border: 1px solid var(--color-2);
+    color: var(--color-2);
+    background:  white;
+    transition: all 1000ms;
+}
+
+/* ----------admin-category__list------------- */
+/* List */
+
+.admin-category__list {
+    padding: 1rem;
+    list-style-type: none;
+}
+
+.admin-category__item {
+    padding: 1rem 0rem;
+}
+
+.admin-category__item > a {
+    color: var(--color-2);
+}
+
+.admin-category__item:hover > a {
+    border-block-end: 1px solid var(--color-2);
+    text-decoration: none;
+    color: var(--color-2);
+}
+
+
