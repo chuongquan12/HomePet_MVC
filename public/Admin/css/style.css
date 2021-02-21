@@ -42,6 +42,22 @@ body {
     text-decoration: none;
 }
 
+/* Message */
+
+.message {
+    display: inline-block;
+    position: fixed;
+    top: 5rem;
+    right: .5rem;
+    width: 20rem;
+    height: 5rem;
+    padding: 1rem;
+    border-radius: 10px;
+    color: var(--color-3);
+    background: linear-gradient(170deg, var(--color-2) 50%, white);
+    z-index: 10;
+}
+
 
 /* ---------Header---------- */
 /* ---------HeaderLogo---------- */
@@ -87,14 +103,26 @@ body {
 
 /* ----------admin-category__list------------- */
 /* List */
-
-.admin-category__list {
-    padding: 1rem;
-    list-style-type: none;
+ul {
+    padding-inline-start: .5rem !important;
 }
 
+
+.admin-category__list > ul > span {
+    width: 100%;
+    color: var(--color-2);
+    cursor: pointer;
+}
+
+
+
 .admin-category__item {
-    padding: 1rem 0rem;
+    width: 100%;
+    display: none;
+    margin: .3rem .5rem;
+    font-size: .8rem;
+    color: var(--color-2);
+    list-style-type: none;
 }
 
 .admin-category__item > a {
@@ -102,9 +130,100 @@ body {
 }
 
 .admin-category__item:hover > a {
-    border-block-end: 1px solid var(--color-2);
     text-decoration: none;
     color: var(--color-2);
 }
 
 
+
+/* List Order */
+
+.table {
+    font-size: .7rem;
+    color: var(--color-3) !important;
+    background-color: var(--color-2);
+}
+
+.tb-list__icon {
+    margin: .2rem;
+    padding: .2rem;
+    color: var(--color-3);
+    font-size: .8rem;
+}
+
+.tb-list__icon:hover {
+    border-bottom: 2px solid var(--color-3);
+    color: var(--color-3);
+}
+/* Form */
+.form-bg {
+    border-radius: 15px;
+    background: linear-gradient(50deg, var(--color-2) 50%, white);
+    padding: 2rem;  
+}
+
+.log-re__title-1 > span {
+    margin: 0rem 2rem;
+    font-size: 1.5rem;
+    font-weight: bolder;
+    color: var(--color-3);
+}
+
+.log-re__title-2 > span > i {
+    margin: 0rem 3rem;
+    font-size: 1rem;
+    color: var(--color-3);
+}
+
+.log-re__title-3 > span {
+    color: var(--color-1);
+}
+
+
+.log-re__title-3 > a {
+    padding: .5rem 1rem;
+    color: var(--color-1);
+}
+
+.log-re__title-3:hover > a {
+    border-radius: 15px;
+    color: var(--color-3);
+    transition: 500ms;
+}
+
+.log-re__item-close {
+    color: var(--color-3);
+    cursor: pointer;
+}
+
+.log-re__ip {
+    margin: .5rem;
+}
+
+.log-re__ip > div > label {
+    color: var(--color-3);
+}
+
+.log-re__ip > div > div > input,.log-re__ip > div > div > select {
+    border-radius: 15px;
+    color: var(--color-2);
+}
+
+.log-re__ip:focus > div > input {
+    color: var(--color-2);
+}
+
+.log-re__btn-submit > button, .log-re__btn-submit > span, .log-re__btn-submit > label {
+    padding: .5rem 1.5rem;
+    color: var(--color-3);
+    border-radius: 15px;
+    border: 1px solid var(--color-3);
+    background: linear-gradient(180deg, var(--color-2) 50%, white);  
+}
+
+.log-re__btn-submit:hover > button {
+    border-color: var(--color-2);
+    color: var(--color-2);
+    background: linear-gradient(100deg, var(--color-3) 60%, rgb(200, 200, 200));  
+    transition: all 1000ms;
+}
