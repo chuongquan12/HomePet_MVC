@@ -66,7 +66,7 @@
                         <ul id="list-trademark" class="row">
                             <span>QL THƯƠNG HIÊU</span>
                             <li class="admin-category__item trademark"><a href="{{URL:: to ('list-trademark')}}">DS THƯƠNG HIỆU</a></li>
-                            <li class="admin-category__item trademark"><a href="{{URL:: to ('form-trademark')}}">THÊM THƯƠNG HIỆU</a></li>
+                            <li class="admin-category__item trademark"><a href="{{URL:: to ('add-trademark')}}">THÊM THƯƠNG HIỆU</a></li>
                         </ul>
                     </div>
                     <div class="admin-category__list">

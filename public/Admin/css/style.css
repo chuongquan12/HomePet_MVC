@@ -53,6 +53,7 @@ body {
     height: 5rem;
     padding: 1rem;
     border-radius: 10px;
+    text-align: center;
     color: var(--color-3);
     background: linear-gradient(170deg, var(--color-2) 50%, white);
     z-index: 10;

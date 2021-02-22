@@ -83,3 +83,19 @@ Route::post('update-type-2', 'Type2Controller@update');
 
 // Delete 
 Route::get('delete-type-2/{idNhom}', 'Type2Controller@destroy');
+
+// ----------Trademark
+Route::get('list-trademark', 'TrademarkController@index');
+
+// Add
+
+Route::get('add-trademark', 'TrademarkController@add');
+Route::post('save-trademark', 'TrademarkController@create');
+
+// Edit
+
+Route::get('edit-trademark/{idTH}', 'TrademarkController@show');
+Route::post('update-trademark', 'TrademarkController@update');
+
+// Delete 
+Route::get('delete-trademark/{idTH}', 'TrademarkController@destroy');
