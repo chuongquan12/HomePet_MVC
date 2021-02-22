@@ -51,15 +51,15 @@
                     <div class="admin-category__list">
                         <ul id="list-product-type-1" class="row">
                             <span>QL VẬT NUÔI</span>
-                            <li class="admin-category__item product-type-1"><a href="{{URL:: to ('list-product-type-1')}}">DS VẬT NUÔI</a></li>
-                            <li class="admin-category__item product-type-1"><a href="{{URL:: to ('form-product-type-1')}}">THÊM VẬT NUÔI</a></li>
+                            <li class="admin-category__item product-type-1"><a href="{{URL:: to ('list-type-1')}}">DS VẬT NUÔI</a></li>
+                            <li class="admin-category__item product-type-1"><a href="{{URL:: to ('add-type-1')}}">THÊM VẬT NUÔI</a></li>
                         </ul>
                     </div>
                     <div class="admin-category__list">
                         <ul id="list-product-type-2" class="row">
                             <span>QL LOẠI SẢN PHẨM</span>
-                            <li class="admin-category__item product-type-2"><a href="{{URL:: to ('list-product-type-2')}}">DS LOẠI SP</a></li>
-                            <li class="admin-category__item product-type-2"><a href="{{URL:: to ('form-product-type-2')}}">THÊM LOẠI SP</a></li>
+                            <li class="admin-category__item product-type-2"><a href="{{URL:: to ('list-type-2')}}">DS LOẠI SP</a></li>
+                            <li class="admin-category__item product-type-2"><a href="{{URL:: to ('add-type-2')}}">THÊM LOẠI SP</a></li>
                         </ul>
                     </div>
                     <div class="admin-category__list">

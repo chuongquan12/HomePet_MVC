@@ -3,13 +3,14 @@
 namespace App\Http\Controllers;
 
 use Session;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 
 session_start();
 
-class PersonnelController extends Controller
+class Type1Controller extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,17 +19,15 @@ class PersonnelController extends Controller
      */
     public function index()
     {
-        $all_personnel = DB::table('tb_nhanvien')->get();
+        $all_type_1 = DB::table('tb_thucung')->get();
 
-        return view('admin.personnel.list')->with('all_personnel', $all_personnel);
+        return view('admin.product-type-1.list')->with('all_type_1', $all_type_1);
     }
 
     public function add()
     {
-        return view('admin.personnel.add');
+        return view('admin.product-type-1.add');
     }
-
-
     /**
      * Show the form for creating a new resource.
      *
@@ -37,18 +36,14 @@ class PersonnelController extends Controller
     public function create(Request $request)
     {
         $data = array();
-        $data['HoTenNV'] = $request['name'];
-        $data['DiaChi'] = $request['address'];
-        $data['SoDienThoai'] = $request['n_phone'];
-        $data['ChucVu'] = $request['position'];
-        $data['Username'] = $request['username'];
-        $data['Password'] = $request['password'];
+        $data['TenThuCung'] = $request['name'];
+        $data['NgayCapNhat'] = Carbon::now();
 
-        DB::table('tb_nhanvien')->insert($data);
+        DB::table('tb_thucung')->insert($data);
 
-        Session()->put('message', 'Thêm nhân viên thành công');
+        Session()->put('message', 'Thêm thú cưng thành công');
 
-        return Redirect::to('add-personnel');
+        return Redirect::to('add-type-1');
     }
 
     /**
@@ -68,11 +63,11 @@ class PersonnelController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($idNV)
+    public function show($idTC)
     {
-        $edit_personnel = DB::table('tb_nhanvien')->where('MSNV', $idNV)->get();
+        $edit_type_1 = DB::table('tb_thucung')->where('MaTC', $idTC)->get();
 
-        return view('admin.personnel.edit')->with('edit_personnel', $edit_personnel);
+        return view('admin.product-type-1.edit')->with('edit_type_1', $edit_type_1);
     }
 
     /**
@@ -96,17 +91,15 @@ class PersonnelController extends Controller
     public function update(Request $request)
     {
         $data = array();
-        $MSNV = $request['idNV'];
-        $data['HoTenNV'] = $request['name'];
-        $data['DiaChi'] = $request['address'];
-        $data['SoDienThoai'] = $request['n_phone'];
-        $data['ChucVu'] = $request['position'];
+        $MaTC = $request['idTC'];
+        $data['TenThuCung'] = $request['name'];
+        $data['NgayCapNhat'] = Carbon::now();
 
-        DB::table('tb_nhanvien')->where('MSNV', $MSNV)->update($data);
+        DB::table('tb_thucung')->where('MaTC', $MaTC)->update($data);
 
-        Session()->put('message', 'Cập nhật nhân viên thành công');
+        Session()->put('message', 'Cập nhật thú cưng thành công');
 
-        return Redirect::to('list-personnel');
+        return Redirect::to('list-type-1');
     }
 
     /**
@@ -115,11 +108,11 @@ class PersonnelController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($idNV)
+    public function destroy($idTC)
     {
-        DB::table('tb_nhanvien')->where('MSNV', $idNV)->delete();
-        Session()->put('message', 'Xóa nhân viên thành công');
+        DB::table('tb_thucung')->where('MaTC', $idTC)->delete();
+        Session()->put('message', 'Xóa thú cưng thành công');
 
-        return Redirect::to('list-personnel');
+        return Redirect::to('list-type-1');
     }
 }

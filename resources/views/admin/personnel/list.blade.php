@@ -23,20 +23,20 @@
             </tr>
         </thead>
         <tbody>
-            @foreach($all_personnel as $key => $personnel)
+            @foreach($all_personnel as $key)
             <tr>
-                <td>{{ $personnel -> MSNV  }}</td>
-                <td>{{ $personnel -> HoTenNV  }}</td>
-                <td>{{ $personnel -> ChucVu  }}</td>
-                <td>{{ $personnel -> SoDienThoai  }}</td>
-                <td>{{ $personnel -> DiaChi  }}</td>
+                <td>{{ $key -> MSNV  }}</td>
+                <td>{{ $key -> HoTenNV  }}</td>
+                <td>{{ $key -> ChucVu  }}</td>
+                <td>{{ $key -> SoDienThoai  }}</td>
+                <td>{{ $key -> DiaChi  }}</td>
                 <td class="icon-tb" id="tb-list-personnel__icon">
                     <span>
-                        <a href="{{ URL:: to('edit-personnel/'.$personnel -> MSNV)}}" class="tb-list__icon"><i class="fas fa-edit"></i></a>
+                        <a href="{{ URL:: to('edit-personnel/'.$key -> MSNV)}}" class="tb-list__icon"><i class="fas fa-edit"></i></a>
 
                     </span>
                     <span>
-                        <a href="{{ URL:: to('delete-personnel/'.$personnel -> MSNV)}}" class="tb-list__icon"><i class="fas fa-trash-alt"></i></a>
+                        <a href="{{ URL:: to('delete-personnel/'.$key -> MSNV)}}" class="tb-list__icon"><i class="fas fa-trash-alt"></i></a>
 
                     </span>
                 </td>
