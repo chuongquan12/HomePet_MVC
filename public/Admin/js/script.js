@@ -56,5 +56,11 @@ $(document).ready(function(){
     // // -----MESSAGE----- 
     $("#body").click(function(){
         $("#message").hide("slow");
+
+    });
+
+    // // -----MESSAGE----- 
+    $("#notification").click(function(){
+        $("#notification-list").fadeToggle(500);
     });
   });

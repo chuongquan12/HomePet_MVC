@@ -113,7 +113,7 @@ class Type2Controller extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($idNhom)
+    public function destroy($idNhom)    
     {
         DB::table('tb_nhomhanghoa')->where('MaNhom', $idNhom)->delete();
         Session()->put('message', 'Xóa loại sản phẩm thành công');

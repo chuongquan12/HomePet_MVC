@@ -23,7 +23,7 @@ Route::get('/cart', 'CartController@index');
 
 Route::get('/order', 'OrderController@index');
 
-Route::get('/product', 'ProductController@index');
+Route::get('/product', 'ProductDetailController@index');
 
 Route::get('/store', 'StoreController@index');
 
@@ -32,6 +32,8 @@ Route::get('/user', 'UserController@index');
 //BackEnd Admin
 
 Route::get('/admin', 'AdminController@index');
+
+// ---------Order  
 
 Route::get('list-order', 'ListOrderController@index');
 
@@ -99,3 +101,19 @@ Route::post('update-trademark', 'TrademarkController@update');
 
 // Delete 
 Route::get('delete-trademark/{idTH}', 'TrademarkController@destroy');
+
+// ----------Product
+Route::get('list-product', 'ProductController@index');
+
+// Add
+
+Route::get('add-product', 'ProductController@add');
+Route::post('save-product', 'ProductController@create');
+
+// Edit
+
+Route::get('edit-product/{idTH}', 'ProductController@show');
+Route::post('update-product', 'ProductController@update');
+
+// Delete 
+Route::get('delete-product/{idTH}', 'ProductController@destroy');

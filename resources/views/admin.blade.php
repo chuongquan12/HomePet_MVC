@@ -21,10 +21,27 @@
                     <div class="col header_title">
                         <h5>TRANG QUẢN LÝ BÁN HÀNG</h5>
                     </div>
-                    <div class="col-2">
-                        <a name="" id="" class="header__list-title--btn --btn" href="#">
-                            ĐĂNG XUẤT
-                        </a>
+                    <div class="col-3 ">
+                        <div class="row">
+                            <div class="col-5">
+                                <ul id="notification">
+                                    <span class="header__list-title--btn --btn">
+                                        THÔNG BÁO <i class="fas fa-bell"></i>
+                                    </span>
+                                    <div class="notification-list" id="notification-list">
+                                        @foreach($notification as $key)
+                                        <li>Sản phẩm {{ $key -> TenHH }} sắp hết hàng</li>
+                                        @endforeach
+
+                                    </div>
+                                </ul>
+                            </div>
+                            <div class="col-5">
+                                <a name="" id="" class="header__list-title--btn --btn" href="#">
+                                    ĐĂNG XUẤT <i class="fas fa-sign-out-alt"></i>
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -73,7 +90,7 @@
                         <ul id="list-product" class="row">
                             <span>QL SẢN PHẨM</span>
                             <li class="admin-category__item product"><a href="{{URL:: to ('list-product')}}">DS SẢN PHẨM</a></li>
-                            <li class="admin-category__item product"><a href="{{URL:: to ('form-product')}}">THÊM SẢN PHẨM</a></li>
+                            <li class="admin-category__item product"><a href="{{URL:: to ('add-product')}}">THÊM SẢN PHẨM</a></li>
                         </ul>
                     </div>
 
