@@ -20,13 +20,23 @@ class TrademarkController extends Controller
     public function index()
     {
         $all_trademark = DB::table('tb_thuonghieu')->get();
+        $notification =  DB::table('tb_hanghoa')->where('SoLuongHang', '<', '10')->get();
+        $count =  DB::table('tb_hanghoa')->where('SoLuongHang', '<', '10')->count();
 
-        return view('admin.trademark.list')->with('all_trademark', $all_trademark);
+        return view('admin.trademark.list')
+            ->with('all_trademark', $all_trademark)
+            ->with('notification', $notification)
+            ->with('count', $count);
     }
 
     public function add()
     {
-        return view('admin.trademark.add');
+        $notification =  DB::table('tb_hanghoa')->where('SoLuongHang', '<', '10')->get();
+        $count =  DB::table('tb_hanghoa')->where('SoLuongHang', '<', '10')->count();
+
+        return view('admin.trademark.add')
+            ->with('notification', $notification)
+            ->with('count', $count);
     }
 
     /**
@@ -67,8 +77,13 @@ class TrademarkController extends Controller
     public function show($idTH)
     {
         $edit_trademark = DB::table('tb_thuonghieu')->where('MaTH', $idTH)->get();
+        $notification =  DB::table('tb_hanghoa')->where('SoLuongHang', '<', '10')->get();
+        $count =  DB::table('tb_hanghoa')->where('SoLuongHang', '<', '10')->count();
 
-        return view('admin.trademark.edit')->with('edit_trademark', $edit_trademark);
+        return view('admin.trademark.edit')
+            ->with('edit_trademark', $edit_trademark)
+            ->with('notification', $notification)
+            ->with('count', $count);
     }
 
 

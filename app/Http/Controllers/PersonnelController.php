@@ -19,13 +19,24 @@ class PersonnelController extends Controller
     public function index()
     {
         $all_personnel = DB::table('tb_nhanvien')->get();
+        $notification =  DB::table('tb_hanghoa')->where('SoLuongHang', '<', '10')->get();
+        $count =  DB::table('tb_hanghoa')->where('SoLuongHang', '<', '10')->count();
 
-        return view('admin.personnel.list')->with('all_personnel', $all_personnel);
+
+        return view('admin.personnel.list')
+            ->with('all_personnel', $all_personnel)
+            ->with('notification', $notification)
+            ->with('count', $count);
     }
 
     public function add()
     {
-        return view('admin.personnel.add');
+        $notification =  DB::table('tb_hanghoa')->where('SoLuongHang', '<', '10')->get();
+        $count =  DB::table('tb_hanghoa')->where('SoLuongHang', '<', '10')->count();
+
+        return view('admin.personnel.add')
+            ->with('notification', $notification)
+            ->with('count', $count);
     }
 
 
@@ -71,8 +82,12 @@ class PersonnelController extends Controller
     public function show($idNV)
     {
         $edit_personnel = DB::table('tb_nhanvien')->where('MSNV', $idNV)->get();
+        $notification =  DB::table('tb_hanghoa')->where('SoLuongHang', '<', '10')->get();
+        $count =  DB::table('tb_hanghoa')->where('SoLuongHang', '<', '10')->count();
 
-        return view('admin.personnel.edit')->with('edit_personnel', $edit_personnel);
+        return view('admin.personnel.edit')->with('edit_personnel', $edit_personnel)
+            ->with('notification', $notification)
+            ->with('count', $count);
     }
 
     /**

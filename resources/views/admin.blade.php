@@ -22,11 +22,11 @@
                         <h5>TRANG QUẢN LÝ BÁN HÀNG</h5>
                     </div>
                     <div class="col-3 ">
-                        <div class="row">
-                            <div class="col-5">
+                        <div class="row m-0 justify-content-center">
+                            <div>
                                 <ul id="notification">
                                     <span class="header__list-title--btn --btn">
-                                        THÔNG BÁO <i class="fas fa-bell"></i>
+                                        THÔNG BÁO <i class="fas fa-bell"></i> ({{ $count }})
                                     </span>
                                     <div class="notification-list" id="notification-list">
                                         @foreach($notification as $key)
@@ -36,9 +36,9 @@
                                     </div>
                                 </ul>
                             </div>
-                            <div class="col-5">
+                            <div>
                                 <a name="" id="" class="header__list-title--btn --btn" href="#">
-                                    ĐĂNG XUẤT <i class="fas fa-sign-out-alt"></i>
+                                    LOGOUT <i class="fas fa-sign-out-alt"></i>
                                 </a>
                             </div>
                         </div>

@@ -20,13 +20,23 @@ class Type1Controller extends Controller
     public function index()
     {
         $all_type_1 = DB::table('tb_thucung')->get();
+        $notification =  DB::table('tb_hanghoa')->where('SoLuongHang', '<', '10')->get();
+        $count =  DB::table('tb_hanghoa')->where('SoLuongHang', '<', '10')->count();
 
-        return view('admin.product-type-1.list')->with('all_type_1', $all_type_1);
+        return view('admin.product-type-1.list')
+            ->with('all_type_1', $all_type_1)
+            ->with('notification', $notification)
+            ->with('count', $count);
     }
 
     public function add()
     {
-        return view('admin.product-type-1.add');
+        $notification =  DB::table('tb_hanghoa')->where('SoLuongHang', '<', '10')->get();
+        $count =  DB::table('tb_hanghoa')->where('SoLuongHang', '<', '10')->count();
+
+        return view('admin.product-type-1.add')
+            ->with('notification', $notification)
+            ->with('count', $count);
     }
     /**
      * Show the form for creating a new resource.
@@ -66,8 +76,13 @@ class Type1Controller extends Controller
     public function show($idTC)
     {
         $edit_type_1 = DB::table('tb_thucung')->where('MaTC', $idTC)->get();
+        $notification =  DB::table('tb_hanghoa')->where('SoLuongHang', '<', '10')->get();
+        $count =  DB::table('tb_hanghoa')->where('SoLuongHang', '<', '10')->count();
 
-        return view('admin.product-type-1.edit')->with('edit_type_1', $edit_type_1);
+        return view('admin.product-type-1.edit')
+            ->with('edit_type_1', $edit_type_1)
+            ->with('notification', $notification)
+            ->with('count', $count);
     }
 
     /**

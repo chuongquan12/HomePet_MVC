@@ -20,15 +20,25 @@ class Type2Controller extends Controller
     public function index()
     {
         $all_type_2 = DB::table('tb_nhomhanghoa')->join('tb_thucung', 'tb_nhomhanghoa.MaTC', '=', 'tb_thucung.MaTC')->get();
+        $notification =  DB::table('tb_hanghoa')->where('SoLuongHang', '<', '10')->get();
+        $count =  DB::table('tb_hanghoa')->where('SoLuongHang', '<', '10')->count();
 
-        return view('admin.product-type-2.list')->with('all_type_2', $all_type_2);
+        return view('admin.product-type-2.list')
+            ->with('all_type_2', $all_type_2)
+            ->with('notification', $notification)
+            ->with('count', $count);
     }
 
     public function add()
     {
         $all_type_1 = DB::table('tb_thucung')->get();
+        $notification =  DB::table('tb_hanghoa')->where('SoLuongHang', '<', '10')->get();
+        $count =  DB::table('tb_hanghoa')->where('SoLuongHang', '<', '10')->count();
 
-        return view('admin.product-type-2.add')->with('all_type_1', $all_type_1);
+        return view('admin.product-type-2.add')
+            ->with('all_type_1', $all_type_1)
+            ->with('notification', $notification)
+            ->with('count', $count);
     }
     /**
      * Show the form for creating a new resource.
@@ -70,8 +80,14 @@ class Type2Controller extends Controller
     {
         $edit_type_2 = DB::table('tb_nhomhanghoa')->where('MaNhom', $idNhom)->get();
         $all_type_1 = DB::table('tb_thucung')->get();
+        $notification =  DB::table('tb_hanghoa')->where('SoLuongHang', '<', '10')->get();
+        $count =  DB::table('tb_hanghoa')->where('SoLuongHang', '<', '10')->count();
 
-        return view('admin.product-type-2.edit')->with('edit_type_2', $edit_type_2)->with('all_type_1', $all_type_1);
+        return view('admin.product-type-2.edit')
+            ->with('edit_type_2', $edit_type_2)
+            ->with('all_type_1', $all_type_1)
+            ->with('notification', $notification)
+            ->with('count', $count);
     }
 
     /**
@@ -113,7 +129,7 @@ class Type2Controller extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($idNhom)    
+    public function destroy($idNhom)
     {
         DB::table('tb_nhomhanghoa')->where('MaNhom', $idNhom)->delete();
         Session()->put('message', 'Xóa loại sản phẩm thành công');

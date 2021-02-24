@@ -20,17 +20,27 @@ class ProductController extends Controller
     public function index()
     {
         $all_product = DB::table('tb_hanghoa')->join('tb_thuonghieu', 'tb_hanghoa.MaTH', '=', 'tb_thuonghieu.MaTH')->join('tb_nhomhanghoa', 'tb_hanghoa.MaNhom', '=', 'tb_nhomhanghoa.MaNhom')->get();
+        $notification =  DB::table('tb_hanghoa')->where('SoLuongHang', '<', '10')->get();
+        $count =  DB::table('tb_hanghoa')->where('SoLuongHang', '<', '10')->count();
 
-        $temp = view('admin.product.list')->with('all_product', $all_product);
-        return  view('admin')->with('admin.product.list', $temp);   
+        return  view('admin.product.list')
+            ->with('all_product', $all_product)
+            ->with('notification', $notification)
+            ->with('count', $count);
     }
 
     public function add()
     {
         $all_type_2 = DB::table('tb_nhomhanghoa')->get();
         $all_trademark = DB::table('tb_thuonghieu')->get();
+        $notification =  DB::table('tb_hanghoa')->where('SoLuongHang', '<', '10')->get();
+        $count =  DB::table('tb_hanghoa')->where('SoLuongHang', '<', '10')->count();
 
-        return view('admin.product.add')->with('all_type_2', $all_type_2)->with('all_trademark', $all_trademark);
+        return view('admin.product.add')
+            ->with('all_type_2', $all_type_2)
+            ->with('all_trademark', $all_trademark)
+            ->with('notification', $notification)
+            ->with('count', $count);
     }
 
     /**
@@ -81,8 +91,16 @@ class ProductController extends Controller
 
         $all_type_2 = DB::table('tb_nhomhanghoa')->get();
         $all_trademark = DB::table('tb_thuonghieu')->get();
+        $notification =  DB::table('tb_hanghoa')->where('SoLuongHang', '<', '10')->get();
+        $count =  DB::table('tb_hanghoa')->where('SoLuongHang', '<', '10')->count();
 
-        return view('admin.product.edit')->with('edit_product', $edit_product)->with('all_type_2', $all_type_2)->with('all_trademark', $all_trademark);
+
+        return view('admin.product.edit')
+            ->with('edit_product', $edit_product)
+            ->with('all_type_2', $all_type_2)
+            ->with('all_trademark', $all_trademark)
+            ->with('notification', $notification)
+            ->with('count', $count);
     }
 
     /**
