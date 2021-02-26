@@ -53,6 +53,10 @@ $(document).ready(function(){
         
     });
 
+    $("#list-image").click(function () { 
+        $(".image").fadeToggle(500);
+    });
+
     // // -----MESSAGE----- 
     $("#body").click(function(){
         $("#message").hide("slow");

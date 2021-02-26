@@ -16,7 +16,7 @@
             <div class="col header__logo">
                 <div class="row align-items-center">
                     <div class="col-3">
-                        <img src="{{asset('public/Admin/img/logo/Logo-header.png')}}" alt="logo" class="header__logo--img" />
+                        <img src="{{asset('ImageUpload/logo/Logo-header.png')}}" alt="logo" class="header__logo--img" />
                     </div>
                     <div class="col header_title">
                         <h5>TRANG QUẢN LÝ BÁN HÀNG</h5>
@@ -91,6 +91,13 @@
                             <span>QL SẢN PHẨM</span>
                             <li class="admin-category__item product"><a href="{{URL:: to ('list-product')}}">DS SẢN PHẨM</a></li>
                             <li class="admin-category__item product"><a href="{{URL:: to ('add-product')}}">THÊM SẢN PHẨM</a></li>
+                        </ul>
+                    </div>
+                    <div class="admin-category__list">
+                        <ul id="list-image" class="row">
+                            <span>QL HÌNH ẢNH</span>
+                            <li class="admin-category__item image"><a href="{{URL:: to ('list-slide')}}">DS HÌNH SLIDESHOW</a></li>
+                            <li class="admin-category__item image"><a href="{{URL:: to ('upload-slide')}}">UPLOAD HÌNH SLIDESHOW</a></li>
                         </ul>
                     </div>
 

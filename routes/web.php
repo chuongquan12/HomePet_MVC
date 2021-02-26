@@ -117,3 +117,14 @@ Route::post('update-product', 'ProductController@update');
 
 // Delete 
 Route::get('delete-product/{idTH}', 'ProductController@destroy');
+
+// ----------IMAGE
+Route::get('list-slide', 'ImageController@index');
+
+// Upload SlideShow
+
+Route::get('upload-slide', 'ImageController@add');
+Route::post('save-image-slide', 'ImageController@create');
+
+// Delete 
+Route::get('delete-image/{idTH}', 'ImageController@destroy');

@@ -37,7 +37,7 @@
                 <td>{{ $key -> TenNhom  }}</td>
                 <td>{{ $key -> TenThuongHieu }}</td>
                 <td>
-                    <img src="{{ asset('public/Admin/img/'.$key -> Hinh )}}" class="img-fluid product-img" alt="Responsive image" alt="Hình sản phẩm" />
+                    <img src="{{ asset('ImageUpload/product/'.$key -> Hinh )}}" class="img-fluid product-img" alt="Responsive image" alt="Hình sản phẩm" />
                 </td>
                 <td>{{ $key -> Gia }}</td>
                 <td>{{ $key -> KhuyenMai  }}</td>

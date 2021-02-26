@@ -3,7 +3,7 @@
 
 
 
-<form class="form-bg" action="{{URL :: to ('save-product')}}" method="POST">
+<form class="form-bg" action="{{URL :: to ('save-product')}}" method="POST" enctype="multipart/form-data">
     <?php
     $message = Session()->get('message');
     if ($message) {
@@ -101,7 +101,7 @@
         </div>
         <div class="col-7">
             <div class="row">
-                <input type="file" id="image" class="form-control" name="image" value="" />
+                <input type="file" id="image" class="form-control" name="image" required="true" />
             </div>
             <div class="row">
                 <div><i class="error" id="error_4"></i></div>

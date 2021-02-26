@@ -51,15 +51,20 @@ class ProductController extends Controller
     public function create(Request $request)
     {
         $data = array();
+        $file = $request['image'];
+
         $data['TenHH'] = $request['name'];
         $data['MoTaHH'] = $request['description'];
         $data['SoLuongHang'] = $request['amount'];
         $data['MaNhom'] = $request['idNhom'];
         $data['MaTH'] = $request['idTH'];
-        $data['Hinh'] = $request['image'];
+        $data['Hinh'] = $file->getClientOriginalName();
         $data['Gia'] = $request['price'];
         $data['KhuyenMai'] = $request['discount'];
         $data['NgayCN'] = Carbon::now();
+
+
+        $file->move('ImageUpload/Product', $file->getClientOriginalName());
 
         DB::table('tb_hanghoa')->insert($data);
 
@@ -124,16 +129,21 @@ class ProductController extends Controller
     public function update(Request $request)
     {
         $data = array();
+        $file = $request['image'];
+
         $MSHH = $request['idHH'];
         $data['TenHH'] = $request['name'];
         $data['MoTaHH'] = $request['description'];
         $data['SoLuongHang'] = $request['amount'];
         $data['MaNhom'] = $request['idNhom'];
         $data['MaTH'] = $request['idTH'];
-        $data['Hinh'] = $request['image'];
+        $data['Hinh'] = $file->getClientOriginalName();
         $data['Gia'] = $request['price'];
         $data['KhuyenMai'] = $request['discount'];
         $data['NgayCN'] = Carbon::now();
+
+        $file->move('ImageUpload/Product', $file->getClientOriginalName());
+
         DB::table('tb_hanghoa')->where('MSHH', $MSHH)->update($data);
 
         Session()->put('message', 'Cập nhật sản phẩm thành công');

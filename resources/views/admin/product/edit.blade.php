@@ -4,7 +4,7 @@
 
 @foreach($edit_product as $key )
 
-<form class="form-bg" action="{{URL :: to ('update-product')}}" method="POST">
+<form class="form-bg" action="{{URL :: to ('update-product')}}" method="POST" enctype="multipart/form-data">
     <?php
     $message = Session()->get('message');
     if ($message) {
@@ -103,7 +103,7 @@
         </div>
         <div class="col-7">
             <div class="row">
-                <input type="file" class="form-control" id="image" name="image">
+                <input type="file" class="form-control" id="image" name="image" required="true">
             </div>
             <div class=" row">
                 <div><i class="error" id="error_4"></i></div>
