@@ -15,9 +15,9 @@ use Illuminate\Support\Facades\Route;
 
 // FrontEnd
 
-Route::get('/', 'HomeController@index');
+Route::get('/', 'HomeController@index_user');
 
-Route::get('/home', 'HomeController@index');
+Route::get('/home', 'HomeController@index_user');
 
 Route::get('/cart', 'CartController@index');
 

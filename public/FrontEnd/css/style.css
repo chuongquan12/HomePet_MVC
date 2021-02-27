@@ -274,7 +274,9 @@ input[type=text]:focus, input[type=submit] {
     background: linear-gradient(105deg, var(--color-2) 60%, white);
     border-radius: 15px;
 }
-
+.carousel-item > img {
+    border-radius: 10px;
+}
 /* Slide Sale */
 
 .slide-sale {
@@ -319,11 +321,10 @@ input[type=text]:focus, input[type=submit] {
 }
 
 
-.card-sale__img > img{
+.card-sale__img > a > img{
     width: 100%;
     height: auto;
     margin-top: -1rem;
-    margin-left: -.5rem;
     border-radius: 10px;
     padding: .2rem;
 
@@ -332,7 +333,8 @@ input[type=text]:focus, input[type=submit] {
 
 .card-sale__title > a {
     width: 95%;
-    margin-bottom: .5rem;  
+    margin-bottom: .5rem;
+    margin-left: .5rem;
     max-width: 15rem;
     white-space: nowrap; 
     overflow: hidden;
@@ -366,6 +368,7 @@ input[type=text]:focus, input[type=submit] {
 
 .card-sale__description > span {
     width: 100%; 
+    margin-left: .5rem;
     height: 2.5rem;
     max-width: 15rem;
     overflow: hidden;
@@ -401,7 +404,7 @@ input[type=text]:focus, input[type=submit] {
 
 .list-card__title {
     background-color: var(--color-2);
-    /* background-image: url("/img/background/background.png"); */
+    background-image: url("background.png");
     background-repeat: repeat-x;
     background-size: 250px;
     background-position: center;
@@ -417,16 +420,15 @@ input[type=text]:focus, input[type=submit] {
 .card-list {
     height: 95%;
     margin: .5rem 0rem;
-    border: 2px solid var(--color-2);
     border-radius: 15px;
-    background-color: var(--color-3);
+    border: 1px solid var(--color-2);
 }
 
 /* Cart */
 
 .card__sticker {
     margin-left: -1rem;
-    position: relative;
+    position: absolute;
     padding: 0rem .5rem .8rem .5rem;
     background-color: red;
     font-size: 1.1rem;
@@ -435,19 +437,20 @@ input[type=text]:focus, input[type=submit] {
     clip-path: polygon(0% 0%, 100% 0, 100% 100%, 50% 80%, 0% 100%);
     z-index: 1;
 }
+.card__img {
+    padding: .8rem;
+}
 
-
-.card__img > img {
+.card__img > a > img {
     width: 100%;
     height: auto;
-    margin-top: -1rem;
     border-radius: 15px;
     padding: .2rem;
     cursor: pointer;
 }
 
 .card__img :hover > img {
-    transform: scale(1.1,1.1);
+    transform: scale(1.05,1.05);
     transition: all 500ms;
 }
 
@@ -469,22 +472,22 @@ input[type=text]:focus, input[type=submit] {
 }
 
 .card__price--1 {
-    margin-left: .5rem;
+    margin-left: .7rem;
     font-size: .7rem;
     color: var(--color-3);
     text-decoration: line-through;
 }
 
 .card__price--2 {
-    margin-left: .3rem;
+    margin-left: .5rem;
     margin-bottom: .5rem;
-    font-size: 1.1rem;
+    font-size: 1rem;
     color: var(--color-3);
 }
 
 .card__description > span {
     width: 100%;
-    height: 2.5rem;
+    height: 2rem;
     margin: .5rem .8rem;
     max-width: 15rem;
     overflow: hidden;
@@ -511,14 +514,14 @@ input[type=text]:focus, input[type=submit] {
     transform: scale(1.05,1.05);
     color: var(--color-2);
     background-color: var(--color-3);
-    border: 2px solid var(--color-2);
+    border: 1px solid var(--color-2);
     transition: all 500ms;
 }
 
 .card__title-bg {
     margin-top: 0.1rem;
     border-radius: 15px;
-    background: linear-gradient(70deg, var(--color-2) 60%, white);
+    background: linear-gradient(160deg, var(--color-2) 30%, white);
 }
 
 /* Product Detail */
@@ -1038,7 +1041,6 @@ input[type=text]:focus, input[type=submit] {
     border-top-right-radius: 15px;
     border-top-left-radius: 15px;
     cursor: pointer;
-    tex
 }
 
 
