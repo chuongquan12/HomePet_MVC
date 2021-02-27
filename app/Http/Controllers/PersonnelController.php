@@ -47,6 +47,25 @@ class PersonnelController extends Controller
      */
     public function create(Request $request)
     {
+        $request->validate([
+            'name' => 'required|max:50',
+            'address' => 'required|max:200',
+            'n_phone' => 'required|numeric',
+            'username' => 'required|max:25',
+            'password' => 'required|min:8|max:25',
+        ], [
+            'required' => ':attribute không được để trống',
+            'max' => ':attribute không được quá :max kí tự',
+            'min' => ':attribute phải ít nhất :min kí tự',
+            'numeric' => ':attribute phải nhập chỉ số',
+        ], [
+            'name' => 'Họ và tên',
+            'address' => 'Địa chỉ',
+            'n_phone' => 'Số điện thoại',
+            'username' => 'Tên đăng nhập',
+            'password' => 'Mật khẩu',
+        ]);
+
         $data = array();
         $data['HoTenNV'] = $request['name'];
         $data['DiaChi'] = $request['address'];
@@ -110,6 +129,20 @@ class PersonnelController extends Controller
      */
     public function update(Request $request)
     {
+        $request->validate([
+            'name' => 'required|max:50',
+            'address' => 'required|max:200',
+            'n_phone' => 'required|numeric',
+        ], [
+            'required' => ':attribute không được để trống',
+            'max' => ':attribute không được quá :max kí tự',
+            'integer' => ':attribute phải nhập chỉ số',
+        ], [
+            'name' => 'Họ và tên',
+            'address' => 'Địa chỉ',
+            'n_phone' => 'Số điện thoại',
+        ]);
+
         $data = array();
         $MSNV = $request['idNV'];
         $data['HoTenNV'] = $request['name'];

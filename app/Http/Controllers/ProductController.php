@@ -50,6 +50,24 @@ class ProductController extends Controller
      */
     public function create(Request $request)
     {
+        $request->validate([
+            'name' => 'required|max:50',
+            'description' => 'max:200',
+            'amount' => 'required',
+            'image' => 'required|image',
+            'price' => 'required',
+        ], [
+            'required' => ':attribute không được để trống',
+            'max' => ':attribute không được quá :max kí tự',
+            'image' => 'File :attribute phải có đuôi (jpeg, png, bmp, gif, hoặc svg)',
+        ], [
+            'name' => 'Tên sản phẩm',
+            'description' => 'Mô tả',
+            'amount' => 'Số lượng',
+            'image' => 'Hình ảnh',
+            'price' => 'Giá sản phẩm',
+        ]);
+
         $data = array();
         $file = $request['image'];
 
@@ -128,6 +146,24 @@ class ProductController extends Controller
      */
     public function update(Request $request)
     {
+        $request->validate([
+            'name' => 'required|max:50',
+            'description' => 'max:200',
+            'amount' => 'required',
+            'image' => 'required|image',
+            'price' => 'required',
+        ], [
+            'required' => ':attribute không được để trống',
+            'max' => ':attribute không được quá :max kí tự',
+            'image' => 'File :attribute phải có đuôi (jpeg, png, bmp, gif, hoặc svg)',
+        ], [
+            'name' => 'Tên sản phẩm',
+            'description' => 'Mô tả',
+            'amount' => 'Số lượng',
+            'image' => 'Hình ảnh',
+            'price' => 'Giá sản phẩm',
+        ]);
+
         $data = array();
         $file = $request['image'];
 

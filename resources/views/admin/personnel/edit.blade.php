@@ -86,6 +86,11 @@
         </div>
     </div>
 
+    <ul class="alert text-danger">
+        @foreach ( $errors -> all() as $error)
+        <li>{{ $error }}</li>
+        @endforeach
+    </ul>
 </form>
 @endforeach
 

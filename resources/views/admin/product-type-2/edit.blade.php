@@ -59,9 +59,15 @@
     <br />
     <div class="row justify-content-end">
         <div class="col-4 log-re__btn-submit">
-            <button type="submit" name="sub-type-2-add">Thêm</button>
+            <button type="submit" name="sub-type-2-add">Cập nhật</button>
         </div>
     </div>
+
+    <ul class="alert text-danger">
+        @foreach ( $errors -> all() as $error)
+        <li>{{ $error }}</li>
+        @endforeach
+    </ul>
 </form>
 
 @endforeach

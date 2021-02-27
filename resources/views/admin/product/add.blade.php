@@ -54,7 +54,7 @@
         </div>
         <div class="col-7">
             <div class="row">
-                <input type="number" id="amount" class="form-control" name="amount" value="" />
+                <input type="number" id="amount" class="form-control" name="amount" value="0" min="0" max="100" />
             </div>
             <div class="row">
                 <div><i class="error" id="error_3"></i></div>
@@ -114,7 +114,7 @@
         </div>
         <div class="col-7">
             <div class="row">
-                <input type="number" id="price" class="form-control" name="price" value="" />
+                <input type="number" id="price" class="form-control" name="price" value="0" min="0" />
             </div>
             <div class="row">
                 <div><i class="error" id="error_4"></i></div>
@@ -127,7 +127,7 @@
         </div>
         <div class="col-7">
             <div class="row">
-                <input type="number" id="discount" class="form-control" name="discount" value="" />
+                <input type="number" id="discount" class="form-control" name="discount" value="0" min="0" max="100" />
             </div>
             <div class="row">
                 <div><i class="error" id="error_4"></i></div>
@@ -140,5 +140,11 @@
             <button type="submit" name="sub-product-add">Thêm</button>
         </div>
     </div>
+
+    <ul class="alert text-danger">
+        @foreach ( $errors -> all() as $error)
+        <li>{{ $error }}</li>
+        @endforeach
+    </ul>
 </form>
 @endsection

@@ -47,6 +47,13 @@ class Type2Controller extends Controller
      */
     public function create(Request $request)
     {
+        $request->validate([
+            'name' => 'required|max:15',
+        ], [
+            'name.required' => 'Tên loại sản phẩm không được để trống',
+            'name.max' => 'Tên loại sản phẩm không được quá 15 kí tự'
+        ]);
+
         $data = array();
         $data['TenNhom'] = $request['name'];
         $data['MaTC'] = $request['MaTC'];
@@ -110,6 +117,13 @@ class Type2Controller extends Controller
      */
     public function update(Request $request)
     {
+        $request->validate([
+            'name' => 'required|max:15',
+        ], [
+            'name.required' => 'Tên loại sản phẩm không được để trống',
+            'name.max' => 'Tên loại sản phẩm không được quá 15 kí tự'
+        ]);
+
         $data = array();
         $MaNhom = $request['idNhom'];
         $data['TenNhom'] = $request['name'];

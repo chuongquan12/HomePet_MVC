@@ -55,7 +55,7 @@
         </div>
         <div class="col-7">
             <div class="row">
-                <input type="text" id="amount" class="form-control" name="amount" value="{{ $key -> SoLuongHang }}" />
+                <input type="text" id="amount" class="form-control" name="amount" value="{{ $key -> SoLuongHang }}" min="0" max="100" />
             </div>
             <div class="row">
                 <div><i class="error" id="error_3"></i></div>
@@ -116,7 +116,7 @@
         </div>
         <div class="col-7">
             <div class="row">
-                <input type="number" id="price" class="form-control" name="price" value="{{ $key -> Gia }}" />
+                <input type="number" id="price" class="form-control" name="price" value="{{ $key -> Gia }}" min="0" />
             </div>
             <div class="row">
                 <div><i class="error" id="error_4"></i></div>
@@ -129,7 +129,7 @@
         </div>
         <div class="col-7">
             <div class="row">
-                <input type="text" id="discount" class="form-control" name="discount" value="{{ $key -> KhuyenMai }}" />
+                <input type="text" id="discount" class="form-control" name="discount" value="{{ $key -> KhuyenMai }}" min="0" max="100" />
             </div>
             <div class="row">
                 <div><i class="error" id="error_4"></i></div>
@@ -143,6 +143,11 @@
         </div>
     </div>
 
+    <ul class="alert text-danger">
+        @foreach ( $errors -> all() as $error)
+        <li>{{ $error }}</li>
+        @endforeach
+    </ul>
 </form>
 @endforeach
 

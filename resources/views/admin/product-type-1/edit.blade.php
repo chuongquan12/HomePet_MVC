@@ -43,6 +43,11 @@
             <button type="submit" name="sub-type-1-edit">Cập nhật</button>
         </div>
     </div>
+    <ul class="alert text-danger">
+        @foreach ( $errors -> all() as $error)
+        <li>{{ $error }}</li>
+        @endforeach
+    </ul>
 </form>
 
 @endforeach

@@ -108,5 +108,11 @@
             <button type="submit" class="sub-personnel-add" name="sub-personnel-add">Thêm</button>
         </div>
     </div>
+
+    <ul class="alert text-danger">
+        @foreach ( $errors -> all() as $error)
+        <li>{{ $error }}</li>
+        @endforeach
+    </ul>
 </form>
 @endsection

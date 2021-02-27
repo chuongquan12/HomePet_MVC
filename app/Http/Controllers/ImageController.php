@@ -46,6 +46,13 @@ class ImageController extends Controller
      */
     public function create(Request $request)
     {
+        $request->validate([
+            'image' => 'required|image',
+        ], [
+            'image.required' => 'Hình ảnh không được để trống',
+            'image.image' => 'File hình ảnh phải có đuôi (jpeg, png, bmp, gif, hoặc svg)',
+        ]);
+
         $file = $request['image'];
 
         $data = array();

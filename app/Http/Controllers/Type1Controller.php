@@ -45,6 +45,12 @@ class Type1Controller extends Controller
      */
     public function create(Request $request)
     {
+        $request->validate([
+            'name' => 'required|max:15',
+        ], [
+            'name.required' => 'Tên thú cưng không được để trống',
+            'name.max' => 'Tên thú cưng không được quá 15 kí tự'
+        ]);
         $data = array();
         $data['TenThuCung'] = $request['name'];
         $data['NgayCapNhat'] = Carbon::now();
@@ -105,6 +111,13 @@ class Type1Controller extends Controller
      */
     public function update(Request $request)
     {
+        $request->validate([
+            'name' => 'required|max:15',
+        ], [
+            'name.required' => 'Tên thú cưng không được để trống',
+            'name.max' => 'Tên thú cưng không được quá 15 kí tự'
+        ]);
+
         $data = array();
         $MaTC = $request['idTC'];
         $data['TenThuCung'] = $request['name'];

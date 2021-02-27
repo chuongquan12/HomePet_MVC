@@ -46,6 +46,13 @@ class TrademarkController extends Controller
      */
     public function create(Request $request)
     {
+        $request->validate([
+            'name' => 'required|max:15',
+        ], [
+            'name.required' => 'Tên thương hiệu không được để trống',
+            'name.max' => 'Tên thương hiệu không được quá 15 kí tự'
+        ]);
+
         $data = array();
         $data['TenThuongHieu'] = $request['name'];
         $data['NgayCapNhat'] = Carbon::now();
@@ -107,6 +114,13 @@ class TrademarkController extends Controller
      */
     public function update(Request $request)
     {
+        $request->validate([
+            'name' => 'required|max:15',
+        ], [
+            'name.required' => 'Tên thương hiệu không được để trống',
+            'name.max' => 'Tên thương hiệu không được quá 15 kí tự'
+        ]);
+
         $data = array();
         $MaTH = $request['idTH'];
         $data['TenThuongHieu'] = $request['name'];
