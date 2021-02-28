@@ -16,4 +16,8 @@ $(document).ready(function(){
         $('#input_amount').val(input_amount);
         e.preventDefault();
     })
+
+    // -----------Store--------
+
+    // Trademark
 });

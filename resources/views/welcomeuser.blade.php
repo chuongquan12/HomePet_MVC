@@ -21,8 +21,8 @@
                     <div class="col-lg-6 mt-1">
                         <div class="row align-items-lg-end" style="height: 50px">
                             <div class="col">
-                                <form class="form-inline">
-                                    <input class="header__search--ip" type="text" placeholder="Bạn muốn mua gì?" />
+                                <form class="form-inline" action="{{URL:: to ('store?' )}}" method="GET">
+                                    <input class="header__search--ip" type="text" name="search" placeholder="Bạn muốn mua gì?" />
                                     <button class="header__search--btn" type="submit">
                                         <i class="fas fa-search"></i>
                                     </button>
@@ -234,10 +234,10 @@
                         </div>
                         <div class="">
                             <div class="menu__list--item dropdown">
-                                <a class="" href="#" data-toggle="dropdown"> THƯƠNG HIỆU </a>
+                                <a href="" data-toggle="dropdown"> THƯƠNG HIỆU </a>
                                 <div class="dropdown-content dropdown-menu">
                                     @foreach($trademark as $key)
-                                    <a class="dropdown-item" href="#">{{ $key -> TenThuongHieu }}</a>
+                                    <a class="dropdown-item" href="{{URL:: to ('store?th='.$key -> MaTH )}}">{{ $key -> TenThuongHieu }}</a>
                                     @endforeach
                                 </div>
                             </div>
@@ -245,11 +245,11 @@
                         @foreach($type_1 as $key_1)
                         <div class="">
                             <div class="menu__list--item dropdown">
-                                <a class="" href="#" data-toggle="dropdown"> {{ $key_1 -> TenThuCung }} </a>
+                                <a class="" href="" data-toggle="dropdown"> {{ $key_1 -> TenThuCung }} </a>
                                 <div class="dropdown-content dropdown-menu">
                                     @foreach($type_2 as $key_2)
                                     @if( $key_1 -> MaTC == $key_2 -> MaTC )
-                                    <a class="dropdown-item" href="#">{{ $key_2 -> TenNhom}}</a>
+                                    <a class="dropdown-item" href="{{URL:: to ('store?nhom='.$key_2 -> MaNhom )}}">{{ $key_2 -> TenNhom}}</a>
                                     @endif
                                     @endforeach
                                 </div>

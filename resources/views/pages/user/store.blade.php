@@ -1,4 +1,4 @@
-@extends('welcome')
+@extends('welcomeuser')
 @section('content')
 
 <div class="">
@@ -10,176 +10,83 @@
     </nav>
 </div>
 <div class="row">
-    <div class="container mt-3">
+    <div class="container-fluid mt-3">
         <div class="row">
-            <div class="col-md-3 col-12 directory">
-                <div class="row directory__item"><a href="">DANH MỤC SẢN PHẨM DANH MỤC SẢN PHẨM DANH MỤC SẢN PHẨM DANH MỤC SẢN PHẨM</a></div>
-                <div class="row directory__item"><a href="">DANH MỤC SẢN PHẨM</a></div>
-                <div class="row directory__item"><a href="">DANH MỤC SẢN PHẨM</a></div>
-                <div class="row directory__item"><a href="">DANH MỤC SẢN PHẨM</a></div>
+            <div class="col-md-3 col-12 ">
+                <div class="directory">
+                    <div class="row directory__title"><a href="{{URL:: to ('store')}}"><i class="fas fa-bars"></i> DANH MỤC SẢN PHẨM</a></div>
+                    <div class="directory__list">
+                        <ul id="trademark" class="row">
+                            <span>THƯƠNG HIỆU</span>
+                            @foreach($trademark as $key_trademark)
+                            <li class="directory__item"><a href="{{URL:: to ('store?th='.$key_trademark -> MaTH )}}">{{ $key_trademark ->TenThuongHieu }}</a></li>
+                            @endforeach
+                        </ul>
+                    </div>
+                    @foreach($type_1 as $key_type_1)
+                    <div class="directory__list">
+                        <ul class="row">
+                            <span>{{ $key_type_1 -> TenThuCung }}</span>
+                            @foreach($type_2 as $key_type_2)
+                            @if( $key_type_1 -> MaTC == $key_type_2 -> MaTC )
+                            <li class="directory__item"><a href="{{URL:: to ('store?nhom='.$key_type_2 -> MaNhom )}}">{{ $key_type_2 -> TenNhom }}</a></li>
+                            @endif
+                            @endforeach
+                        </ul>
+                    </div>
+                    @endforeach
+
+                </div>
+
             </div>
-            <div class="col-md-9 col-12">
+            <div class=" col-md-9 col-12">
                 <div class="row list-product">
+                    @foreach($all_product as $product)
                     <div class="col-md-3 col-6">
                         <div class="container card-list">
-                            <span class="card__sticker">50%</span>
-                            <div class="row ">
+                            @if($product -> KhuyenMai > 0)
+                            <span class="card__sticker"> -{{ $product -> KhuyenMai }}% </span>
+                            @endif
+                            <div class="row">
                                 <div class="col-12 card__img">
-                                    <a href="">
-                                        <img src="img/NH_1.png" class="img-fluid" alt="Responsive image" alt="sản phẩm">
+                                    <a href="{{ URL :: to('product/'.$product -> MSHH)}}">
+                                        <img src="{{ asset('ImageUpload/Product/'.$product -> Hinh)}}" class="img-fluid" alt="Responsive image" alt="sản phẩm" />
                                     </a>
                                 </div>
                             </div>
-                            <div class="row ">
+                            <div class="row">
                                 <div class="col-12 card__title-bg">
-                                    <div class="row card__title ">
-                                        <a href="">Sữa tắm shfdg hjgfdsadfsadfhasdjfhaskhdfkhasdkjhd shdfgsa hsdfgh</a>
+                                    <div class="row card__title">
+                                        <a href="{{ URL :: to('product/'.$product -> MSHH)}}">{{ $product -> TenHH }}</a>
                                     </div>
                                     <div class="row hidden-xs card__description">
-                                        <span>sản phẩm giúp thoásdfsadfasdfjashdkfsac sadf shjadfgsa hsgdfsa sgdjh asdvfjhas djhgfjhs jhgas jhdfgjshdf jhs t ế</span>
+                                        <span>{{ $product -> MoTaHH }}</span>
                                     </div>
                                     <div class="row card__price">
                                         <div class="col-sm-8 col-12">
+                                            @if($product -> KhuyenMai > 0 )
                                             <div class="row">
-                                                <span class="card__price--1">1.000.000 VNĐ</span>
+                                                <span class="card__price--1">{{ $product -> Gia }}</span>
                                             </div>
+                                            @endif
+
                                             <div class="row">
-                                                <span class="card__price--2">1.000.000 VNĐ</span>
+                                                <span class="card__price--2">{{ ($product -> Gia)*(100 - $product -> KhuyenMai) / 100 }} VNĐ</span>
                                             </div>
                                         </div>
                                         <div class="col-sm-4 col align-self-center">
                                             <div class="row justify-content-end">
                                                 <div class="card__buy">
-                                                    <a href=""><i class="fas fa-cart-plus"></i></a>
+                                                    <a href="{{ URL :: to('product/'.$product -> MSHH)}}"><i class="fas fa-cart-plus"></i></a>
                                                 </div>
                                             </div>
-
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3 col-6">
-                        <div class="container card-list">
-                            <span class="card__sticker">50%</span>
-                            <div class="row ">
-                                <div class="col-12 card__img">
-                                    <a href="">
-                                        <img src="img/NH_1.png" class="img-fluid" alt="Responsive image" alt="sản phẩm">
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="row ">
-                                <div class="col-12 card__title-bg">
-                                    <div class="row card__title ">
-                                        <a href="">Sữa tắm shfdg hjgfdsadfsadfhasdjfhaskhdfkhasdkjhd shdfgsa hsdfgh</a>
-                                    </div>
-                                    <div class="row hidden-xs card__description">
-                                        <span>sản phẩm giúp thoásdfsadfasdfjashdkfsac sadf shjadfgsa hsgdfsa sgdjh asdvfjhas djhgfjhs jhgas jhdfgjshdf jhs t ế</span>
-                                    </div>
-                                    <div class="row card__price">
-                                        <div class="col-sm-8 col-12">
-                                            <div class="row">
-                                                <span class="card__price--1">1.000.000 VNĐ</span>
-                                            </div>
-                                            <div class="row">
-                                                <span class="card__price--2">1.000.000 VNĐ</span>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-4 col align-self-center">
-                                            <div class="row justify-content-end">
-                                                <div class="card__buy">
-                                                    <a href=""><i class="fas fa-cart-plus"></i></a>
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-6">
-                        <div class="container card-list">
-                            <span class="card__sticker">50%</span>
-                            <div class="row ">
-                                <div class="col-12 card__img">
-                                    <a href="">
-                                        <img src="img/NH_1.png" class="img-fluid" alt="Responsive image" alt="sản phẩm">
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="row ">
-                                <div class="col-12 card__title-bg">
-                                    <div class="row card__title ">
-                                        <a href="">Sữa tắm shfdg hjgfdsadfsadfhasdjfhaskhdfkhasdkjhd shdfgsa hsdfgh</a>
-                                    </div>
-                                    <div class="row hidden-xs card__description">
-                                        <span>sản phẩm giúp thoásdfsadfasdfjashdkfsac sadf shjadfgsa hsgdfsa sgdjh asdvfjhas djhgfjhs jhgas jhdfgjshdf jhs t ế</span>
-                                    </div>
-                                    <div class="row card__price">
-                                        <div class="col-sm-8 col-12">
-                                            <div class="row">
-                                                <span class="card__price--1">1.000.000 VNĐ</span>
-                                            </div>
-                                            <div class="row">
-                                                <span class="card__price--2">1.000.000 VNĐ</span>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-4 col align-self-center">
-                                            <div class="row justify-content-end">
-                                                <div class="card__buy">
-                                                    <a href=""><i class="fas fa-cart-plus"></i></a>
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-6">
-                        <div class="container card-list">
-                            <span class="card__sticker">50%</span>
-                            <div class="row ">
-                                <div class="col-12 card__img">
-                                    <a href="">
-                                        <img src="img/NH_1.png" class="img-fluid" alt="Responsive image" alt="sản phẩm">
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="row ">
-                                <div class="col-12 card__title-bg">
-                                    <div class="row card__title ">
-                                        <a href="">Sữa tắm shfdg hjgfdsadfsadfhasdjfhaskhdfkhasdkjhd shdfgsa hsdfgh</a>
-                                    </div>
-                                    <div class="row hidden-xs card__description">
-                                        <span>sản phẩm giúp thoásdfsadfasdfjashdkfsac sadf shjadfgsa hsgdfsa sgdjh asdvfjhas djhgfjhs jhgas jhdfgjshdf jhs t ế</span>
-                                    </div>
-                                    <div class="row card__price">
-                                        <div class="col-sm-8 col-12">
-                                            <div class="row">
-                                                <span class="card__price--1">1.000.000 VNĐ</span>
-                                            </div>
-                                            <div class="row">
-                                                <span class="card__price--2">1.000.000 VNĐ</span>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-4 col align-self-center">
-                                            <div class="row justify-content-end">
-                                                <div class="card__buy">
-                                                    <a href=""><i class="fas fa-cart-plus"></i></a>
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>

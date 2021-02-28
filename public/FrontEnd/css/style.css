@@ -625,35 +625,52 @@ input[type=text]:focus, input[type=submit] {
 /* Store */
 /* Directory */
 .directory {
-    background-color: var(--color-2);
-    border: 1px solid var(--color-2);
-    border-right: none;
-
+    width: 80%;
 }
 
-.directory__item {
+.directory__title {
     margin: 0 !important;
-    
+}
+
+.directory__title > a {
+    width: 100%;
+    color: var(--color-2);
+    font-size: 1.1rem;
+    padding: .5rem;
+}
+
+.directory__list {
+    width: 100%;
+    color: var(--color-2);
+    cursor: pointer;
+}
+
+.directory__list > ul > span {
+    font-size: 1rem;
+    padding: .5rem 0rem;
+} 
+
+
+.directory__item  {
+    width: 100%;
+    margin: 0rem 1rem !important;
 }
 
 .directory__item > a {
     width: 100%;
-    color: var(--color-3);
-    font-size: 1rem;
-    padding: 1.1rem;
+    color: var(--color-2);
+    font-size: .9rem;
+    padding: 1rem .5rem;
+    
 }
 
-.directory__item:hover > a {
+.directory__item:hover > a,  .directory__title:hover > a, .directory__list:hover > ul > span {
     text-decoration: none;
-    color: var(--color-2);
-    background-color: var(--color-3);
+    color: var(--color-1);
 }
 
 /* List Product */
 
-.list-product {
-    border: 1px solid var(--color-2);
-}
 
 /* Cart Product */
 
