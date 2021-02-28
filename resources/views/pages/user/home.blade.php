@@ -153,9 +153,11 @@
                                     </div>
                                     <div class="row card__price">
                                         <div class="col-sm-8 col-12">
+                                            @if($best_seller -> KhuyenMai > 0 )
                                             <div class="row">
                                                 <span class="card__price--1">{{ $best_seller -> Gia }}</span>
                                             </div>
+                                            @endif
                                             <div class="row">
                                                 <span class="card__price--2">{{ ($best_seller -> Gia)*(100 - $best_seller -> KhuyenMai) / 100 }} VNĐ</span>
                                             </div>
@@ -217,9 +219,12 @@
                                     </div>
                                     <div class="row card__price">
                                         <div class="col-sm-8 col-12">
+                                            @if($new -> KhuyenMai > 0 )
                                             <div class="row">
                                                 <span class="card__price--1">{{ $new -> Gia }}</span>
                                             </div>
+                                            @endif
+
                                             <div class="row">
                                                 <span class="card__price--2">{{ ($new -> Gia)*(100 - $new -> KhuyenMai) / 100 }} VNĐ</span>
                                             </div>

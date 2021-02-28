@@ -219,8 +219,14 @@ input[type=text]:focus, input[type=submit] {
     border-radius: 10px !important;
     padding: 0.2rem 1rem !important;
 }
-
+.breadcrumb-item {
+    text-transform: uppercase;
+}
 .breadcrumb-item > a {
+    max-width: 10rem;
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis;
     padding: 0.1rem 1rem;
     font-size: 0.8rem;
     color: var(--color-3) !important;
@@ -586,13 +592,17 @@ input[type=text]:focus, input[type=submit] {
     background-color: var(--color-3);
 }
 
+.btn-icon:focus {
+    outline: none !important;
+}
+
 .input-amount {
     width: 25%;
     height: 120%;
     border: none;
     border-radius: 10px;
     text-align: center;
-    font-weight: lighter;
+    color: var(--color-1);
     display: inline-block;
 }
 

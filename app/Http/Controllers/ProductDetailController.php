@@ -12,27 +12,25 @@ session_start();
 
 class ProductDetailController extends Controller
 {
-    public function index()
+    public function index($idHH)
     {
         $trademark = DB::table('tb_thuonghieu')->get();
         $type_1 =  DB::table('tb_thucung')->get();
         $type_2 = DB::table('tb_nhomhanghoa')->get();
-        $slideshow_first = DB::table('tb_hinh')->first();
-        $slideshow = DB::table('tb_hinh')->get();
         $product_sale_first = DB::table('tb_hanghoa')->where('KhuyenMai', '>', '0')->orderBy('KhuyenMai', 'desc')->first();
         $product_sale = DB::table('tb_hanghoa')->where('KhuyenMai', '>', '0')->orderBy('KhuyenMai', 'desc')->get();
-        $product_best_seller = DB::table('tb_hanghoa')->orderBy('DaBan', 'desc')->get();
-        $product_new = DB::table('tb_hanghoa')->orderBy('NgayCN', 'desc')->get();
+        $product_detail = DB::table('tb_hanghoa')->where('MSHH', $idHH)->first();
+        $product_detail_nhom = $product_detail->MaNhom;
+        $product_detail_th = $product_detail->MaTH;
+        $product_recommend = DB::table('tb_hanghoa')->where('MaNhom', $product_detail_nhom)->get();
 
         return view('pages.user.product')
             ->with('trademark', $trademark)
             ->with('type_1', $type_1)
-            ->with('slideshow', $slideshow)
-            ->with('slideshow_first', $slideshow_first)
+            ->with('type_2', $type_2)
             ->with('product_sale_first', $product_sale_first)
             ->with('product_sale', $product_sale)
-            ->with('product_best_seller', $product_best_seller)
-            ->with('product_new', $product_new)
-            ->with('type_2', $type_2);
+            ->with('product_detail', $product_detail)
+            ->with('product_recommend', $product_recommend);
     }
 }

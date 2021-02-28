@@ -23,7 +23,7 @@ Route::get('/cart', 'CartController@index');
 
 Route::get('/order', 'OrderController@index');
 
-Route::get('/product', 'ProductDetailController@index');
+Route::get('/product/{idHH}', 'ProductDetailController@index');
 
 Route::get('/store', 'StoreController@index');
 

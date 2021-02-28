@@ -276,6 +276,7 @@
     </div>
     <script src="{{asset('public/FrontEnd/js/check-log_res.js')}}"></script>
     <script src="{{asset('public/FrontEnd/bootstrap/jquery-3.5.1.min.js')}}"></script>
+    <script src="{{asset('public/FrontEnd/js/script.js')}}"></script>
     <script src="{{asset('public/FrontEnd/bootstrap/popper.min.js')}}"></script>
     <script src="{{asset('public/FrontEnd/bootstrap/js/bootstrap.min.js')}}"></script>
 </body>
