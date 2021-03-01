@@ -3,7 +3,7 @@ function xuli_1() {
   var name = document.getElementById("name").value;
   var textError_1 = document.getElementById("error_1");
 
-  if(name.length == 0) {
+  if(name.length == 0 && name.length > 25) {
     textError_1.innerHTML = " (*) Họ và tên chưa hợp lệ!";
     return false;
   } else {
@@ -16,7 +16,7 @@ function xuli_1() {
 function xuli_2() {
   var n_phone = document.getElementById("n_phone").value;
   var textError_2 = document.getElementById("error_2");
-  if(n_phone.length == 0) {
+  if(n_phone.length != 10) {
     textError_2.innerHTML = " (*) Số điện thoại chưa hợp lệ!";
     return false;
   } else {
@@ -85,34 +85,34 @@ function xuli_6() {
   return true;
 }
 
-// Kiểm ra input login username
-function xuli_7(){
-  var username = document.getElementById("log-username").value;
-  var textError_7 = document.getElementById("error_7");
+// // Kiểm ra input login username
+// function xuli_7(){
+//   var username = document.getElementById("log-username").value;
+//   var textError_7 = document.getElementById("error_7");
   
-  kt_7 = username.indexOf(" ");
-  if( username.length == 0 || kt_7 != -1 || username.length > 15) {
-    textError_7.innerHTML = " (*) Tên đăng nhập chưa hợp lệ!";
-      return false;
-  } else {
-    textError_7.innerHTML = "";
-  }
-return true;
-}
+//   kt_7 = username.indexOf(" ");
+//   if( username.length == 0 || kt_7 != -1 || username.length > 15) {
+//     textError_7.innerHTML = " (*) Tên đăng nhập chưa hợp lệ!";
+//       return false;
+//   } else {
+//     textError_7.innerHTML = "";
+//   }
+// return true;
+// }
 
-// Kiểm ra input login password
-function xuli_8() {
-var password = document.getElementById("log-password").value;
-var textError_8 = document.getElementById("error_8");
+// // Kiểm ra input login password
+// function xuli_8() {
+// var password = document.getElementById("log-password").value;
+// var textError_8 = document.getElementById("error_8");
 
-  if( password.length == 0 || password.length < 8 || password.length > 16) {
-    textError_8.innerHTML = " (*) Mật khẩu chưa hợp lệ!";
-  return false;
-  } else {
-    textError_8.innerHTML = "";
-  }
-return true;
-}
+//   if( password.length == 0 || password.length < 8 || password.length > 16) {
+//     textError_8.innerHTML = " (*) Mật khẩu chưa hợp lệ!";
+//   return false;
+//   } else {
+//     textError_8.innerHTML = "";
+//   }
+// return true;
+// }
 
 function xuli() {
   return (xuli_1() && xuli_2() && xuli_3() && xuli_4() && xuli_5() && xuli_6()); 

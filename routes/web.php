@@ -29,6 +29,13 @@ Route::get('/store', 'StoreController@index');
 
 Route::get('/user', 'UserController@index');
 
+Route::get('/register', 'LogResController@index_res');
+
+Route::get('/register', 'LogResController@index_log');
+
+Route::post('/save-register', 'LogResController@save_res');
+
+
 //BackEnd Admin
 
 Route::get('/admin', 'AdminController@index');

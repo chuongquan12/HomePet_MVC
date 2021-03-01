@@ -35,130 +35,21 @@
             <div class="col-md-5 col-sm-12 col-12 header__list-title">
                 <div class="row mt-3">
                     <div class="col-3">
-                        <a name="" id="" class="header__list-title--btn --btn" href="#">
+                        <a class="header__list-title--btn --btn" href="#">
                             GIỚI THIỆU
                         </a>
                     </div>
                     <div class="col-3">
-                        <a name="" id="" class="header__list-title--btn --btn" href="#">
+                        <a class="header__list-title--btn --btn" href="#">
                             FACEBOOK
                         </a>
                     </div>
                     <div class="col-3">
-                        <label for="register" class="header__list-title--btn --btn">ĐĂNG KÝ</label>
-                        <input type="checkbox" id="register" hidden class="log-re__input" />
-                        <label class="log-re__overlay" for="register"></label>
-                        <div class="register">
-                            <form action="#" method="POST">
-                                <div class="row justify-content-end">
-                                    <label class="col-1 log-re__item-close" for="register">
-                                        <i class="fas fa-times"></i>
-                                    </label>
-                                </div>
-                                <div class="row">
-                                    <div class="col">
-                                        <div class="row log-re__title-1">
-                                            <span>ĐĂNG KÝ</span>
-                                        </div>
-                                        <div class="row log-re__title-2">
-                                            <span><i>Vui lòng điền đầy đủ thông tin</i></span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <hr class="hr" />
-                                <div class="row log-re__ip">
-                                    <div class="col-4">
-                                        <label for="name">Họ và tên: </label>
-                                    </div>
-                                    <div class="col-7">
-                                        <div class="row">
-                                            <input type="text" placeholder="VD: Nguyễn Văn A" id="name" class="form-control" name="name" onkeyup="xuli_1()" />
-                                        </div>
-                                        <div class="row">
-                                            <div><i class="error" id="error_1"></i></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row log-re__ip">
-                                    <div class="col-4">
-                                        <label for="n-phone">Số điện thoại: </label>
-                                    </div>
-                                    <div class="col-7">
-                                        <div class="row">
-                                            <input type="text" placeholder="(+84)" id="n_phone" class="form-control" name="n_phone" onkeyup="xuli_2()" />
-                                        </div>
-                                        <div class="row">
-                                            <div><i class="error" id="error_2"></i></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row log-re__ip">
-                                    <div class="col-4">
-                                        <label for="address">Địa chỉ: </label>
-                                    </div>
-                                    <div class="col-7">
-                                        <div class="row">
-                                            <input type="text" placeholder="VD: Vĩnh Long" id="address" class="form-control" name="address" onkeyup="xuli_3()" />
-                                        </div>
-                                        <div class="row">
-                                            <div><i class="error" id="error_3"></i></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <hr class="hr" />
-                                <div class="row log-re__ip">
-                                    <div class="col-4">
-                                        <label for="username">Tên đăng nhập: </label>
-                                    </div>
-                                    <div class="col-7">
-                                        <div class="row">
-                                            <input type="text" placeholder="Tên đăng nhập" id="username" class="form-control" name="username" onkeyup="xuli_4()" />
-                                        </div>
-                                        <div class="row">
-                                            <div><i class="error" id="error_4"></i></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row log-re__ip">
-                                    <div class="col-4">
-                                        <label for="password">Mật khẩu: </label>
-                                    </div>
-                                    <div class="col-7">
-                                        <div class="row">
-                                            <input type="password" placeholder="Từ 8- 16 kí tự" id="password" class="form-control" name="password" onkeyup="xuli_5()" />
-                                        </div>
-                                        <div class="row">
-                                            <div><i class="error" id="error_5"></i></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row log-re__ip">
-                                    <div class="col-4">
-                                        <label for="re-password">Xác nhận mật khẩu: </label>
-                                    </div>
-                                    <div class="col-7">
-                                        <div class="row">
-                                            <input type="password" id="re_password" class="form-control" name="re_password" onkeyup="xuli_6()" />
-                                        </div>
-                                        <div class="row">
-                                            <div><i class="error" id="error_6"></i></div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <br />
-                                <div class="row justify-content-end">
-                                    <div class="col-5 log-re__title-3">
-                                        <span>Bạn đã có tài khoản? </span><a href="">Đăng nhập</a>
-                                    </div>
-                                    <div class="col-5 log-re__btn-submit">
-                                        <button type="submit">Xác nhận</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
+                        <a class="header__list-title--btn --btn" href="{{ URL :: to('register')}}">
+                            ĐĂNG KÝ
+                        </a>
                     </div>
-                    <div class="col-3">
+                    <div class=" col-3">
                         <label for="login" class="header__list-title--btn --btn">ĐĂNG NHẬP</label>
                         <input type="checkbox" id="login" hidden class="log-re__input" />
                         <label class="log-re__overlay" for="login"></label>

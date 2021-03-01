@@ -91,6 +91,24 @@ input[type=text]:focus, input[type=submit] {
     cursor: pointer;
 }
 
+/* Message */
+
+.message {
+    display: inline-block;
+    position: fixed;
+    top: 5rem;
+    right: 1rem;
+    width: 20rem;
+    height: 5rem;
+    padding: 1rem;
+    border-radius: 10px;
+    border: 2px solid var(--color-3);
+    text-align: center;
+    color: var(--color-3);
+    background: linear-gradient(170deg, var(--color-2) 50%, white);
+    z-index: 10;
+}
+
 
 /* ---------Header---------- */
 /* ---------HeaderLogo---------- */
@@ -286,6 +304,8 @@ input[type=text]:focus, input[type=submit] {
 /* Slide Sale */
 
 .slide-sale {
+    position: absolute !important;
+    right: .7rem;
     margin-top: 1rem;
     padding: 0.5rem;
     border-radius: 15px;
@@ -922,15 +942,11 @@ input[type=text]:focus, input[type=submit] {
 }
 
 .register, .form-edit, .form-add {
-    position: fixed;
-    top: 3rem;
-    right: 14rem;
-    width: 50rem;
+    margin: 1rem;
+    width: 95%;
     padding: 2rem;
-    background: linear-gradient(180deg, var(--color-1) 50%, white);  
-    z-index: 200;
-    transform: translateY(-200%);
-    transition: 1000ms;
+    border-radius: 15px;
+    background: linear-gradient(110deg, var(--color-2) 70%, white);  
 }
 
 .login {
@@ -959,18 +975,18 @@ input[type=text]:focus, input[type=submit] {
 }
 
 .log-re__title-3 > span {
-    color: var(--color-1);
+    color: var(--color-3);
 }
 
 
 .log-re__title-3 > a {
     padding: .5rem 1rem;
-    color: var(--color-1);
+    color: var(--color-3);
 }
 
 .log-re__title-3:hover > a {
     border-radius: 15px;
-    color: var(--color-3);
+    color: var(--color-1);
     transition: 500ms;
 }
 
@@ -984,6 +1000,7 @@ input[type=text]:focus, input[type=submit] {
 }
 
 .log-re__ip > div > label {
+    font-size: .9rem;
     color: var(--color-3);
 }
 

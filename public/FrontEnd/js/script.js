@@ -17,6 +17,12 @@ $(document).ready(function(){
         e.preventDefault();
     })
 
+    // // -----MESSAGE----- 
+
+    $("body").click(function(){
+        $("#message").hide("slow");
+
+    });
     // -----------Store--------
 
     // Trademark
