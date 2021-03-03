@@ -50,61 +50,10 @@
                         </a>
                     </div>
                     <div class=" col-3">
-                        <label for="login" class="header__list-title--btn --btn">ĐĂNG NHẬP</label>
-                        <input type="checkbox" id="login" hidden class="log-re__input" />
-                        <label class="log-re__overlay" for="login"></label>
-                        <div class="login">
-                            <form action="">
-                                <div class="row justify-content-end">
-                                    <label class="col-1 log-re__item-close" for="login">
-                                        <i class="fas fa-times"></i>
-                                    </label>
-                                </div>
-                                <div class="row">
-                                    <div class="col">
-                                        <div class="row log-re__title-1">
-                                            <span>ĐĂNG NHẬP</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <hr class="hr" />
-                                <div class="row log-re__ip">
-                                    <div class="col-4">
-                                        <label for="log-username">Tên đăng nhập: </label>
-                                    </div>
-                                    <div class="col-7">
-                                        <div class="row">
-                                            <input type="text" placeholder="Tên đăng nhập" id="log-username" class="form-control" name="log-username" onkeyup="xuli_7()" />
-                                        </div>
-                                        <div class="row">
-                                            <div><i class="error" id="error_7"></i></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row log-re__ip">
-                                    <div class="col-4">
-                                        <label for="log-password">Mật khẩu: </label>
-                                    </div>
-                                    <div class="col-7">
-                                        <div class="row">
-                                            <input type="password" placeholder="Từ 8- 16 kí tự" id="log-password" class="form-control" name="log-password" onkeyup="xuli_8()" />
-                                        </div>
-                                        <div class="row">
-                                            <div><i class="error" id="error_8"></i></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <br />
-                                <div class="row justify-content-end">
-                                    <div class="col-7 log-re__title-3">
-                                        <span>Bạn chưa có tài khoản? </span><a href="">Đăng ký</a>
-                                    </div>
-                                    <div class="col-5 log-re__btn-submit">
-                                        <button type="submit">Xác nhận</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
+                        <a class="header__list-title--btn --btn" href="{{ URL :: to('login')}}">
+                            ĐĂNG NHẬP
+                        </a>
+
                     </div>
                 </div>
             </div>

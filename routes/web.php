@@ -31,9 +31,11 @@ Route::get('/user', 'UserController@index');
 
 Route::get('/register', 'LogResController@index_res');
 
-Route::get('/register', 'LogResController@index_log');
+Route::get('/login', 'LogResController@index_log');
 
-Route::post('/save-register', 'LogResController@save_res');
+Route::post('/getRegister', 'LogResController@getRes');
+
+Route::post('/getLogin', 'LogResController@getLogin');
 
 
 //BackEnd Admin

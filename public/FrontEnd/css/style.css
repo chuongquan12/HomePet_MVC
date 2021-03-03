@@ -941,24 +941,12 @@ input[type=text]:focus, input[type=submit] {
     transition: all 1000ms;
 }
 
-.register, .form-edit, .form-add {
+.register, .form-edit, .form-add, .login {
     margin: 1rem;
     width: 95%;
     padding: 2rem;
     border-radius: 15px;
     background: linear-gradient(110deg, var(--color-2) 70%, white);  
-}
-
-.login {
-    position: fixed;
-    top: 5rem;
-    right: 21rem;
-    width: 38rem;
-    padding: 2rem;
-    background: linear-gradient(180deg, var(--color-1) 50%, white);  
-    z-index: 200;
-    transform: translateY(-200%);
-    transition: 1000ms;
 }
 
 .log-re__title-1 > span {

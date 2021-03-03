@@ -4,13 +4,13 @@
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
         <li class="breadcrumb-item active" aria-current="page"><a href="{{ URL :: to('home')}}"><i class="fas fa-home"></i></a></li>
-        <li class="breadcrumb-item active" aria-current="page"><a href="{{ URL :: to('home')}}">ĐĂNG KÝ</a></li>
+        <li class="breadcrumb-item active" aria-current="page"><a href="{{ URL :: to('home')}}">ĐĂNG NHẬP</a></li>
     </ol>
 </nav>
 <div class="row">
     <div class="col-md-7 col-sm-12 col-12 slide-show">
-        <div class="register">
-            <form action="{{URL :: to ('getRegister')}}" method="POST" enctype="multipart/form-data" role="form">
+        <div class="login">
+            <form action="{{URL :: to ('getLogin')}}" method="POST" enctype="multipart/form-data" role="form">
                 <?php
                 $message = Session()->get('message');
                 if ($message) {
@@ -23,98 +23,44 @@
                 <div class="row">
                     <div class="col">
                         <div class="row log-re__title-1">
-                            <span>ĐĂNG KÝ</span>
+                            <span>ĐĂNG NHẬP</span>
                         </div>
                     </div>
                 </div>
                 <hr class="hr" />
                 <div class="row log-re__ip">
                     <div class="col-4">
-                        <label for="name">Họ và tên: </label>
+                        <label for="log-username">Tên đăng nhập: </label>
                     </div>
                     <div class="col-7">
                         <div class="row">
-                            <input type="text" placeholder="Họ và tên" id="name" class="form-control" name="name" onkeyup="xuli_1()" />
+                            <input type="text" placeholder="Tên đăng nhập" id="log-username" class="form-control" name="username" onkeyup="xuli_7()" />
                         </div>
                         <div class="row">
-                            <div><i class="error" id="error_1"></i></div>
+                            <div><i class="error" id="error_7"></i></div>
                         </div>
                     </div>
                 </div>
                 <div class="row log-re__ip">
                     <div class="col-4">
-                        <label for="n_phone">Số điện thoại: </label>
+                        <label for="log-password">Mật khẩu: </label>
                     </div>
                     <div class="col-7">
                         <div class="row">
-                            <input type="text" placeholder="(+84)" id="n_phone" class="form-control" name="n_phone" onkeyup="xuli_2()" />
+                            <input type="password" placeholder="Từ 8- 16 kí tự" id="log-password" class="form-control" name="password" onkeyup="xuli_8()" />
                         </div>
                         <div class="row">
-                            <div><i class="error" id="error_2"></i></div>
+                            <div><i class="error" id="error_8"></i></div>
                         </div>
                     </div>
                 </div>
-                <div class="row log-re__ip">
-                    <div class="col-4">
-                        <label for="address">Địa chỉ: </label>
-                    </div>
-                    <div class="col-7">
-                        <div class="row">
-                            <input type="text" placeholder="VD: Vĩnh Long" id="address" class="form-control" name="address" onkeyup="xuli_3()" />
-                        </div>
-                        <div class="row">
-                            <div><i class="error" id="error_3"></i></div>
-                        </div>
-                    </div>
-                </div>
-                <hr class="hr" />
-                <div class="row log-re__ip">
-                    <div class="col-4">
-                        <label for="username">Tên đăng nhập: </label>
-                    </div>
-                    <div class="col-7">
-                        <div class="row">
-                            <input type="text" placeholder="Tên đăng nhập" id="username" class="form-control" name="username" onkeyup="xuli_4()" />
-                        </div>
-                        <div class="row">
-                            <div><i class="error" id="error_4"></i></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row log-re__ip">
-                    <div class="col-4">
-                        <label for="password">Mật khẩu: </label>
-                    </div>
-                    <div class="col-7">
-                        <div class="row">
-                            <input type="password" placeholder="Từ 8- 16 kí tự" id="password" class="form-control" name="password" onkeyup="xuli_5()" />
-                        </div>
-                        <div class="row">
-                            <div><i class="error" id="error_5"></i></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row log-re__ip">
-                    <div class="col-4">
-                        <label for="re-password">Xác nhận mật khẩu: </label>
-                    </div>
-                    <div class="col-7">
-                        <div class="row">
-                            <input type="password" id="re_password" class="form-control" name="re_password" onkeyup="xuli_6()" />
-                        </div>
-                        <div class="row">
-                            <div><i class="error" id="error_6"></i></div>
-                        </div>
-                    </div>
-                </div>
-
                 <br />
                 <div class="row justify-content-center">
                     <div class="col-6 log-re__title-3">
-                        <span>Bạn đã có tài khoản? </span><a href="">Đăng nhập</a>
+                        <span>Bạn chưa có tài khoản? </span><a href="">Đăng ký</a>
                     </div>
                     <div class="col-3 log-re__btn-submit">
-                        <button type="submit" onclick="xuli()">Xác nhận</button>
+                        <button type="submit">Xác nhận</button>
                     </div>
                 </div>
                 <ul class=" alert text-danger">

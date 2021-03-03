@@ -7,6 +7,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Auth;
 
 session_start();
 
@@ -53,7 +54,7 @@ class LogResController extends Controller
         $product_best_seller = DB::table('tb_hanghoa')->orderBy('DaBan', 'desc')->get();
         $product_new = DB::table('tb_hanghoa')->orderBy('NgayCN', 'desc')->get();
 
-        return view('pages.user.register')
+        return view('pages.user.login')
             ->with('trademark', $trademark)
             ->with('type_1', $type_1)
             ->with('slideshow', $slideshow)
@@ -70,7 +71,7 @@ class LogResController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function save_res(Request $request)
+    public function getRes(Request $request)
     {
         $request->validate([
             'name' => 'required|max:50',
@@ -100,13 +101,39 @@ class LogResController extends Controller
         $data['DiaChi'] = $request['address'];
         $data['SoDienThoai'] = $request['n_phone'];
         $data['Username'] = $request['username'];
-        $data['Password'] = $request['password'];
+        $data['Password'] = md5($request['password']);
 
         DB::table('tb_khachhang')->insert($data);
 
         Session()->put('message', 'Đăng ký thành công');
 
-        return Redirect::to('register');
+        return Redirect::to('login');
+    }
+
+    public function getLogin(Request $request)
+    {
+        $username = $request->username;
+        $password = md5($request->password);
+
+        $result_1 = DB::table('tb_khachhang')->where('Username', $username)->where('Password', $password)->first();
+        $result_2 = DB::table('tb_nhanvien')->where('Username', $username)->where('Password', $password)->first();
+
+        if (!$result_1 && !$result_2) {
+            Session()->put('message', 'Đăng nhập thất bại, Vui lòng kiểm tra lại.');
+
+            return Redirect::to('login');
+        } elseif ($result_1) {
+            Session()->put('id_khachhang', $result_1->MSKH);
+            return Redirect::to('/cart');
+        } elseif ($result_2) {
+            Session()->put('id_nhanvien', $result_2->MSNV);
+
+            return Redirect::to('/product');
+        } else {
+            Session()->put('id_admin', true);
+
+            return Redirect::to('/admin ');
+        }
     }
 
     /**

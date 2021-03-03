@@ -1,4 +1,4 @@
-@extends('welcome')
+@extends('welcomecustomer')
 @section('content')
 
 
@@ -10,6 +10,13 @@
         </ol>
     </nav>
 </div>
+<?php
+$message = Session()->get('id_khachhang');
+if ($message) {
+    echo '<span class="message" id="message">' . $message . '</span>';
+}
+Session()->put('message', NULL);
+?>
 <div class="row">
     <div class="container-fluid">
         <div class="row">
