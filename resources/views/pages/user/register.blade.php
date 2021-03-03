@@ -111,7 +111,7 @@
                 <br />
                 <div class="row justify-content-center">
                     <div class="col-6 log-re__title-3">
-                        <span>Bạn đã có tài khoản? </span><a href="">Đăng nhập</a>
+                        <span>Bạn đã có tài khoản? </span><a href="{{URL :: to ('login')}}">Đăng nhập</a>
                     </div>
                     <div class="col-3 log-re__btn-submit">
                         <button type="submit" onclick="xuli()">Xác nhận</button>

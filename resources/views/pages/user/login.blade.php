@@ -57,7 +57,7 @@
                 <br />
                 <div class="row justify-content-center">
                     <div class="col-6 log-re__title-3">
-                        <span>Bạn chưa có tài khoản? </span><a href="">Đăng ký</a>
+                        <span>Bạn chưa có tài khoản? </span><a href="{{URL :: to ('register')}}">Đăng ký</a>
                     </div>
                     <div class="col-3 log-re__btn-submit">
                         <button type="submit">Xác nhận</button>
