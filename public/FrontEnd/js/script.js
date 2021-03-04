@@ -21,8 +21,21 @@ $(document).ready(function(){
 
     $("body").click(function(){
         $("#message").hide("slow");
+    });
+
+    // // -----NOTIFICATION----- 
+    $("#notification").click(function(){
+        $("#notification-list").fadeToggle(500);
+        $("#user-list").hide(500);
+    });
+
+     // // -----USER----- 
+     $("#user").click(function(){
+        $("#user-list").fadeToggle(500);
+        $("#notification-list").hide(500);
 
     });
+
     // -----------Store--------
 
     // Trademark

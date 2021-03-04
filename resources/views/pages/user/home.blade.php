@@ -1,4 +1,14 @@
-@extends('welcomeuser')
+<?php
+$id_khachhang = Session()->get('id_khachhang');
+
+if ($id_khachhang) {
+    $extends = 'welcomecustomer';
+} else {
+    $extends = 'welcomeuser';
+} ?>
+
+
+@extends($extends)
 @section('content')
 
 <nav aria-label="breadcrumb">
@@ -58,7 +68,7 @@
                                             <span class="card__price--1">{{ $product_sale_first -> Gia }}</span>
                                             <span class="card__price--2">{{ ($product_sale_first -> Gia)*(100 - $product_sale_first -> KhuyenMai) / 100 }} VNĐ</span>
                                         </div>
-                                        <div class="row justify-content-end mt-2">
+                                        <div class="row justify-content-center mt-2">
                                             <div class="card-sale__buy">
                                                 <a href="{{ URL :: to('product/'.$product_sale_first -> MSHH)}}">MUA NGAY</a>
                                             </div>
@@ -89,7 +99,7 @@
                                             <span class="card__price--1">{{ $sale -> Gia }}</span>
                                             <span class="card__price--2">{{ ($sale -> Gia)*(100 - $sale -> KhuyenMai) / 100 }} VNĐ</span>
                                         </div>
-                                        <div class="row justify-content-end mt-2">
+                                        <div class="row justify-content-center mt-2">
                                             <div class="card-sale__buy">
                                                 <a href="{{ URL :: to('product/'.$sale -> MSHH)}}">MUA NGAY</a>
                                             </div>
@@ -118,7 +128,7 @@
 <hr />
 <br />
 <div class="row">
-    <div class="container-fulid">
+    <div class="container-fluid">
         <div class="row list-card__title">
             <span>SẢN PHẨM NỔI BẬT</span>
         </div>
@@ -184,7 +194,7 @@
 </div>
 <br />
 <div class="row">
-    <div class="container-fulid">
+    <div class="container-fluid">
         <div class="row list-card__title">
             <span>SẢN PHẨM MỚI</span>
         </div>

@@ -1,4 +1,14 @@
-@extends('welcomeuser')
+<?php
+$id_khachhang = Session()->get('id_khachhang');
+
+if ($id_khachhang) {
+    $extends = 'welcomecustomer';
+} else {
+    $extends = 'welcomeuser';
+} ?>
+
+
+@extends($extends)
 @section('content')
 
 <div class="">

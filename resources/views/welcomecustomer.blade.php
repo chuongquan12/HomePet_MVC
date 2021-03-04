@@ -16,13 +16,13 @@
             <div class="col-md-7 col-sm-12 col-12 header__logo">
                 <div class="row">
                     <div class="col-lg-6">
-                        <img src="{{('public/FrontEnd/img/logo/Logo-header.png')}}" alt="logo" class="header__logo--img" />
+                        <img src="{{ asset('ImageUpload/logo/Logo-header.png')}}" alt="logo" class="header__logo--img" />
                     </div>
                     <div class="col-lg-6 mt-1">
                         <div class="row align-items-lg-end" style="height: 50px">
                             <div class="col">
-                                <form class="form-inline">
-                                    <input class="header__search--ip" type="text" placeholder="Bạn muốn mua gì?" />
+                                <form class="form-inline" action="{{URL:: to ('store?' )}}" method="GET">
+                                    <input class="header__search--ip" type="text" name="search" placeholder="Bạn muốn mua gì?" />
                                     <button class="header__search--btn" type="submit">
                                         <i class="fas fa-search"></i>
                                     </button>
@@ -33,186 +33,35 @@
                 </div>
             </div>
             <div class="col-md-5 col-sm-12 col-12 header__list-title">
-                <div class="row mt-3">
-                    <div class="col-3">
-                        <a name="" id="" class="header__list-title--btn --btn" href="#">
+                <div class="row ">
+                    <div class="col-md-3 col-6">
+                        <a class="header__list-title--btn --btn" href="#">
                             GIỚI THIỆU
                         </a>
                     </div>
-                    <div class="col-3">
-                        <a name="" id="" class="header__list-title--btn --btn" href="#">
+                    <div class="col-md-3 col-6">
+                        <a class="header__list-title--btn --btn" href="#">
                             FACEBOOK
                         </a>
                     </div>
-                    <div class="col-3">
-                        <label for="register" class="header__list-title--btn --btn">ĐĂNG KÝ</label>
-                        <input type="checkbox" id="register" hidden class="log-re__input" />
-                        <label class="log-re__overlay" for="register"></label>
-                        <div class="register">
-                            <form action="#" method="POST">
-                                <div class="row justify-content-end">
-                                    <label class="col-1 log-re__item-close" for="register">
-                                        <i class="fas fa-times"></i>
-                                    </label>
-                                </div>
-                                <div class="row">
-                                    <div class="col">
-                                        <div class="row log-re__title-1">
-                                            <span>ĐĂNG KÝ</span>
-                                        </div>
-                                        <div class="row log-re__title-2">
-                                            <span><i>Vui lòng điền đầy đủ thông tin</i></span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <hr class="hr" />
-                                <div class="row log-re__ip">
-                                    <div class="col-4">
-                                        <label for="name">Họ và tên: </label>
-                                    </div>
-                                    <div class="col-7">
-                                        <div class="row">
-                                            <input type="text" placeholder="VD: Nguyễn Văn A" id="name" class="form-control" name="name" onkeyup="xuli_1()" />
-                                        </div>
-                                        <div class="row">
-                                            <div><i class="error" id="error_1"></i></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row log-re__ip">
-                                    <div class="col-4">
-                                        <label for="n-phone">Số điện thoại: </label>
-                                    </div>
-                                    <div class="col-7">
-                                        <div class="row">
-                                            <input type="text" placeholder="(+84)" id="n_phone" class="form-control" name="n_phone" onkeyup="xuli_2()" />
-                                        </div>
-                                        <div class="row">
-                                            <div><i class="error" id="error_2"></i></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row log-re__ip">
-                                    <div class="col-4">
-                                        <label for="address">Địa chỉ: </label>
-                                    </div>
-                                    <div class="col-7">
-                                        <div class="row">
-                                            <input type="text" placeholder="VD: Vĩnh Long" id="address" class="form-control" name="address" onkeyup="xuli_3()" />
-                                        </div>
-                                        <div class="row">
-                                            <div><i class="error" id="error_3"></i></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <hr class="hr" />
-                                <div class="row log-re__ip">
-                                    <div class="col-4">
-                                        <label for="username">Tên đăng nhập: </label>
-                                    </div>
-                                    <div class="col-7">
-                                        <div class="row">
-                                            <input type="text" placeholder="Tên đăng nhập" id="username" class="form-control" name="username" onkeyup="xuli_4()" />
-                                        </div>
-                                        <div class="row">
-                                            <div><i class="error" id="error_4"></i></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row log-re__ip">
-                                    <div class="col-4">
-                                        <label for="password">Mật khẩu: </label>
-                                    </div>
-                                    <div class="col-7">
-                                        <div class="row">
-                                            <input type="password" placeholder="Từ 8- 16 kí tự" id="password" class="form-control" name="password" onkeyup="xuli_5()" />
-                                        </div>
-                                        <div class="row">
-                                            <div><i class="error" id="error_5"></i></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row log-re__ip">
-                                    <div class="col-4">
-                                        <label for="re-password">Xác nhận mật khẩu: </label>
-                                    </div>
-                                    <div class="col-7">
-                                        <div class="row">
-                                            <input type="password" id="re_password" class="form-control" name="re_password" onkeyup="xuli_6()" />
-                                        </div>
-                                        <div class="row">
-                                            <div><i class="error" id="error_6"></i></div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <br />
-                                <div class="row justify-content-end">
-                                    <div class="col-5 log-re__title-3">
-                                        <span>Bạn đã có tài khoản? </span><a href="">Đăng nhập</a>
-                                    </div>
-                                    <div class="col-5 log-re__btn-submit">
-                                        <button type="submit">Xác nhận</button>
-                                    </div>
-                                </div>
-                            </form>
+                    <div class="col-md-3 col-6 ">
+                        <span class="header__list-title--btn --btn" id="notification">
+                            <i class="fas fa-bell"></i> THÔNG BÁO (1)
+                        </span>
+                        <div class="notification-list" id="notification-list">
+                            @foreach($notification as $key)
+                            <li>Sản phẩm {{ $key -> TenHH }} sắp hết hàng</li>
+                            @endforeach
                         </div>
                     </div>
-                    <div class="col-3">
-                        <label for="login" class="header__list-title--btn --btn">ĐĂNG NHẬP</label>
-                        <input type="checkbox" id="login" hidden class="log-re__input" />
-                        <label class="log-re__overlay" for="login"></label>
-                        <div class="login">
-                            <form action="">
-                                <div class="row justify-content-end">
-                                    <label class="col-1 log-re__item-close" for="login">
-                                        <i class="fas fa-times"></i>
-                                    </label>
-                                </div>
-                                <div class="row">
-                                    <div class="col">
-                                        <div class="row log-re__title-1">
-                                            <span>ĐĂNG NHẬP</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <hr class="hr" />
-                                <div class="row log-re__ip">
-                                    <div class="col-4">
-                                        <label for="log-username">Tên đăng nhập: </label>
-                                    </div>
-                                    <div class="col-7">
-                                        <div class="row">
-                                            <input type="text" placeholder="Tên đăng nhập" id="log-username" class="form-control" name="log-username" onkeyup="xuli_7()" />
-                                        </div>
-                                        <div class="row">
-                                            <div><i class="error" id="error_7"></i></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row log-re__ip">
-                                    <div class="col-4">
-                                        <label for="log-password">Mật khẩu: </label>
-                                    </div>
-                                    <div class="col-7">
-                                        <div class="row">
-                                            <input type="password" placeholder="Từ 8- 16 kí tự" id="log-password" class="form-control" name="log-password" onkeyup="xuli_8()" />
-                                        </div>
-                                        <div class="row">
-                                            <div><i class="error" id="error_8"></i></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <br />
-                                <div class="row justify-content-end">
-                                    <div class="col-7 log-re__title-3">
-                                        <span>Bạn chưa có tài khoản? </span><a href="">Đăng ký</a>
-                                    </div>
-                                    <div class="col-5 log-re__btn-submit">
-                                        <button type="submit">Xác nhận</button>
-                                    </div>
-                                </div>
-                            </form>
+                    <div class="col-md-3 col-6">
+                        <span class="header__list-title--btn --btn" id="user">
+                            <i class="fas fa-user"></i> TÀI KHOẢN
+                        </span>
+                        <div class="user-list" id="user-list">
+                            <li><a href=""><i class="far fa-edit"></i></i> SỬA THÔNG TIN </a></li>
+                            <li><a href=""><i class="far fa-clipboard"></i></i> ĐƠN HÀNG</a></li>
+                            <li><a href=""><i class="fas fa-sign-out-alt"></i> ĐĂNG XUẤT</a></li>
                         </div>
                     </div>
                 </div>
@@ -220,7 +69,7 @@
         </header>
         <hr />
         <div class="row">
-            <div class="col-md-10 col-9 menu__list">
+            <div class="col-md-12 col-12 menu__list">
                 <nav class="navbar navbar-expand-md navbar-light">
                     <div class="menu__list--item">
                         <a href="{{ URL :: to('home')}}">TRANG CHỦ</a>
@@ -232,32 +81,38 @@
                         <div class="menu__list--item">
                             <a href="{{ URL :: to('store')}}">CỬA HÀNG</a>
                         </div>
-                        <div class="menu__list--item">
-                            <a href="">THƯƠNG HIỆU</a>
-                        </div>
                         <div class="">
                             <div class="menu__list--item dropdown">
-                                <a class="" href="#" data-toggle="dropdown"> CÚN CƯNG </a>
+                                <a href="" data-toggle="dropdown"> THƯƠNG HIỆU </a>
                                 <div class="dropdown-content dropdown-menu">
-                                    <a class="dropdown-item" href="#">kkkk</a>
-                                    <a class="dropdown-item" href="#">kkkk</a>
+                                    @foreach($trademark as $key)
+                                    <a class="dropdown-item" href="{{URL:: to ('store?th='.$key -> MaTH )}}">{{ $key -> TenThuongHieu }}</a>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
-                        <div class="menu__list--item">
-                            <a href="">MEOW MEOW</a>
+                        @foreach($type_1 as $key_1)
+                        <div class="">
+                            <div class="menu__list--item dropdown">
+                                <a class="" href="" data-toggle="dropdown"> {{ $key_1 -> TenThuCung }} </a>
+                                <div class="dropdown-content dropdown-menu">
+                                    @foreach($type_2 as $key_2)
+                                    @if( $key_1 -> MaTC == $key_2 -> MaTC )
+                                    <a class="dropdown-item" href="{{URL:: to ('store?nhom='.$key_2 -> MaNhom )}}">{{ $key_2 -> TenNhom}}</a>
+                                    @endif
+                                    @endforeach
+                                </div>
+                            </div>
                         </div>
-                        <div class="menu__list--item">
-                            <a href="">HAMSTER</a>
-                        </div>
+                        @endforeach
                     </div>
                 </nav>
             </div>
-            <div class="col-md-2 col-3 menu__cart">
+            <!-- <div class="col-md-2 col-3 menu__cart">
                 <div class="menu__cart--icon">
                     <a href=""><i class="fas fa-shopping-cart"></i> (1)</a>
                 </div>
-            </div>
+            </div> -->
         </div>
         <hr />
         <div class="container-fluid">
@@ -270,6 +125,7 @@
     </div>
     <script src="{{asset('public/FrontEnd/js/check-log_res.js')}}"></script>
     <script src="{{asset('public/FrontEnd/bootstrap/jquery-3.5.1.min.js')}}"></script>
+    <script src="{{asset('public/FrontEnd/js/script.js')}}"></script>
     <script src="{{asset('public/FrontEnd/bootstrap/popper.min.js')}}"></script>
     <script src="{{asset('public/FrontEnd/bootstrap/js/bootstrap.min.js')}}"></script>
 </body>

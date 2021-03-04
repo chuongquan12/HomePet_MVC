@@ -149,21 +149,77 @@ input[type=text]:focus, input[type=submit] {
     width: 1.7rem;
     height: 1.4rem;
     padding: 2px 0px;
-    font-size: 0.8rem;
     margin-left: -2rem;
     color: var(--color-2);
     background-color: var(--color-3);
 }
 
 /* ---------HeaderListTitle---------- */
+.notification {
+    cursor: pointer;
+}
+/* Notification */
+.notification-list {
+    position: absolute;
+    display: none;
+    width: 15rem;
+    max-width: 15rem;
+    max-height: 10rem;
+    margin-top: .2rem;
+    margin-left: .5rem;
+    border: 1px solid var(--color-3);
+    border-radius: 10px;
+    list-style-type: none;
+    background: linear-gradient(100deg, var(--color-2) 60%, rgb(200, 200, 200)); 
+    z-index: 10; 
+
+}
+
+.notification-list > li {
+    margin: .3rem .5rem;
+    font-size: .7rem;
+    font-style: italic;
+    color: var(--color-3);
+}
+
+
+/* user */
+
+.user-list {
+    position: absolute;
+    display: none;
+    width: 90%;
+    margin-top: .2rem;
+    margin-left: .5rem;
+    border: 1px solid var(--color-3);
+    border-radius: 10px;
+    list-style-type: none;
+    background: linear-gradient(100deg, var(--color-2) 60%, rgb(200, 200, 200));
+    z-index: 10; 
+}
+
+.user-list > li > a {
+    color: var(--color-3);
+    margin: .6rem;
+    font-size: .7rem;
+    font-style: italic;
+}
+
+.user-list:hover > li > a{
+    color: var(--color-3);
+}
 /* --btn */
 .header__list-title--btn {
+    cursor: pointer;
+    width: 100% ;
+    margin-top: .5rem;
+    padding: .5rem .7rem;
     border-radius: 20px;
-    font-size: 0.7rem;
+    font-size: 0.8rem;
     font-weight: 400;
     color: var(--color-3);
-    background: linear-gradient(90deg, var(--color-2) 10%, white );
-    transition: all 1500ms;
+    background: linear-gradient(100deg, var(--color-2) 80%, white );
+    transition: all 1000ms;
 
 }
 
@@ -171,7 +227,7 @@ input[type=text]:focus, input[type=submit] {
     border: 1px solid var(--color-2);
     color: var(--color-2);
     background: linear-gradient(105deg, var(--color-3) 60%, white);
-    transition: all 1500ms;
+    transition: all 1000ms;
 }
 
 
@@ -304,7 +360,6 @@ input[type=text]:focus, input[type=submit] {
 /* Slide Sale */
 
 .slide-sale {
-    position: absolute !important;
     right: .7rem;
     margin-top: 1rem;
     padding: 0.5rem;
@@ -329,6 +384,7 @@ input[type=text]:focus, input[type=submit] {
 .card-sale {
     height: 80%;
     margin: 2rem;
+    padding-bottom: .5rem;
     border: 2px solid var(--color-3);
     border-radius: 15px;
     background: linear-gradient(180deg, var(--color-1) 60%, white);
@@ -348,13 +404,11 @@ input[type=text]:focus, input[type=submit] {
 
 
 .card-sale__img > a > img{
-    width: 100%;
+    width: 90%;
     height: auto;
-    margin-top: -1rem;
+    margin: -.6rem .5rem .5rem .5rem;
     border-radius: 10px;
     padding: .2rem;
-
-    
 }
 
 .card-sale__title > a {
@@ -407,8 +461,7 @@ input[type=text]:focus, input[type=submit] {
 }
 
 .card-sale__buy > a {
-    padding: .4rem 1rem;
-    margin-right: 1rem;
+    padding: .4rem .8rem;
     font-size: .9rem;
     border: 1px solid var(--color-2);
     border-radius: 15px;

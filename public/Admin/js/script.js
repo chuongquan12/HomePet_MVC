@@ -63,7 +63,7 @@ $(document).ready(function(){
 
     });
 
-    // // -----MESSAGE----- 
+    // // -----NOTIFICATION----- 
     $("#notification").click(function(){
         $("#notification-list").fadeToggle(500);
     });

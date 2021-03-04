@@ -23,6 +23,8 @@ class HomeController extends Controller
         $product_sale = DB::table('tb_hanghoa')->where('KhuyenMai', '>', '0')->orderBy('KhuyenMai', 'desc')->get();
         $product_best_seller = DB::table('tb_hanghoa')->orderBy('DaBan', 'desc')->get();
         $product_new = DB::table('tb_hanghoa')->orderBy('NgayCN', 'desc')->get();
+        $notification =  DB::table('tb_hanghoa')->where('SoLuongHang', '<', '10')->get();
+        $count =  DB::table('tb_hanghoa')->where('SoLuongHang', '<', '10')->count();
 
         return view('pages.user.home')
             ->with('trademark', $trademark)
@@ -33,6 +35,8 @@ class HomeController extends Controller
             ->with('product_sale', $product_sale)
             ->with('product_best_seller', $product_best_seller)
             ->with('product_new', $product_new)
-            ->with('type_2', $type_2);
+            ->with('type_2', $type_2)
+            ->with('notification', $notification)
+            ->with('count', $count);
     }
 }

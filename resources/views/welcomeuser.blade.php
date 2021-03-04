@@ -33,7 +33,7 @@
                 </div>
             </div>
             <div class="col-md-5 col-sm-12 col-12 header__list-title">
-                <div class="row mt-3">
+                <div class="row">
                     <div class="col-3">
                         <a class="header__list-title--btn --btn" href="#">
                             GIỚI THIỆU
