@@ -34,22 +34,22 @@
             </div>
             <div class="col-md-5 col-sm-12 col-12 header__list-title">
                 <div class="row">
-                    <div class="col-3">
+                    <div class="col-md-3 col-6">
                         <a class="header__list-title--btn --btn" href="#">
                             GIỚI THIỆU
                         </a>
                     </div>
-                    <div class="col-3">
+                    <div class="col-md-3 col-6">
                         <a class="header__list-title--btn --btn" href="#">
                             FACEBOOK
                         </a>
                     </div>
-                    <div class="col-3">
+                    <div class="col-md-3 col-6">
                         <a class="header__list-title--btn --btn" href="{{ URL :: to('register')}}">
                             ĐĂNG KÝ
                         </a>
                     </div>
-                    <div class=" col-3">
+                    <div class="col-md-3 col-6">
                         <a class="header__list-title--btn --btn" href="{{ URL :: to('login')}}">
                             ĐĂNG NHẬP
                         </a>
@@ -107,7 +107,7 @@
         </div>
         <hr />
         <div class="container-fluid">
-
+            
             @yield('content')
 
         </div>

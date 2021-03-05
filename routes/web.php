@@ -15,20 +15,36 @@ use Illuminate\Support\Facades\Route;
 
 // FrontEnd
 
-Route::get('/', 'HomeController@index_user');
+Route::get('/', 'HomeController@index');
 
-Route::get('/home', 'HomeController@index_user');
+Route::get('/home', 'HomeController@index');
+
+//CART
 
 Route::get('/cart', 'CartController@index');
 
+Route::post('/add-cart', 'CartController@add_cart');
+
+// ORDER
 Route::get('/order', 'OrderController@index');
 
+Route::post('/add-order', 'OrderController@add_order');
+
+
+// PRODUCT
 Route::get('/product/{idHH}', 'ProductDetailController@index');
 
+// STORE 
 Route::get('/store', 'StoreController@index');
 
+// USER
 Route::get('/user', 'UserController@index');
 
+Route::post('/update-user', 'UserController@update');
+
+Route::post('/change-password', 'UserController@update_password');
+
+// LOGIN REGISTER
 Route::get('/register', 'LogResController@index_res');
 
 Route::get('/login', 'LogResController@index_log');

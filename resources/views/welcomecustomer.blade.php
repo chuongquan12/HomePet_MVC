@@ -11,6 +11,12 @@
 </head>
 
 <body>
+    <?php
+    $id_khachhang = Session()->get('id_khachhang');
+    if (!$id_khachhang) {
+        exit;
+    }
+    ?>
     <div class="container-fluid">
         <header class="row">
             <div class="col-md-7 col-sm-12 col-12 header__logo">
@@ -59,9 +65,10 @@
                             <i class="fas fa-user"></i> TÀI KHOẢN
                         </span>
                         <div class="user-list" id="user-list">
-                            <li><a href=""><i class="far fa-edit"></i></i> SỬA THÔNG TIN </a></li>
-                            <li><a href=""><i class="far fa-clipboard"></i></i> ĐƠN HÀNG</a></li>
-                            <li><a href=""><i class="fas fa-sign-out-alt"></i> ĐĂNG XUẤT</a></li>
+                            <li><a href="{{ URL :: to('user')}}"><i class="far fa-edit"></i> SỬA THÔNG TIN </a></li>
+                            <li><a href="{{ URL :: to('cart')}}"><i class="fas fa-shopping-cart"></i> GIỎ HÀNG</a></li>
+                            <li><a href="{{ URL :: to('order')}}"><i class="far fa-clipboard"></i> ĐƠN HÀNG</a></li>
+                            <li><a href="{{ URL :: to('logout')}}"><i class="fas fa-sign-out-alt"></i> ĐĂNG XUẤT</a></li>
                         </div>
                     </div>
                 </div>
@@ -120,7 +127,9 @@
             @yield('content')
 
         </div>
-
+        <span class="icon-cart">
+            <a href="{{ URL :: to('cart')}}"><i class="fas fa-shopping-cart"></i></a>
+        </span>
         <footer class="row"></footer>
     </div>
     <script src="{{asset('public/FrontEnd/js/check-log_res.js')}}"></script>

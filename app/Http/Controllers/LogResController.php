@@ -30,7 +30,7 @@ class LogResController extends Controller
         $product_best_seller = DB::table('tb_hanghoa')->orderBy('DaBan', 'desc')->get();
         $product_new = DB::table('tb_hanghoa')->orderBy('NgayCN', 'desc')->get();
 
-        return view('pages.user.register')
+        return view('pages.register')
             ->with('trademark', $trademark)
             ->with('type_1', $type_1)
             ->with('slideshow', $slideshow)
@@ -54,7 +54,7 @@ class LogResController extends Controller
         $product_best_seller = DB::table('tb_hanghoa')->orderBy('DaBan', 'desc')->get();
         $product_new = DB::table('tb_hanghoa')->orderBy('NgayCN', 'desc')->get();
 
-        return view('pages.user.login')
+        return view('pages.login')
             ->with('trademark', $trademark)
             ->with('type_1', $type_1)
             ->with('slideshow', $slideshow)
@@ -124,13 +124,17 @@ class LogResController extends Controller
             return Redirect::to('login');
         } elseif ($result_1) {
             Session()->put('id_khachhang', $result_1->MSKH);
-            return Redirect::to('/cart');
+            Session()->put('message', 'Đăng nhập thành công');
+
+            return Redirect::to('/home');
         } elseif ($result_2) {
             Session()->put('id_nhanvien', $result_2->MSNV);
+            Session()->put('message', 'Đăng nhập thành công');
 
-            return Redirect::to('/product');
+            return Redirect::to('/');
         } else {
             Session()->put('id_admin', true);
+            Session()->put('message', 'Đăng nhập thành công');
 
             return Redirect::to('/admin ');
         }

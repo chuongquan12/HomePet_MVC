@@ -20,54 +20,68 @@ if ($id_khachhang) {
         </ol>
     </nav>
 </div>
+<?php
+$message = Session()->get('message');
+if ($message) {
+    echo '<span class="message" id="message">' . $message . '</span>';
+}
+Session()->put('message', NULL);
+?>
 <div class="row">
-    <div class="col-md-7 col-sm-12 col-12 ">
+    <div class="col-md-7 col-sm-12 col-12">
         <div class="container product-detail">
-            <div class="row">
-                <div class="col-md-6 col-12 ">
-                    <div class="row justify-content-center product__img">
-                        <a href="">
-                            <img src="{{ asset('ImageUpload/Product/'.$product_detail -> Hinh)}}" class="img-fluid" alt="Responsive image" alt="sản phẩm">
-                        </a>
-                    </div>
+            <form action="{{URL :: to ('add-cart')}}" method="POST">
+                <div class="row">
+                    <div class="col-md-6 col-12 ">
+                        <div class="row product__img">
+                            <a href="">
+                                <img src="{{ asset('ImageUpload/Product/'.$product_detail -> Hinh)}}" class="img-fluid" alt="Responsive image" alt="sản phẩm">
+                            </a>
+                        </div>
 
-                </div>
-                <div class="col-md-6 col-12">
-                    <div class="row product__title">
-                        <a href="">{{ $product_detail -> TenHH }}</a>
                     </div>
-                    <div class="row product__description">
-                        <span>{{ $product_detail -> MoTaHH }}</span>
-                    </div>
-                    <div class="row product__price">
-                        <div class="col-sm-6 col-6">
-                            @if($product_detail -> KhuyenMai > 0 )
-                            <div class="row">
-                                <span class="product__price--1">{{ $product_detail -> Gia }}</span>
-                            </div>
-                            @endif
-                            <div class="row">
-                                <span class="product__price--2">{{ ($product_detail -> Gia)*(100 - $product_detail -> KhuyenMai) / 100 }} VNĐ</span>
-                            </div>
+                    <div class="col-md-6 col-12 product__detail">
+                        <div class="row product__title">
+                            <a href="">{{ $product_detail -> TenHH }}</a>
                         </div>
-                        <div class="col-sm-6 col-6 align-self-center">
-                            <div class="row">
-                                <form action="">
-                                    <button class="btn-icon" id="icon_plus"><i class="fas fa-plus"></i></button>
-                                    <input type="text" class="input-amount" id="input_amount" value="0" min="0">
+                        <div class="row product__description">
+                            <span>{{ $product_detail -> MoTaHH }}</span>
+                        </div>
+                        <div class="row product__price">
+                            <div class="col-sm-6 col-6">
+                                @if($product_detail -> KhuyenMai > 0 )
+                                <div class="row">
+                                    <span class="product__price--1">{{ $product_detail -> Gia }}</span>
+                                </div>
+                                @endif
+                                <div class="row">
+                                    <span class="product__price--2">{{ ($product_detail -> Gia)*(100 - $product_detail -> KhuyenMai) / 100 }} VNĐ</span>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-6 align-self-center">
+                                <div class="row">
                                     <button class="btn-icon" id="icon_minus"><i class="fas fa-minus"></i></i></button>
-                                </form>
+                                    <input type="text" class="input-amount" id="input_amount" value="1" min="1" max="{{ $product_detail -> SoLuongHang }}" name="amount">
+                                    <button class="btn-icon" id="icon_plus"><i class="fas fa-plus"></i></button>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="row justify-content-center">
-                        <a href="" class="add-to-cart --btn">Thêm vào giỏ hàng</a>
+                        <div class="row justify-content-center">
+                            <?php if ($id_khachhang) { ?>
+                                {{ csrf_field() }}
+                                <input type="hidden" name="MSKH" value="{{ $id_khachhang }}">
+                                <input type="hidden" name="MSHH" value="{{ $product_detail -> MSHH }}">
+                                <button class="add-to-cart --btn" type="submit" name="add-to-cart">Thêm vào giỏ hàng</button>
+                            <?php } else { ?>
+                                <a href="{{ URL :: to('product/add_to_cart?idhh='.$product_detail -> MSHH)}}" class="add-to-cart --btn">Thêm vào giỏ hàng</a>
+                            <?php } ?>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
-    <div class="col-md-5 col-sm-12 col-12 slide-sale">
+    <div class="col-md-5 col-sm-12 col-12 slide-sale ">
         <span class="slide-sale__sticker">SALE</span>
         <div class="row justify-content-center">
             <div class="col-10">
@@ -93,7 +107,7 @@ if ($id_khachhang) {
                                             <span class="card__price--1">{{ $product_sale_first -> Gia }}</span>
                                             <span class="card__price--2">{{ ($product_sale_first -> Gia)*(100 - $product_sale_first -> KhuyenMai) / 100 }} VNĐ</span>
                                         </div>
-                                        <div class="row justify-content-end mt-2">
+                                        <div class="row justify-content-center mt-2">
                                             <div class="card-sale__buy">
                                                 <a href="{{ URL :: to('product/'.$product_sale_first -> MSHH)}}">MUA NGAY</a>
                                             </div>
@@ -124,7 +138,7 @@ if ($id_khachhang) {
                                             <span class="card__price--1">{{ $sale -> Gia }}</span>
                                             <span class="card__price--2">{{ ($sale -> Gia)*(100 - $sale -> KhuyenMai) / 100 }} VNĐ</span>
                                         </div>
-                                        <div class="row justify-content-end mt-2">
+                                        <div class="row justify-content-center mt-2">
                                             <div class="card-sale__buy">
                                                 <a href="{{ URL :: to('product/'.$sale -> MSHH)}}">MUA NGAY</a>
                                             </div>

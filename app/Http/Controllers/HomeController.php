@@ -12,7 +12,7 @@ session_start();
 
 class HomeController extends Controller
 {
-    public function index_user()
+    public function index()
     {
         $trademark = DB::table('tb_thuonghieu')->get();
         $type_1 =  DB::table('tb_thucung')->get();
@@ -26,7 +26,7 @@ class HomeController extends Controller
         $notification =  DB::table('tb_hanghoa')->where('SoLuongHang', '<', '10')->get();
         $count =  DB::table('tb_hanghoa')->where('SoLuongHang', '<', '10')->count();
 
-        return view('pages.user.home')
+        return view('pages.home')
             ->with('trademark', $trademark)
             ->with('type_1', $type_1)
             ->with('slideshow', $slideshow)

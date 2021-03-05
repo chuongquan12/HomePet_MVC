@@ -7,6 +7,13 @@
         <li class="breadcrumb-item active" aria-current="page"><a href="{{ URL :: to('home')}}">ĐĂNG KÝ</a></li>
     </ol>
 </nav>
+<?php
+$message = Session()->get('message');
+if ($message) {
+    echo '<span class="message" id="message">' . $message . '</span>';
+}
+Session()->put('message', NULL);
+?>
 <div class="row">
     <div class="col-md-7 col-sm-12 col-12 slide-show">
         <div class="register">
@@ -151,7 +158,7 @@
                                             <span class="card__price--1">{{ $product_sale_first -> Gia }}</span>
                                             <span class="card__price--2">{{ ($product_sale_first -> Gia)*(100 - $product_sale_first -> KhuyenMai) / 100 }} VNĐ</span>
                                         </div>
-                                        <div class="row justify-content-end mt-2">
+                                        <div class="row justify-content-center mt-2">
                                             <div class="card-sale__buy">
                                                 <a href="{{ URL :: to('product/'.$product_sale_first -> MSHH)}}">MUA NGAY</a>
                                             </div>
@@ -182,7 +189,7 @@
                                             <span class="card__price--1">{{ $sale -> Gia }}</span>
                                             <span class="card__price--2">{{ ($sale -> Gia)*(100 - $sale -> KhuyenMai) / 100 }} VNĐ</span>
                                         </div>
-                                        <div class="row justify-content-end mt-2">
+                                        <div class="row justify-content-center mt-2">
                                             <div class="card-sale__buy">
                                                 <a href="{{ URL :: to('product/'.$sale -> MSHH)}}">MUA NGAY</a>
                                             </div>

@@ -37,14 +37,20 @@ class StoreController extends Controller
             $all_product = DB::table('tb_hanghoa')->where('MaNhom', $nhom)->get();
         }
 
+        $notification =  DB::table('tb_hanghoa')->where('SoLuongHang', '<', '10')->get();
+        $count =  DB::table('tb_hanghoa')->where('SoLuongHang', '<', '10')->count();
 
 
-        return view('pages.user.store')
+
+
+        return view('pages.store')
             ->with('trademark', $trademark)
             ->with('type_1', $type_1)
             ->with('type_2', $type_2)
             ->with('product_sale_first', $product_sale_first)
             ->with('product_sale', $product_sale)
-            ->with('all_product', $all_product);
+            ->with('all_product', $all_product)
+            ->with('notification', $notification)
+            ->with('count', $count);
     }
 }

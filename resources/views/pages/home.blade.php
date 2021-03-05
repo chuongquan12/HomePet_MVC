@@ -17,6 +17,13 @@ if ($id_khachhang) {
         <li class="breadcrumb-item active" aria-current="page"><a href="{{ URL :: to('home')}}">TRANG CHỦ</a></li>
     </ol>
 </nav>
+<?php
+$message = Session()->get('message');
+if ($message) {
+    echo '<span class="message" id="message">' . $message . '</span>';
+}
+Session()->put('message', NULL);
+?>
 <div class="row">
     <div class="col-md-7 col-sm-12 col-12 slide-show">
         <div id="slide" class="carousel slide slide-show__bg" data-ride="carousel">

@@ -1,18 +1,30 @@
-@extends('welcome')
+@extends('welcomecustomer')
 @section('content')
-
+<?php
+$id_khachhang = Session()->get('id_khachhang');
+if (!$id_khachhang) {
+    exit();
+}
+?>
 <div class="">
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item active" aria-current="page">
-                <a href=""><i class="fas fa-home"></i></a>
+                <a href="{{ URL :: to('home')}}"><i class="fas fa-home"></i></a>
             </li>
             <li class="breadcrumb-item active" aria-current="page">
-                <a href="">SẢN PHẨM</a>
+                <a href="">ĐƠN HÀNG</a>
             </li>
         </ol>
     </nav>
 </div>
+<?php
+$message = Session()->get('message');
+if ($message) {
+    echo '<span class="message" id="message">' . $message . '</span>';
+}
+Session()->put('message', NULL);
+?>
 <div class="row">
     <div class="container-fluid">
         <div class="row">
@@ -32,13 +44,15 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @foreach($all_order as $order)
                             <tr>
-                                <td class="ID-order"><a href="">123</a></td>
-                                <td>08-02-2020</td>
-                                <td>Cần thơ</td>
-                                <td>0924668320</td>
-                                <td>Hoàn thành</td>
+                                <td class="ID-order"><a href="{{ URL :: to('order?idDH='.$order ->SoDonDH)}}">{{ $order -> SoDonDH }}</a></td>
+                                <td>{{ $order -> NgayDH }}</td>
+                                <td>{{ $order -> DiaChi }}</td>
+                                <td>{{ $order -> SoDienThoai }}</td>
+                                <td>{{ $order -> TrangThai }}</td>
                             </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -52,61 +66,34 @@
                         <hr class="hr" />
                         <div class="row justify-content-center">
                             <div class="col-10 cart-detail__body">
+                                @foreach($order_detail as $key_order_detail)
                                 <div class="row cart-detail__body--item align-items-center">
                                     <div class="col-4 cart-detail__body--item--img">
-                                        <img src="img/NH_1.png" class="img-fluid" alt="Responsive image" alt="sản phẩm" />
+                                        <img src="{{ asset('ImageUpload/Product/'.$key_order_detail -> Hinh)}}" class="img-fluid" alt="Responsive image" alt="sản phẩm" />
                                     </div>
                                     <div class="col-6 cart-detail__body--item--title">
                                         <div class="row">
-                                            <a href="">sdfsjdfg sa f à s sdfasgf ghsdfghas</a>
+                                            <a href="">{{ $key_order_detail -> TenHH }}</a>
                                         </div>
                                     </div>
                                     <div class="col-1 cart-detail__body--item--amount">
                                         <div class="row">
-                                            <span>x1</span>
+                                            <span>x{{ $key_order_detail -> SoLuong }}</span>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row cart-detail__body--item align-items-center">
-                                    <div class="col-4 cart-detail__body--item--img">
-                                        <img src="img/NH_1.png" class="img-fluid" alt="Responsive image" alt="sản phẩm" />
-                                    </div>
-                                    <div class="col-6 cart-detail__body--item--title">
-                                        <div class="row">
-                                            <a href="">sdfsjdfg sa f à s sdfasgf ghsdfghas</a>
-                                        </div>
-                                    </div>
-                                    <div class="col-1 cart-detail__body--item--amount">
-                                        <div class="row">
-                                            <span>x1</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row cart-detail__body--item align-items-center">
-                                    <div class="col-4 cart-detail__body--item--img">
-                                        <img src="img/NH_1.png" class="img-fluid" alt="Responsive image" alt="sản phẩm" />
-                                    </div>
-                                    <div class="col-6 cart-detail__body--item--title">
-                                        <div class="row">
-                                            <a href="">sdfsjdfg sa f à s sdfasgf ghsdfghas</a>
-                                        </div>
-                                    </div>
-                                    <div class="col-1 cart-detail__body--item--amount">
-                                        <div class="row">
-                                            <span>x1</span>
-                                        </div>
-                                    </div>
-                                </div>
+                                @endforeach
+
                             </div>
                         </div>
                         <hr class="hr" />
 
                         <div class="row order-detail__price">
                             <div class="col">
-                                <label for="Name">Tổng giá trị</label>
+                                <label>Tổng giá trị</label>
                             </div>
                             <div class="col">
-                                <input type="text" class="form-control" id="Name" value="1.000.000 VNĐ" disabled />
+                                <input type="text" class="form-control" value="{{ $tong_GT }}" disabled />
                             </div>
                         </div>
                         <br />

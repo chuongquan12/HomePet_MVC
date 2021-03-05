@@ -14,11 +14,18 @@ if ($id_khachhang) {
 <div class="">
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item active" aria-current="page"><a href=""><i class="fas fa-home"></i></a></li>
-            <li class="breadcrumb-item active" aria-current="page"><a href="">SẢN PHẨM</a></li>
+            <li class="breadcrumb-item active" aria-current="page"><a href="{{ URL :: to('home')}}"><i class="fas fa-home"></i></a></li>
+            <li class="breadcrumb-item active" aria-current="page"><a href="">CỬA HÀNG</a></li>
         </ol>
     </nav>
 </div>
+<?php
+$message = Session()->get('message');
+if ($message) {
+    echo '<span class="message" id="message">' . $message . '</span>';
+}
+Session()->put('message', NULL);
+?>
 <div class="row">
     <div class="container-fluid mt-3">
         <div class="row">
