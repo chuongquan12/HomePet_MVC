@@ -21,7 +21,7 @@ class ProductDetailController extends Controller
         $product_sale = DB::table('tb_hanghoa')->where('KhuyenMai', '>', '0')->orderBy('KhuyenMai', 'desc')->get();
         $product_detail = DB::table('tb_hanghoa')->where('MSHH', $idHH)->first();
         $product_detail_nhom = $product_detail->MaNhom;
-        $product_recommend = DB::table('tb_hanghoa')->where('MaNhom', $product_detail_nhom)->get();
+        $product_recommend = DB::table('tb_hanghoa')->where('MaNhom', $product_detail_nhom)->paginate(5);
         $notification =  DB::table('tb_hanghoa')->where('SoLuongHang', '<', '10')->get();
         $count =  DB::table('tb_hanghoa')->where('SoLuongHang', '<', '10')->count();
 
@@ -36,6 +36,4 @@ class ProductDetailController extends Controller
             ->with('notification', $notification)
             ->with('count', $count);
     }
-
-
 }

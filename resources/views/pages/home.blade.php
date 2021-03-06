@@ -144,11 +144,8 @@ Session()->put('message', NULL);
             <div class="col-12">
                 <br />
                 <div class="row">
-                    <!--  Hiển thị 4 sản phẩm  -->
-                    <?php $temp = 0; ?>
                     @foreach($product_best_seller as $best_seller)
-                    <?php $temp++; ?>
-                    @if($temp <= 4) <div class="col-md-3 col-6">
+                    <div class="col-md-3 col-6">
                         <div class="container card-list">
                             @if($best_seller -> KhuyenMai > 0)
                             <span class="card__sticker"> -{{ $best_seller -> KhuyenMai }}% </span>
@@ -190,14 +187,13 @@ Session()->put('message', NULL);
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    @endforeach
                 </div>
-                @endif
-                @endforeach
+                <br />
             </div>
-            <br />
         </div>
     </div>
-</div>
 </div>
 <br />
 <div class="row">
@@ -210,11 +206,8 @@ Session()->put('message', NULL);
             <div class="col-12">
                 <br />
                 <div class="row">
-                    <!--  Hiển thị 4 sản phẩm  -->
-                    <?php $temp = 0; ?>
                     @foreach($product_new as $new)
-                    <?php $temp++; ?>
-                    @if($temp <= 4) <div class="col-md-3 col-6">
+                    <div class="col-md-3 col-6">
                         <div class="container card-list">
                             @if($new -> KhuyenMai > 0)
                             <span class="card__sticker"> -{{ $new -> KhuyenMai }}% </span>
@@ -257,14 +250,13 @@ Session()->put('message', NULL);
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    @endforeach
                 </div>
-                @endif
-                @endforeach
+                <br />
             </div>
-            <br />
         </div>
     </div>
-</div>
 </div>
 <br />
 <hr />

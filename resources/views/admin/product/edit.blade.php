@@ -82,7 +82,7 @@ if ($id_admin) {
             <div class="row">
                 <select class="form-control" id="idNhom" name="idNhom">
                     @foreach($all_type_2 as $key_type_2)
-                    <option value="{{ $key_type_2 -> MaNhom }}">{{ $key_type_2 -> TenNhom }}</option>
+                    <option value="{{ $key_type_2 -> MaNhom }}">{{ $key_type_2 -> TenNhom }} - {{ $key_type_2 -> TenThuCung }}</option>
                     @endforeach
                 </select>
             </div>

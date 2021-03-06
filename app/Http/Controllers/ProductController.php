@@ -31,7 +31,7 @@ class ProductController extends Controller
 
     public function add()
     {
-        $all_type_2 = DB::table('tb_nhomhanghoa')->get();
+        $all_type_2 = DB::table('tb_nhomhanghoa')->join('tb_thucung', 'tb_nhomhanghoa.MaTC', '=', 'tb_thucung.MaTC')->get();
         $all_trademark = DB::table('tb_thuonghieu')->get();
         $notification =  DB::table('tb_hanghoa')->where('SoLuongHang', '<', '10')->get();
         $count =  DB::table('tb_hanghoa')->where('SoLuongHang', '<', '10')->count();
@@ -80,6 +80,8 @@ class ProductController extends Controller
         $data['Gia'] = $request['price'];
         $data['KhuyenMai'] = $request['discount'];
         $data['NgayCN'] = Carbon::now();
+        $data['DaBan'] = 0;
+
 
 
         $file->move('ImageUpload/Product', $file->getClientOriginalName());
@@ -112,7 +114,7 @@ class ProductController extends Controller
     {
         $edit_product = DB::table('tb_hanghoa')->where('MSHH', $idHH)->get();
 
-        $all_type_2 = DB::table('tb_nhomhanghoa')->get();
+        $all_type_2 = DB::table('tb_nhomhanghoa')->join('tb_thucung', 'tb_nhomhanghoa.MaTC', '=', 'tb_thucung.MaTC')->get();
         $all_trademark = DB::table('tb_thuonghieu')->get();
         $notification =  DB::table('tb_hanghoa')->where('SoLuongHang', '<', '10')->get();
         $count =  DB::table('tb_hanghoa')->where('SoLuongHang', '<', '10')->count();

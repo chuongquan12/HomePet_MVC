@@ -20,21 +20,21 @@ class StoreController extends Controller
         $product_sale_first = DB::table('tb_hanghoa')->where('KhuyenMai', '>', '0')->orderBy('KhuyenMai', 'desc')->first();
         $product_sale = DB::table('tb_hanghoa')->where('KhuyenMai', '>', '0')->orderBy('KhuyenMai', 'desc')->get();
 
-        $all_product = DB::table('tb_hanghoa')->get();
+        $all_product = DB::table('tb_hanghoa')->paginate(12);
 
         if (isset($_GET['search'])) {
             $search = $_GET['search'];
-            $all_product = DB::table('tb_hanghoa')->where('TenHH', 'like', "%$search%")->get();
+            $all_product = DB::table('tb_hanghoa')->where('TenHH', 'like', "%$search%")->paginate(12);
         }
 
         if (isset($_GET['th'])) {
             $th = $_GET['th'];
-            $all_product = DB::table('tb_hanghoa')->where('MaTH', $th)->get();
+            $all_product = DB::table('tb_hanghoa')->where('MaTH', $th)->paginate(12);
         }
 
         if (isset($_GET['nhom'])) {
             $nhom = $_GET['nhom'];
-            $all_product = DB::table('tb_hanghoa')->where('MaNhom', $nhom)->get();
+            $all_product = DB::table('tb_hanghoa')->where('MaNhom', $nhom)->paginate(12);
         }
 
         $notification =  DB::table('tb_hanghoa')->where('SoLuongHang', '<', '10')->get();

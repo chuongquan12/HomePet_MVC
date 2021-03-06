@@ -179,45 +179,43 @@ Session()->put('message', NULL);
                         <br />
                         <div class="row">
                             <!--  Hiển thị 4 sản phẩm  -->
-                            <?php $temp = 0; ?>
                             @foreach($product_recommend as $recommend)
-                            <?php $temp++; ?>
-                            @if($temp <= 4 && $recommend -> MSHH != $product_detail -> MSHH) <div class="col-md-3 col-6">
-                                    <div class="container card-list">
-                                        @if($recommend -> KhuyenMai > 0)
-                                        <span class="card__sticker"> -{{ $recommend -> KhuyenMai }}% </span>
-                                        @endif
-                                        <div class="row">
-                                            <div class="col-12 card__img">
-                                                <a href="{{ URL :: to('product/'.$recommend -> MSHH)}}">
-                                                    <img src="{{ asset('ImageUpload/Product/'.$recommend -> Hinh)}}" class="img-fluid" alt="Responsive image" alt="sản phẩm" />
-                                                </a>
-                                            </div>
+                            @if( $recommend -> MSHH != $product_detail -> MSHH)
+                            <div class="col-md-3 col-6">
+                                <div class="container card-list">
+                                    @if($recommend -> KhuyenMai > 0)
+                                    <span class="card__sticker"> -{{ $recommend -> KhuyenMai }}% </span>
+                                    @endif
+                                    <div class="row">
+                                        <div class="col-12 card__img">
+                                            <a href="{{ URL :: to('product/'.$recommend -> MSHH)}}">
+                                                <img src="{{ asset('ImageUpload/Product/'.$recommend -> Hinh)}}" class="img-fluid" alt="Responsive image" alt="sản phẩm" />
+                                            </a>
                                         </div>
-                                        <div class="row">
-                                            <div class="col-12 card__title-bg">
-                                                <div class="row card__title">
-                                                    <a href="{{ URL :: to('product/'.$recommend -> MSHH)}}">{{ $recommend -> TenHH }}</a>
-                                                </div>
-                                                <div class="row hidden-xs card__description">
-                                                    <span>{{ $recommend -> MoTaHH }}</span>
-                                                </div>
-                                                <div class="row card__price">
-                                                    <div class="col-sm-8 col-12">
-                                                        @if($recommend -> KhuyenMai > 0 )
-                                                        <div class="row">
-                                                            <span class="card__price--1">{{ number_format($recommend -> Gia, 0, ',', '.') }}</span>
-                                                        </div>
-                                                        @endif
-                                                        <div class="row">
-                                                            <span class="card__price--2">{{ number_format(($recommend -> Gia)*(100 - $recommend -> KhuyenMai) / 100, 0, ',', '.') }} VNĐ</span>
-                                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12 card__title-bg">
+                                            <div class="row card__title">
+                                                <a href="{{ URL :: to('product/'.$recommend -> MSHH)}}">{{ $recommend -> TenHH }}</a>
+                                            </div>
+                                            <div class="row hidden-xs card__description">
+                                                <span>{{ $recommend -> MoTaHH }}</span>
+                                            </div>
+                                            <div class="row card__price">
+                                                <div class="col-sm-8 col-12">
+                                                    @if($recommend -> KhuyenMai > 0 )
+                                                    <div class="row">
+                                                        <span class="card__price--1">{{ number_format($recommend -> Gia, 0, ',', '.') }}</span>
                                                     </div>
-                                                    <div class="col-sm-4 col align-self-center">
-                                                        <div class="row justify-content-end">
-                                                            <div class="card__buy">
-                                                                <a href="{{ URL :: to('product/'.$recommend -> MSHH)}}"><i class="fas fa-cart-plus"></i></a>
-                                                            </div>
+                                                    @endif
+                                                    <div class="row">
+                                                        <span class="card__price--2">{{ number_format(($recommend -> Gia)*(100 - $recommend -> KhuyenMai) / 100, 0, ',', '.') }} VNĐ</span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-4 col align-self-center">
+                                                    <div class="row justify-content-end">
+                                                        <div class="card__buy">
+                                                            <a href="{{ URL :: to('product/'.$recommend -> MSHH)}}"><i class="fas fa-cart-plus"></i></a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -225,8 +223,9 @@ Session()->put('message', NULL);
                                         </div>
                                     </div>
                                 </div>
-                                @endif
-                                @endforeach
+                            </div>
+                            @endif
+                            @endforeach
                         </div>
                         <br />
                     </div>
