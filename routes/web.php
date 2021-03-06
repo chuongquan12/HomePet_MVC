@@ -53,17 +53,24 @@ Route::post('/getRegister', 'LogResController@getRes');
 
 Route::post('/getLogin', 'LogResController@getLogin');
 
-Route::get('/logout', 'LogResController@logout');
+Route::get('/logout_kh', 'LogResController@logout_kh');
+
+Route::get('/logout_nv', 'LogResController@logout_nv');
+
+Route::get('/logout_admin', 'LogResController@logout_admin');
 
 
 
 //BackEnd Admin
 
-Route::get('/admin', 'AdminController@index');
+Route::get('/admin', 'AdminController@index_admin');
 
 // ---------Order  
 
 Route::get('list-order', 'ListOrderController@index');
+
+Route::get('list-order-confirm', 'ListOrderController@confirm');
+
 
 
 // ---------Personnel
@@ -156,3 +163,8 @@ Route::post('save-image-slide', 'ImageController@create');
 
 // Delete 
 Route::get('delete-image/{idTH}', 'ImageController@destroy');
+
+
+// PERSONNEL
+
+Route::get('/presonnel', 'AdminController@index_nv');

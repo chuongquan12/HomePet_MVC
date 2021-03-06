@@ -51,13 +51,14 @@ class PersonnelController extends Controller
             'name' => 'required|max:50',
             'address' => 'required|max:200',
             'n_phone' => 'required|numeric',
-            'username' => 'required|max:25',
+            'username' => 'required|min:1|max:10|unique:tb_nhanvien,username',
             'password' => 'required|min:8|max:25',
         ], [
             'required' => ':attribute không được để trống',
             'max' => ':attribute không được quá :max kí tự',
             'min' => ':attribute phải ít nhất :min kí tự',
             'numeric' => ':attribute phải nhập chỉ số',
+            'unique' => ':attribute đã tồn tại ',
         ], [
             'name' => 'Họ và tên',
             'address' => 'Địa chỉ',
@@ -72,7 +73,7 @@ class PersonnelController extends Controller
         $data['SoDienThoai'] = $request['n_phone'];
         $data['ChucVu'] = $request['position'];
         $data['Username'] = $request['username'];
-        $data['Password'] = $request['password'];
+        $data['Password'] = md5($request['password']);
 
         DB::table('tb_nhanvien')->insert($data);
 

@@ -1,4 +1,16 @@
-@extends('admin')
+<?php
+$id_nhanvien = Session()->get('id_nhanvien');
+$id_admin = Session()->get('id_admin');
+
+if ($id_nhanvien) {
+    $extends = 'personnel';
+}
+if ($id_admin) {
+    $extends = 'admin';
+} ?>
+
+
+@extends($extends)
 @section('content')
 
 
@@ -15,6 +27,7 @@
         <thead>
             <tr>
                 <th scope="col">MÃ HÌNH ẢNH</th>
+                <th scope="col">NGÀY CẬP NHẬT</th>
                 <th scope="col-4">HÌNH</th>
                 <th scope="col">TÙY CHỌN</th>
             </tr>
@@ -23,6 +36,7 @@
             @foreach($all_image as $key)
             <tr>
                 <td>{{ $key -> idHinh  }}</td>
+                <td>{{ $key -> NgayCapNhat  }}</td>
                 <td>
                     <img src="{{ asset('ImageUpload/slideshow/'.$key -> DuongDan )}}" class="img-fluid product-img" alt="Responsive image" alt="Hình sản phẩm" />
                 </td>

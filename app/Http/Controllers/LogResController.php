@@ -117,8 +117,11 @@ class LogResController extends Controller
 
         $result_1 = DB::table('tb_khachhang')->where('Username', $username)->where('Password', $password)->first();
         $result_2 = DB::table('tb_nhanvien')->where('Username', $username)->where('Password', $password)->first();
+        $result_3 = DB::table('tb_admin')->where('Username', $username)->where('Password', $password)->first();
 
-        if (!$result_1 && !$result_2) {
+        print_r($result_3);
+
+        if (!$result_1 && !$result_2 && !$result_3) {
             Session()->put('message', 'Đăng nhập thất bại, Vui lòng kiểm tra lại.');
 
             return Redirect::to('login');
@@ -131,18 +134,30 @@ class LogResController extends Controller
             Session()->put('id_nhanvien', $result_2->MSNV);
             Session()->put('message', 'Đăng nhập thành công');
 
-            return Redirect::to('/');
-        } else {
+            return Redirect::to('/presonnel');
+        } elseif ($result_3) {
             Session()->put('id_admin', true);
             Session()->put('message', 'Đăng nhập thành công');
 
-            return Redirect::to('/admin ');
+            return Redirect::to('/admin');
         }
     }
 
-    public function logout()
+    public function logout_kh()
     {
         Session()->put('id_khachhang', NULL);
+        return Redirect::to('/home');
+    }
+
+    public function logout_nv()
+    {
+        Session()->put('id_nhanvien', NULL);
+        return Redirect::to('/home');
+    }
+
+    public function logout_admin()
+    {
+        Session()->put('id_admin', NULL);
         return Redirect::to('/home');
     }
 

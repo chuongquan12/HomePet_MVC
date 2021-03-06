@@ -14,7 +14,8 @@
     <?php
     $id_khachhang = Session()->get('id_khachhang');
     if (!$id_khachhang) {
-        exit;
+        header("refresh:0; url= home");
+        die();
     }
     ?>
     <div class="container-fluid">
@@ -68,7 +69,7 @@
                             <li><a href="{{ URL :: to('user')}}"><i class="far fa-edit"></i> SỬA THÔNG TIN </a></li>
                             <li><a href="{{ URL :: to('cart')}}"><i class="fas fa-shopping-cart"></i> GIỎ HÀNG</a></li>
                             <li><a href="{{ URL :: to('order')}}"><i class="far fa-clipboard"></i> ĐƠN HÀNG</a></li>
-                            <li><a href="{{ URL :: to('logout')}}"><i class="fas fa-sign-out-alt"></i> ĐĂNG XUẤT</a></li>
+                            <li><a href="{{ URL :: to('logout_kh')}}"><i class="fas fa-sign-out-alt"></i> ĐĂNG XUẤT</a></li>
                         </div>
                     </div>
                 </div>

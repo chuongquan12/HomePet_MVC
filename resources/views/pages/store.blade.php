@@ -65,7 +65,7 @@ Session()->put('message', NULL);
                             <span class="card__sticker"> -{{ $product -> KhuyenMai }}% </span>
                             @endif
                             <div class="row">
-                                <div class="col-12 card__img">
+                                <div class="col-12 card__img--store">
                                     <a href="{{ URL :: to('product/'.$product -> MSHH)}}">
                                         <img src="{{ asset('ImageUpload/Product/'.$product -> Hinh)}}" class="img-fluid" alt="Responsive image" alt="sản phẩm" />
                                     </a>

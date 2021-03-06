@@ -12,8 +12,8 @@
 
 <body>
     <?php
-    $id_admin = Session()->get('id_admin');
-    if (!$id_admin) {
+    $id_nhanvien = Session()->get('id_nhanvien');
+    if (!$id_nhanvien) {
         header("refresh:0; url= home");
         die();
     }
@@ -32,7 +32,7 @@
                         <img src="{{asset('ImageUpload/logo/Logo-header.png')}}" alt="logo" class="header__logo--img" />
                     </div>
                     <div class="col header_title">
-                        <h5>TRANG QUẢN LÝ BÁN HÀNG</h5>
+                        <h5>TRANG NHÂN VIÊN BÁN HÀNG</h5>
                     </div>
                     <div class="col-3 ">
                         <div class="row m-0 justify-content-center">
@@ -50,7 +50,7 @@
                                 </ul>
                             </div>
                             <div>
-                                <a class="header__list-title--btn --btn" href="{{ URL :: to('logout_admin')}}">
+                                <a class="header__list-title--btn --btn" href="{{ URL :: to('logout_nv')}}">
                                     LOGOUT <i class="fas fa-sign-out-alt"></i>
                                 </a>
                             </div>
@@ -67,36 +67,8 @@
                     <div class="admin-category__list">
                         <ul id="list-order" class="row">
                             <span>QL ĐƠN HÀNG</span>
+                            <li class="admin-category__item order"><a href="{{URL:: to ('list-order-confirm')}}">XÁC NHẬN ĐƠN</a></li>
                             <li class="admin-category__item order"><a href="{{URL:: to ('list-order')}}">DS ĐƠN HÀNG</a></li>
-                            <li class="admin-category__item order"><a href="{{URL:: to ('form-order')}}">THỐNG KÊ ĐƠN HÀNG</a></li>
-                        </ul>
-                    </div>
-                    <div class="admin-category__list">
-                        <ul id="list-personnel" class="row">
-                            <span>QL NHÂN VIÊN</span>
-                            <li class="admin-category__item personnel"><a href="{{URL:: to ('list-personnel')}}">DS NHÂN VIÊN</a></li>
-                            <li class="admin-category__item personnel"><a href="{{URL:: to ('add-personnel')}}">THÊM NHÂN VIÊN</a></li>
-                        </ul>
-                    </div>
-                    <div class="admin-category__list">
-                        <ul id="list-product-type-1" class="row">
-                            <span>QL VẬT NUÔI</span>
-                            <li class="admin-category__item product-type-1"><a href="{{URL:: to ('list-type-1')}}">DS VẬT NUÔI</a></li>
-                            <li class="admin-category__item product-type-1"><a href="{{URL:: to ('add-type-1')}}">THÊM VẬT NUÔI</a></li>
-                        </ul>
-                    </div>
-                    <div class="admin-category__list">
-                        <ul id="list-product-type-2" class="row">
-                            <span>QL LOẠI SẢN PHẨM</span>
-                            <li class="admin-category__item product-type-2"><a href="{{URL:: to ('list-type-2')}}">DS LOẠI SP</a></li>
-                            <li class="admin-category__item product-type-2"><a href="{{URL:: to ('add-type-2')}}">THÊM LOẠI SP</a></li>
-                        </ul>
-                    </div>
-                    <div class="admin-category__list">
-                        <ul id="list-trademark" class="row">
-                            <span>QL THƯƠNG HIÊU</span>
-                            <li class="admin-category__item trademark"><a href="{{URL:: to ('list-trademark')}}">DS THƯƠNG HIỆU</a></li>
-                            <li class="admin-category__item trademark"><a href="{{URL:: to ('add-trademark')}}">THÊM THƯƠNG HIỆU</a></li>
                         </ul>
                     </div>
                     <div class="admin-category__list">

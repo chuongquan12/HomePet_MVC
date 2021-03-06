@@ -1,4 +1,16 @@
-@extends('admin')
+<?php
+$id_nhanvien = Session()->get('id_nhanvien');
+$id_admin = Session()->get('id_admin');
+
+if ($id_nhanvien) {
+    $extends = 'personnel';
+}
+if ($id_admin) {
+    $extends = 'admin';
+} ?>
+
+
+@extends($extends)
 @section('content')
 
 
