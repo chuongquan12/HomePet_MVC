@@ -1,6 +1,12 @@
 @extends('welcomeuser')
 @section('content')
-
+<?php
+$id_khachhang = Session()->get('id_khachhang');
+if ($id_khachhang) {
+    header("refresh:0; url= home");
+    die();
+}
+?>
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
         <li class="breadcrumb-item active" aria-current="page"><a href="{{ URL :: to('home')}}"><i class="fas fa-home"></i></a></li>
@@ -94,8 +100,8 @@
                                             <span>{{ $product_sale_first -> MoTaHH }}</span>
                                         </div>
                                         <div class="row card-sale__price">
-                                            <span class="card__price--1">{{ $product_sale_first -> Gia }}</span>
-                                            <span class="card__price--2">{{ ($product_sale_first -> Gia)*(100 - $product_sale_first -> KhuyenMai) / 100 }} VNĐ</span>
+                                            <span class="card__price--1">{{ number_format($product_sale_first -> Gia, 0, ',', '.')  }}</span>
+                                            <span class="card__price--2">{{ number_format(($product_sale_first -> Gia)*(100 - $product_sale_first -> KhuyenMai) / 100, 0, ',', '.') }} VNĐ</span>
                                         </div>
                                         <div class="row justify-content-center mt-2">
                                             <div class="card-sale__buy">
@@ -125,8 +131,8 @@
                                             <span>{{ $sale -> MoTaHH }}</span>
                                         </div>
                                         <div class="row card-sale__price">
-                                            <span class="card__price--1">{{ $sale -> Gia }}</span>
-                                            <span class="card__price--2">{{ ($sale -> Gia)*(100 - $sale -> KhuyenMai) / 100 }} VNĐ</span>
+                                            <span class="card__price--1">{{ number_format($sale -> Gia, 0, ',', '.') }}</span>
+                                            <span class="card__price--2">{{ number_format(($sale -> Gia)*(100 - $sale -> KhuyenMai) / 100, 0, ',', '.') }} VNĐ</span>
                                         </div>
                                         <div class="row justify-content-center mt-2">
                                             <div class="card-sale__buy">

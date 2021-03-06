@@ -83,12 +83,12 @@ Session()->put('message', NULL);
                                         <div class="col-sm-8 col-12">
                                             @if($product -> KhuyenMai > 0 )
                                             <div class="row">
-                                                <span class="card__price--1">{{ $product -> Gia }}</span>
+                                                <span class="card__price--1">{{ number_format($product -> Gia, 0, ',', '.') }}</span>
                                             </div>
                                             @endif
 
                                             <div class="row">
-                                                <span class="card__price--2">{{ ($product -> Gia)*(100 - $product -> KhuyenMai) / 100 }} VNĐ</span>
+                                                <span class="card__price--2">{{ number_format(($product -> Gia)*(100 - $product -> KhuyenMai) / 100, 0, ',', '.') }} VNĐ</span>
                                             </div>
                                         </div>
                                         <div class="col-sm-4 col align-self-center">

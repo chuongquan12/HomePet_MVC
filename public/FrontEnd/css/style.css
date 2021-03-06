@@ -928,6 +928,14 @@ input[type=text]:focus, input[type=submit] {
     color: var(--color-3);
 }
 
+.ID-order {
+    color: var(--color-3);
+}
+
+.ID-order:hover {
+    color: var(--color-1);
+}
+
 .table {
     text-align: center;
 }

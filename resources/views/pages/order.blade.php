@@ -38,19 +38,23 @@ Session()->put('message', NULL);
                             <tr>
                                 <th scope="col-1">MÃ ĐƠN</th>
                                 <th scope="col-2">NGÀY ĐẶT</th>
-                                <th scope="col">ĐỊA CHỈ</th>
-                                <th scope="col">SĐT</th>
+                                <th scope="col">NGÀY XÁC NHẬN</th>
                                 <th scope="col">TRẠNG THÁI</th>
+                                <th scope="col">CHI TIẾT</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach($all_order as $order)
                             <tr>
-                                <td class="ID-order"><a href="{{ URL :: to('order?idDH='.$order ->SoDonDH)}}">{{ $order -> SoDonDH }}</a></td>
+                                <td><a class="ID-order" href="{{ URL :: to('order?idDH='.$order ->SoDonDH)}}">{{ $order -> SoDonDH }}</a></td>
                                 <td>{{ $order -> NgayDH }}</td>
-                                <td>{{ $order -> DiaChi }}</td>
-                                <td>{{ $order -> SoDienThoai }}</td>
+                                @if($order -> NgayXN == NULL)
+                                <td>Trống</td>
+                                @else
+                                <td>{{ $order -> NgayXN }}</td>
+                                @endif
                                 <td>{{ $order -> TrangThai }}</td>
+                                <td><a class="ID-order" href="{{ URL :: to('order?idDH='.$order ->SoDonDH)}}"><i class="fas fa-minus-circle"></i></a></td>
                             </tr>
                             @endforeach
                         </tbody>
@@ -73,7 +77,7 @@ Session()->put('message', NULL);
                                     </div>
                                     <div class="col-6 cart-detail__body--item--title">
                                         <div class="row">
-                                            <a href="">{{ $key_order_detail -> TenHH }}</a>
+                                            <a href="{{ URL :: to('product/'.$key_order_detail -> MSHH)}}">{{ $key_order_detail -> TenHH }}</a>
                                         </div>
                                     </div>
                                     <div class="col-1 cart-detail__body--item--amount">

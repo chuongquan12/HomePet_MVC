@@ -53,6 +53,9 @@ Route::post('/getRegister', 'LogResController@getRes');
 
 Route::post('/getLogin', 'LogResController@getLogin');
 
+Route::get('/logout', 'LogResController@logout');
+
+
 
 //BackEnd Admin
 

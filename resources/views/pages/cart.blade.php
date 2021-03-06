@@ -4,7 +4,8 @@
 $sum = 0;
 $id_khachhang = Session()->get('id_khachhang');
 if (!$id_khachhang) {
-    exit;
+    header("refresh:0; url= home");
+    die();
 }
 ?>
 
@@ -50,7 +51,7 @@ Session()->put('message', NULL);
                     </div>
                     <div class="col-md-3 col-7">
                         <div class="row cart-product__price ">
-                            <span>{{ ($cart -> SoLuong)*($product -> Gia)*(100 - $product -> KhuyenMai) / 100 }} VNĐ</span>
+                            <span>{{ number_format(($cart -> SoLuong)*($product -> Gia)*(100 - $product -> KhuyenMai) / 100, 0, ',', '.') }} VNĐ</span>
                         </div>
                     </div>
                     <div class="col-md-1 col-2">
@@ -95,7 +96,7 @@ Session()->put('message', NULL);
                                     <label>Giá trị đơn hàng: </label>
                                 </div>
                                 <div class="col">
-                                    <input type="text" class="form-control" value="{{ $sum }}" disabled>
+                                    <input type="text" class="form-control" value="{{ number_format($sum, 0, ',', '.') }} VNĐ" disabled>
                                 </div>
                             </div>
                             <div class="row cart-detail__ip">
@@ -103,7 +104,7 @@ Session()->put('message', NULL);
                                     <label>Phí ship: </label>
                                 </div>
                                 <div class="col">
-                                    <input type="text" class="form-control" value="30000">
+                                    <input type="text" class="form-control" value="{{ number_format(30000, 0, ',', '.') }} VNĐ">
                                 </div>
                             </div>
                             <div class="row cart-detail__ip">
@@ -111,7 +112,7 @@ Session()->put('message', NULL);
                                     <label>Tổng giá trị</label>
                                 </div>
                                 <div class="col">
-                                    <input type="text" class="form-control" value="{{ $sum + 30000 }}" disabled>
+                                    <input type="text" class="form-control" value="{{ number_format($sum + 30000, 0, ',', '.') }} VNĐ" disabled>
                                     <input type="hidden" class="form-control" name="tongGT" value="{{ $sum + 30000 }}">
                                 </div>
                             </div>

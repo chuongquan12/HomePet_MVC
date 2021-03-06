@@ -4,7 +4,8 @@
 <?php
 $id_khachhang = Session()->get('id_khachhang');
 if (!$id_khachhang) {
-    exit;
+    header("refresh:0; url= home");
+    die();
 }
 ?>
 <div class="">

@@ -51,11 +51,11 @@ Session()->put('message', NULL);
                             <div class="col-sm-6 col-6">
                                 @if($product_detail -> KhuyenMai > 0 )
                                 <div class="row">
-                                    <span class="product__price--1">{{ $product_detail -> Gia }}</span>
+                                    <span class="product__price--1">{{ number_format($product_detail -> Gia, 0, ',', '.') }}</span>
                                 </div>
                                 @endif
                                 <div class="row">
-                                    <span class="product__price--2">{{ ($product_detail -> Gia)*(100 - $product_detail -> KhuyenMai) / 100 }} VNĐ</span>
+                                    <span class="product__price--2">{{ number_format(($product_detail -> Gia)*(100 - $product_detail -> KhuyenMai) / 100, 0, ',', '.') }} VNĐ</span>
                                 </div>
                             </div>
                             <div class="col-sm-6 col-6 align-self-center">
@@ -104,8 +104,8 @@ Session()->put('message', NULL);
                                             <span>{{ $product_sale_first -> MoTaHH }}</span>
                                         </div>
                                         <div class="row card-sale__price">
-                                            <span class="card__price--1">{{ $product_sale_first -> Gia }}</span>
-                                            <span class="card__price--2">{{ ($product_sale_first -> Gia)*(100 - $product_sale_first -> KhuyenMai) / 100 }} VNĐ</span>
+                                            <span class="card__price--1">{{ number_format($product_sale_first -> Gia, 0, ',', '.')  }}</span>
+                                            <span class="card__price--2">{{ number_format(($product_sale_first -> Gia)*(100 - $product_sale_first -> KhuyenMai) / 100, 0, ',', '.') }} VNĐ</span>
                                         </div>
                                         <div class="row justify-content-center mt-2">
                                             <div class="card-sale__buy">
@@ -135,8 +135,8 @@ Session()->put('message', NULL);
                                             <span>{{ $sale -> MoTaHH }}</span>
                                         </div>
                                         <div class="row card-sale__price">
-                                            <span class="card__price--1">{{ $sale -> Gia }}</span>
-                                            <span class="card__price--2">{{ ($sale -> Gia)*(100 - $sale -> KhuyenMai) / 100 }} VNĐ</span>
+                                            <span class="card__price--1">{{ number_format($sale -> Gia, 0, ',', '.') }}</span>
+                                            <span class="card__price--2">{{ number_format(($sale -> Gia)*(100 - $sale -> KhuyenMai) / 100, 0, ',', '.') }} VNĐ</span>
                                         </div>
                                         <div class="row justify-content-center mt-2">
                                             <div class="card-sale__buy">
@@ -204,11 +204,13 @@ Session()->put('message', NULL);
                                                 </div>
                                                 <div class="row card__price">
                                                     <div class="col-sm-8 col-12">
+                                                        @if($recommend -> KhuyenMai > 0 )
                                                         <div class="row">
-                                                            <span class="card__price--1">{{ $recommend -> Gia }}</span>
+                                                            <span class="card__price--1">{{ number_format($recommend -> Gia, 0, ',', '.') }}</span>
                                                         </div>
+                                                        @endif
                                                         <div class="row">
-                                                            <span class="card__price--2">{{ ($recommend -> Gia)*(100 - $recommend -> KhuyenMai) / 100 }} VNĐ</span>
+                                                            <span class="card__price--2">{{ number_format(($recommend -> Gia)*(100 - $recommend -> KhuyenMai) / 100, 0, ',', '.') }} VNĐ</span>
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-4 col align-self-center">

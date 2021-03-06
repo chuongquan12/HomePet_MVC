@@ -140,6 +140,12 @@ class LogResController extends Controller
         }
     }
 
+    public function logout()
+    {
+        Session()->put('id_khachhang', NULL);
+        return Redirect::to('/home');
+    }
+
     /**
      * Store a newly created resource in storage.
      *
