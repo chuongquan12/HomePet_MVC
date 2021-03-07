@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Session;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 
@@ -21,12 +22,23 @@ class ListOrderController extends Controller
     {
         $id_nhanvien = Session()->get('id_nhanvien');
 
+        $list_product = array();
+        $order_detail = array();
+        if (isset($_GET['idDH'])) {
+            $idDH = $_GET['idDH'];
+
+            $list_product = DB::table('tb_chitietdathang')->where('SoDonDH', $idDH)->join('tb_hanghoa', 'tb_chitietdathang.MSHH', '=', 'tb_hanghoa.MSHH')->get();
+            $order_detail = DB::table('tb_dathang')->where('SoDonDH', $idDH)->join('tb_khachhang', 'tb_dathang.MSKH', '=', 'tb_khachhang.MSKH')->first();
+        }
+
         $all_order = DB::table('tb_dathang')->join('tb_khachhang', 'tb_dathang.MSKH', '=', 'tb_khachhang.MSKH')->join('tb_nhanvien', 'tb_dathang.MSNV', '=', 'tb_nhanvien.MSNV')->where('TrangThai', '<>', 'Chờ xác nhận')->get();
         $notification =  DB::table('tb_hanghoa')->where('SoLuongHang', '<', '10')->get();
         $count =  DB::table('tb_hanghoa')->where('SoLuongHang', '<', '10')->count();
 
         return view('admin.order.list')
             ->with('all_order', $all_order)
+            ->with('list_product', $list_product)
+            ->with('order_detail', $order_detail)
             ->with('notification', $notification)
             ->with('count', $count);
     }

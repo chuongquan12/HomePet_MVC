@@ -67,4 +67,7 @@ $(document).ready(function(){
     $("#notification").click(function(){
         $("#notification-list").fadeToggle(500);
     });
+
+
+
   });

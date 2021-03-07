@@ -35,9 +35,9 @@ if ($id_admin) {
                         <td>{{ $key -> SoDonDH  }}</td>
                         <td>{{ $key -> HoTenKH  }}</td>
                         <td>{{ $key -> SoDienThoai  }}</td>
-                        <td>{{ $key -> DiaChi  }}</td>
+                        <td class="address_confirm">{{ $key -> DiaChi  }}</td>
                         <td>{{ $key -> NgayDH  }}</td>
-                        <td>
+                        <td class="icon_confirm">
                             <span class="icon"><a href="{{ URL :: to('list-order-confirm?action=accept&idDH='.$key ->SoDonDH)}}">Xác nhận</a></span>
                             <span class="icon"><a href="{{ URL :: to('list-order-confirm?action=cancel&idDH='.$key ->SoDonDH)}}">Hủy</a></span>
                         </td>
@@ -86,7 +86,7 @@ if ($id_admin) {
                             <label>Tổng giá trị</label>
                         </div>
                         <div class="col">
-                            <input type="text" class="form-control" value="{{ $tong_GT }}" disabled />
+                            <input type="text" class="form-control" value="{{number_format($tong_GT, 0, ',', '.') }} VNĐ" disabled />
                         </div>
                     </div>
                     <br />

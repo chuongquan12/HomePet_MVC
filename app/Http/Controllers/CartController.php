@@ -66,11 +66,13 @@ class CartController extends Controller
 
     public function add_cart(Request $request)
     {
+        $id_khachhang = Session()->get('id_khachhang');
+
         $data = array();
 
         $data['MSHH'] = $request['MSHH'];
         // Kiểm tra sản phẩm đã có trong giỏ hàng hay chưa
-        $temp = DB::table('tb_giohang')->where('MSHH', $data['MSHH'])->first();
+        $temp = DB::table('tb_giohang')->where('MSHH', $data['MSHH'])->where('MSKH', $id_khachhang)->first();
         if ($temp) {
             $SoLuong = $request['amount'] + $temp->SoLuong;
 

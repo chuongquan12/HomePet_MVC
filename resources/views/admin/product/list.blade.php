@@ -45,7 +45,7 @@ if ($id_admin) {
             <tr>
                 <td>{{ $key -> MSHH  }}</td>
                 <td>{{ $key -> TenHH  }}</td>
-                <td>{{ $key -> MoTaHH  }}</td>
+                <td class="product_desc">{{ $key -> MoTaHH  }}</td>
                 <td>{{ $key -> SoLuongHang  }}</td>
                 <td>{{ $key -> DaBan  }}</td>
                 <td>{{ $key -> TenNhom  }}</td>
@@ -53,7 +53,7 @@ if ($id_admin) {
                 <td>
                     <img src="{{ asset('ImageUpload/product/'.$key -> Hinh )}}" class="img-fluid product-img" alt="Responsive image" alt="Hình sản phẩm" />
                 </td>
-                <td>{{ $key -> Gia }}</td>
+                <td>{{number_format($key -> Gia, 0, ',', '.') }}</td>
                 <td>{{ $key -> KhuyenMai  }}</td>
                 <td>{{ $key -> NgayCN  }}</td>
                 <td class="icon-tb" id="tb-list-personnel__icon">

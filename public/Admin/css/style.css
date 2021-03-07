@@ -16,13 +16,13 @@ body {
 }
 /* Class chung */
 
-.col-3,.col-8, .col-md-3 {
+.col-3, .col-8, .col-5, .col-md-3 {
     padding-left: 0px !important; 
     padding-right: 0px !important; 
 }
 
 
-.col-6 {
+.col-6, .col-2 {
     padding: .5rem !important;
 }
 
@@ -151,6 +151,8 @@ ul {
     background-color: var(--color-2);
 }
 
+
+
 .tb-list__icon {
     margin: .2rem;
     padding: .2rem;
@@ -161,6 +163,49 @@ ul {
 .tb-list__icon:hover {
     border-bottom: 2px solid var(--color-3);
     color: var(--color-3);
+}
+
+/* List Order Detail */
+
+.list-order-detail {
+    padding: 1rem;
+    font-size: .8rem;
+    color: var(--color-3);
+    background-color: var(--color-2);
+}
+
+.table-list-product-title {
+    font-weight: bold;
+    padding: 0rem 1rem;
+}
+
+.table-list-product {
+    height: 14rem;
+    padding: 0rem 1rem;
+    overflow: auto;
+}
+
+.table-list-product::-webkit-scrollbar {
+    width: 0 !important;
+    display: none;
+}
+
+.table-list-product > div {
+    border-bottom: 1px solid var(--color-3);
+}
+
+/* List Order Confirm */
+
+.icon_confirm {
+    width: 8rem;
+}
+
+.address_confirm {
+    width: 5rem;
+    max-width: 5rem;
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 /* Form */
 .form-bg {
@@ -333,11 +378,11 @@ ul {
     text-align: center;
 }
 
-.icon-minus > a {
+.icon-minus > a > i{
     color: var(--color-3);
 }
 
-.icon-minus:hover > a {
+.icon-minus:hover > a > i {
     color: var(--color-1);
 }
 
@@ -352,4 +397,10 @@ ul {
     text-decoration: none;
     color: var(--color-3);
     background-color: var(--color-1);
+}
+
+/* Product */
+
+.product_desc {
+    width: 12rem;
 }
