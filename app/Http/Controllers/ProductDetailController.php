@@ -14,6 +14,11 @@ class ProductDetailController extends Controller
 {
     public function index($idHH)
     {
+        $id_khachhang = Session()->get('id_khachhang');
+
+        $now = Carbon::now();
+        $day_notification = $now->subDays(5);
+
         $trademark = DB::table('tb_thuonghieu')->get();
         $type_1 =  DB::table('tb_thucung')->get();
         $type_2 = DB::table('tb_nhomhanghoa')->get();
@@ -22,8 +27,10 @@ class ProductDetailController extends Controller
         $product_detail = DB::table('tb_hanghoa')->where('MSHH', $idHH)->first();
         $product_detail_nhom = $product_detail->MaNhom;
         $product_recommend = DB::table('tb_hanghoa')->where('MaNhom', $product_detail_nhom)->paginate(5);
-        $notification =  DB::table('tb_hanghoa')->where('SoLuongHang', '<', '10')->get();
-        $count =  DB::table('tb_hanghoa')->where('SoLuongHang', '<', '10')->count();
+        $notification =  DB::table('tb_dathang')->where('MSKH', $id_khachhang)->where('NgayXN', '>', $day_notification)->orderBy('SoDonDH', 'desc')->get();
+        $count = DB::table('tb_dathang')->where('MSKH', $id_khachhang)->where('NgayXN', '>', $day_notification)->count();
+        $count_product =  DB::table('tb_giohang')->where('MSKH', $id_khachhang)->count();
+
 
         return view('pages.product')
             ->with('trademark', $trademark)
@@ -34,6 +41,7 @@ class ProductDetailController extends Controller
             ->with('product_detail', $product_detail)
             ->with('product_recommend', $product_recommend)
             ->with('notification', $notification)
-            ->with('count', $count);
+            ->with('count', $count)
+            ->with('count_product', $count_product);
     }
 }

@@ -107,12 +107,44 @@
         </div>
         <hr />
         <div class="container-fluid">
-            
+
             @yield('content')
 
         </div>
-
-        <footer class="row"></footer>
+        <hr>
+        <footer class="row align-items-center">
+            <div class="col-md-5">
+                <div class="row">
+                    <p>Copyright <i class="far fa-copyright"></i> <a href="">HOME PET | Siêu thị thú cưng</a>. All Rights Reserved</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="row">
+                    <h6>THÔNG TIN LIÊN HỆ:</h6>
+                </div>
+                <div class="row">
+                    <span><i class="far fa-map"></i> Địa chỉ: Hưng Lợi, Ninh Kiều, Cần Thơ</span>
+                    <span><i class="fas fa-mobile-alt"></i> Số điện thoại: 0971580773</span>
+                    <span><i class="far fa-envelope"></i> Gmail: huongb1706705@student.ctu.edu.vn</span>
+                </div>
+            </div>
+            <div class="col-md-3 gr_icon">
+                <div class="row justify-content-end">
+                    <div class="col-3">
+                        <a href="https://www.facebook.com/vic.nguyen.3720" class="icon_footer"><i class="fab fa-facebook"></i></a>
+                    </div>
+                    <div class="col-3 ">
+                        <a href="https://www.messenger.com/" class="icon_footer"><i class="fab fa-facebook-messenger"></i></a>
+                    </div>
+                    <div class="col-3 ">
+                        <a href="https://www.google.com" class="icon_footer"><i class="fab fa-instagram"></i></a>
+                    </div>
+                    <div class="col-3 ">
+                        <a href="https://www.youtube.com" class="icon_footer"><i class="fab fa-youtube "></i></a>
+                    </div>
+                </div>
+            </div>
+        </footer>
     </div>
     <script src="{{asset('public/FrontEnd/js/check-log_res.js')}}"></script>
     <script src="{{asset('public/FrontEnd/bootstrap/jquery-3.5.1.min.js')}}"></script>

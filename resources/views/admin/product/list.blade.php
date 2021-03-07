@@ -30,12 +30,13 @@ if ($id_admin) {
                 <th scope="col">TÊN SP</th>
                 <th scope="col">MÔ TẢ</th>
                 <th scope="col">SL</th>
+                <th scope="col">ĐÃ BÁN</th>
                 <th scope="col">LOẠI SP</th>
                 <th scope="col">THƯƠNG HIỆU</th>
                 <th scope="col-1">HÌNH</th>
                 <th scope="col">GIÁ</th>
                 <th scope="col">KHUYẾN MÃI</th>
-                <th scope="col">NGÀY CẬP NHẬT</th>
+                <th scope="col">NGÀY CN</th>
                 <th scope="col">TÙY CHỌN</th>
             </tr>
         </thead>
@@ -46,6 +47,7 @@ if ($id_admin) {
                 <td>{{ $key -> TenHH  }}</td>
                 <td>{{ $key -> MoTaHH  }}</td>
                 <td>{{ $key -> SoLuongHang  }}</td>
+                <td>{{ $key -> DaBan  }}</td>
                 <td>{{ $key -> TenNhom  }}</td>
                 <td>{{ $key -> TenThuongHieu }}</td>
                 <td>
@@ -53,7 +55,7 @@ if ($id_admin) {
                 </td>
                 <td>{{ $key -> Gia }}</td>
                 <td>{{ $key -> KhuyenMai  }}</td>
-                <td>{{ $key -> NgayCapNhat  }}</td>
+                <td>{{ $key -> NgayCN  }}</td>
                 <td class="icon-tb" id="tb-list-personnel__icon">
                     <span>
                         <a href="{{ URL:: to('edit-product/'.$key -> MSHH)}}" class="tb-list__icon"><i class="fas fa-edit"></i></a>

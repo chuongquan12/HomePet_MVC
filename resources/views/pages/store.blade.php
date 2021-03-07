@@ -106,7 +106,7 @@ Session()->put('message', NULL);
                     @endforeach
                 </div>
                 <nav aria-label="Page navigation example">
-                    <ul class="pagination justify-content-end">
+                    <ul class="pagination justify-content-end   ">
                         {{ $all_product -> links() }}
                     </ul>
                 </nav>
@@ -115,5 +115,6 @@ Session()->put('message', NULL);
 
     </div>
 </div>
+
 
 @endsection

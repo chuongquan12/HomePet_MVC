@@ -23,6 +23,7 @@ if ($id_admin) {
                 <th scope="col">NGÀY ĐẶT HÀNG</th>
                 <th scope="col">TÊN NV</th>
                 <th scope="col">NGÀY XÁC NHẬN</th>
+                <th scope="col">TRẠNG THÁI</th>
                 <th scope="col">TỔNG ĐƠN HÀNG</th>
             </tr>
         </thead>
@@ -34,6 +35,7 @@ if ($id_admin) {
                 <td>{{ $key -> NgayDH  }}</td>
                 <td>{{ $key -> HoTenNV  }}</td>
                 <td>{{ $key -> NgayXN  }}</td>
+                <td>{{ $key -> TrangThai }}</td>
                 <td>{{ $key -> TongThanhToan  }}</td>
 
             </tr>

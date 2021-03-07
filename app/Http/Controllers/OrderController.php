@@ -27,15 +27,20 @@ class OrderController extends Controller
             return Redirect::to('store');
         } else {
 
+            $now = Carbon::now();
+            $day_notification = $now->subDays(5);
+
             $trademark = DB::table('tb_thuonghieu')->get();
             $type_1 =  DB::table('tb_thucung')->get();
             $type_2 = DB::table('tb_nhomhanghoa')->get();
-            $notification =  DB::table('tb_hanghoa')->where('SoLuongHang', '<', '10')->get();
-            $count =  DB::table('tb_hanghoa')->where('SoLuongHang', '<', '10')->count();
+            $notification =  DB::table('tb_dathang')->where('MSKH', $id_khachhang)->where('NgayXN', '>', $day_notification)->orderBy('SoDonDH', 'desc')->get();
+            $count =  DB::table('tb_dathang')->where('MSKH', $id_khachhang)->where('NgayXN', '>', $day_notification)->count();
+            $count_product =  DB::table('tb_giohang')->where('MSKH', $id_khachhang)->count();
             $all_order = DB::table('tb_dathang')->join('tb_khachhang', 'tb_dathang.MSKH', '=', 'tb_khachhang.MSKH')->where('tb_khachhang.MSKH', $id_khachhang)->get();
 
             $order_detail = array();
             $tong_GT = 0;
+            $idDH = '';
             if (isset($_GET['idDH'])) {
                 $idDH = $_GET['idDH'];
                 $order_detail = DB::table('tb_chitietdathang')->where('SoDonDH', $idDH)->join('tb_hanghoa', 'tb_chitietdathang.MSHH', '=', 'tb_hanghoa.MSHH')->get();
@@ -51,6 +56,8 @@ class OrderController extends Controller
                 ->with('type_2', $type_2)
                 ->with('notification', $notification)
                 ->with('count', $count)
+                ->with('count_product', $count_product)
+                ->with('idDH', $idDH)
                 ->with('tong_GT', $tong_GT)
                 ->with('all_order', $all_order)
                 ->with('order_detail', $order_detail);

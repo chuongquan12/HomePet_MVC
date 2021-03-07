@@ -20,9 +20,6 @@ class ListOrderController extends Controller
     public function index()
     {
         $id_nhanvien = Session()->get('id_nhanvien');
-        if (!$id_nhanvien) {
-            return Redirect::to('home');
-        }
 
         $all_order = DB::table('tb_dathang')->join('tb_khachhang', 'tb_dathang.MSKH', '=', 'tb_khachhang.MSKH')->join('tb_nhanvien', 'tb_dathang.MSNV', '=', 'tb_nhanvien.MSNV')->where('TrangThai', '<>', 'Chờ xác nhận')->get();
         $notification =  DB::table('tb_hanghoa')->where('SoLuongHang', '<', '10')->get();
@@ -48,44 +45,50 @@ class ListOrderController extends Controller
         $order_detail = array();
         $tong_GT = 0;
         $idDH = '';
-        if (isset($_GET['action'])) {
+        if (isset($_GET['action']) && isset($_GET['idDH'])) {
             $action = $_GET['action'];
             $idDH = $_GET['idDH'];
 
-            switch ($action) {
-                case "detail": {
-                        $order_detail = DB::table('tb_chitietdathang')->where('SoDonDH', $idDH)->join('tb_hanghoa', 'tb_chitietdathang.MSHH', '=', 'tb_hanghoa.MSHH')->get();
+            if ($action == "detail") {
+                $order_detail = DB::table('tb_chitietdathang')->where('SoDonDH', $idDH)->join('tb_hanghoa', 'tb_chitietdathang.MSHH', '=', 'tb_hanghoa.MSHH')->get();
 
-                        // Lấy tổng giá trị đơn hàng
-                        $temp = DB::table('tb_dathang')->where('SoDonDH', $idDH)->first();
-                        $tong_GT = $temp->TongThanhToan;
-                    }
-                case "accept": {
-                        $data = array();
+                // Lấy tổng giá trị đơn hàng
+                $temp = DB::table('tb_dathang')->where('SoDonDH', $idDH)->first();
+                $tong_GT = $temp->TongThanhToan;
+            } elseif ($action == "accept") {
+                $data = array();
+                $temp = array();
 
-                        $data['MSNV'] = $id_nhanvien;
-                        $data['TrangThai'] = "Đã xác nhận";
-                        $data['NgayXN'] = Carbon::now();
-                        DB::table('tb_dathang')->where('SoDonDH', $idDH)->update($data);
+                $data['MSNV'] = $id_nhanvien;
+                $data['TrangThai'] = "Đã xác nhận";
+                $data['NgayXN'] = Carbon::now();
+                DB::table('tb_dathang')->where('SoDonDH', $idDH)->update($data);
+                $product_order = DB::table('tb_chitietdathang')->where('SoDonDH', $idDH)->join('tb_hanghoa', 'tb_chitietdathang.MSHH', '=', 'tb_hanghoa.MSHH')->get();
 
-                        Session()->put('message', 'Xác nhận đơn hàng thành công');
+                foreach ($product_order as $key) :
+                    $temp['DaBan'] = $key->DaBan + $key->SoLuong;
+                    $temp['SoLuongHang'] = $key->SoLuongHang - $key->SoLuong;
 
-                        return Redirect::to('list-order-confirm');
-                    }
+                    DB::table('tb_hanghoa')->where('MSHH', $key->MSHH)->update($temp);
+                endforeach;
 
-                case "cancel": {
-                        $data = array();
+                Session()->put('message', 'Xác nhận đơn hàng thành công');
 
-                        $data['MSNV'] = $id_nhanvien;
-                        $data['TrangThai'] = "Hủy đơn";
-                        $data['NgayXN'] = Carbon::now();
+                return Redirect::to('list-order-confirm');
+            } elseif ($action == "cancel") {
+                $data = array();
 
-                        DB::table('tb_dathang')->where('SoDonDH', $idDH)->update($data);
+                $data['MSNV'] = $id_nhanvien;
+                $data['TrangThai'] = "Hủy đơn";
+                $data['NgayXN'] = Carbon::now();
 
-                        Session()->put('message', 'Xác nhận đơn hàng thành công');
+                DB::table('tb_dathang')->where('SoDonDH', $idDH)->update($data);
 
-                        return Redirect::to('list-order-confirm');
-                    }
+                Session()->put('message', 'Xác nhận đơn hàng thành công');
+
+                return Redirect::to('list-order-confirm');
+            } else {
+                return Redirect::to('home');
             }
         }
 

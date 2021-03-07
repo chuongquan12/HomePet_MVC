@@ -73,8 +73,11 @@ Session()->put('message', NULL);
                                 <input type="hidden" name="MSHH" value="{{ $product_detail -> MSHH }}">
                                 <button class="add-to-cart --btn" type="submit" name="add-to-cart">Thêm vào giỏ hàng</button>
                             <?php } else { ?>
-                                <a href="{{ URL :: to('product/add_to_cart?idhh='.$product_detail -> MSHH)}}" class="add-to-cart --btn">Thêm vào giỏ hàng</a>
-                            <?php } ?>
+                                <a href="{{ URL :: to('login')}}" class="add-to-cart --btn">Thêm vào giỏ hàng</a>
+                            <?php
+                                Session()->put('message', 'Mời bạn đăng nhập');
+                            }
+                            ?>
                         </div>
                     </div>
                 </div>

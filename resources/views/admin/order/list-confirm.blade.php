@@ -56,7 +56,7 @@ if ($id_admin) {
                     <div class="row order-detail__title">
                         <span>CHI TIẾT ĐƠN HÀNG: #{{ $idDH }}</span>
                     </div>
-                    <hr class="hr" />
+                    <hr />
                     <div class="row justify-content-center">
                         <div class="col-10 cart-detail__body">
                             @foreach($order_detail as $key_order_detail)
@@ -79,7 +79,7 @@ if ($id_admin) {
 
                         </div>
                     </div>
-                    <hr class="hr" />
+                    <hr />
 
                     <div class="row order-detail__price">
                         <div class="col">

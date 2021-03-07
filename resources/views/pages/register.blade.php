@@ -220,6 +220,5 @@ Session()->put('message', NULL);
         </div>
     </div>
 </div>
-<hr />
 
 @endsection

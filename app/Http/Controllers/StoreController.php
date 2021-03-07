@@ -14,6 +14,11 @@ class StoreController extends Controller
 {
     public function index()
     {
+        $id_khachhang = Session()->get('id_khachhang');
+
+        $now = Carbon::now();
+        $day_notification = $now->subDays(5);
+
         $trademark = DB::table('tb_thuonghieu')->get();
         $type_1 =  DB::table('tb_thucung')->get();
         $type_2 = DB::table('tb_nhomhanghoa')->get();
@@ -37,8 +42,10 @@ class StoreController extends Controller
             $all_product = DB::table('tb_hanghoa')->where('MaNhom', $nhom)->paginate(12);
         }
 
-        $notification =  DB::table('tb_hanghoa')->where('SoLuongHang', '<', '10')->get();
-        $count =  DB::table('tb_hanghoa')->where('SoLuongHang', '<', '10')->count();
+        $notification =  DB::table('tb_dathang')->where('MSKH', $id_khachhang)->where('NgayXN', '>', $day_notification)->orderBy('SoDonDH', 'desc')->get();
+        $count = DB::table('tb_dathang')->where('MSKH', $id_khachhang)->where('NgayXN', '>', $day_notification)->count();
+        $count_product =  DB::table('tb_giohang')->where('MSKH', $id_khachhang)->count();
+
 
 
 
@@ -51,6 +58,7 @@ class StoreController extends Controller
             ->with('product_sale', $product_sale)
             ->with('all_product', $all_product)
             ->with('notification', $notification)
-            ->with('count', $count);
+            ->with('count', $count)
+            ->with('count_product', $count_product);
     }
 }

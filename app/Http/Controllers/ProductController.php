@@ -19,7 +19,11 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $all_product = DB::table('tb_hanghoa')->join('tb_thuonghieu', 'tb_hanghoa.MaTH', '=', 'tb_thuonghieu.MaTH')->join('tb_nhomhanghoa', 'tb_hanghoa.MaNhom', '=', 'tb_nhomhanghoa.MaNhom')->get();
+        $all_product = DB::table('tb_hanghoa')
+            ->join('tb_thuonghieu', 'tb_hanghoa.MaTH', '=', 'tb_thuonghieu.MaTH')
+            ->join('tb_nhomhanghoa', 'tb_hanghoa.MaNhom', '=', 'tb_nhomhanghoa.MaNhom')
+            ->orderBy('MSHH', 'asc')
+            ->get();
         $notification =  DB::table('tb_hanghoa')->where('SoLuongHang', '<', '10')->get();
         $count =  DB::table('tb_hanghoa')->where('SoLuongHang', '<', '10')->count();
 

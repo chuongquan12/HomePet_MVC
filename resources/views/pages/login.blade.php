@@ -159,6 +159,5 @@ if ($id_khachhang) {
         </div>
     </div>
 </div>
-<hr />
 
 @endsection

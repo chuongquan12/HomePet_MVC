@@ -16,7 +16,7 @@ body {
 }
 /* Class chung */
 
-.col-3, .col-md-3 {
+.col-3,.col-8, .col-md-3 {
     padding-left: 0px !important; 
     padding-right: 0px !important; 
 }

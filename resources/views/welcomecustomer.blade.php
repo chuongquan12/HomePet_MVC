@@ -53,11 +53,11 @@
                     </div>
                     <div class="col-md-3 col-6 ">
                         <span class="header__list-title--btn --btn" id="notification">
-                            <i class="fas fa-bell"></i> THÔNG BÁO (1)
+                            THÔNG BÁO <i class="fas fa-bell"></i>({{ $count }})
                         </span>
                         <div class="notification-list" id="notification-list">
                             @foreach($notification as $key)
-                            <li>Sản phẩm {{ $key -> TenHH }} sắp hết hàng</li>
+                            <li>Đơn hàng <a href="{{ URL :: to('order?action=detail&idDH='.$key->SoDonDH)}}">#{{ $key -> SoDonDH }}</a> đã được xác nhận. <a href="{{ URL :: to('order?action=detail&idDH='.$key->SoDonDH)}}">Chi tiết</a></li>
                             @endforeach
                         </div>
                     </div>
@@ -129,10 +129,46 @@
 
         </div>
         <span class="icon-cart">
-            <a href="{{ URL :: to('cart')}}"><i class="fas fa-shopping-cart"></i></a>
+            <a href="{{ URL :: to('cart')}}"><i class="fas fa-shopping-cart"></i><span>({{ $count_product }})</span></a>
         </span>
-        <footer class="row"></footer>
+
+        <hr />
+        <footer class="row align-items-center">
+            <div class="col-md-5">
+                <div class="row">
+                    <p>Copyright <i class="far fa-copyright"></i> <a href="">HOME PET | Siêu thị thú cưng</a>. All Rights Reserved</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="row">
+                    <h6>THÔNG TIN LIÊN HỆ:</h6>
+                </div>
+                <div class="row">
+                    <span><i class="far fa-map"></i> Địa chỉ: Hưng Lợi, Ninh Kiều, Cần Thơ</span>
+                    <span><i class="fas fa-mobile-alt"></i> Số điện thoại: 0971580773</span>
+                    <span><i class="far fa-envelope"></i> Gmail: huongb1706705@student.ctu.edu.vn</span>
+                </div>
+            </div>
+            <div class="col-md-3 gr_icon">
+                <div class="row justify-content-end">
+                    <div class="col-3">
+                        <a href="https://www.facebook.com/vic.nguyen.3720" class="icon_footer"><i class="fab fa-facebook"></i></a>
+                    </div>
+                    <div class="col-3 ">
+                        <a href="https://www.messenger.com/" class="icon_footer"><i class="fab fa-facebook-messenger"></i></a>
+                    </div>
+                    <div class="col-3 ">
+                        <a href="https://www.google.com" class="icon_footer"><i class="fab fa-instagram"></i></a>
+                    </div>
+                    <div class="col-3 ">
+                        <a href="https://www.youtube.com" class="icon_footer"><i class="fab fa-youtube "></i></a>
+                    </div>
+                </div>
+            </div>
+        </footer>
     </div>
+
+
     <script src="{{asset('public/FrontEnd/js/check-log_res.js')}}"></script>
     <script src="{{asset('public/FrontEnd/bootstrap/jquery-3.5.1.min.js')}}"></script>
     <script src="{{asset('public/FrontEnd/js/script.js')}}"></script>

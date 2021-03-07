@@ -65,7 +65,7 @@ Session()->put('message', NULL);
                 <div class="row order-detail">
                     <div class="col">
                         <div class="row order-detail__title">
-                            <span>CHI TIẾT ĐƠN HÀNG: </span>
+                            <span>CHI TIẾT ĐƠN HÀNG: #{{ $idDH }}</span>
                         </div>
                         <hr class="hr" />
                         <div class="row justify-content-center">
@@ -97,7 +97,7 @@ Session()->put('message', NULL);
                                 <label>Tổng giá trị</label>
                             </div>
                             <div class="col">
-                                <input type="text" class="form-control" value="{{ $tong_GT }}" disabled />
+                                <input type="text" class="form-control" value="{{ number_format($tong_GT, 0, ',', '.') }} VNĐ" disabled />
                             </div>
                         </div>
                         <br />
@@ -107,5 +107,6 @@ Session()->put('message', NULL);
         </div>
     </div>
 </div>
+
 
 @endsection
