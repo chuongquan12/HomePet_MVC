@@ -8,6 +8,7 @@
     <link rel="stylesheet" type="text/css" href="{{asset('public/Admin/css/style.css')}}" />
     <link rel="stylesheet" type="text/css" href="{{asset('public/Admin/bootstrap/css/bootstrap.min.css')}}" />
     <script src="https://kit.fontawesome.com/194e38739f.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
 </head>
 
 <body>
@@ -65,11 +66,18 @@
             <div class="row">
                 <div class="col-md-2 mt-3">
                     <div class="admin-category__list">
+                        <ul id="revenue" class="row">
+                            <span>DOANH THU CỬA HÀNG</span>
+                            <li class="admin-category__item revenue"><a href="{{URL:: to ('revenue-day')}}">KIỂM KÊ DOANH THU</a></li>
+                            <li class="admin-category__item revenue"><a href="{{URL:: to ('chart-day')}}">THỐNG KÊ THEO NGÀY</a></li>
+                            <li class="admin-category__item revenue"><a href="{{URL:: to ('chart-month')}}">THỐNG KÊ THEO THÁNG</a></li>
+                        </ul>
+                    </div>
+                    <div class="admin-category__list">
                         <ul id="list-order" class="row">
                             <span>QL ĐƠN HÀNG</span>
                             <li class="admin-category__item order"><a href="{{URL:: to ('list-order?page=1')}}">DS ĐƠN HÀNG</a></li>
                             <li class="admin-category__item order"><a href="{{URL:: to ('list-order-confirm?page=1')}}">XÁC NHẬN ĐƠN</a></li>
-                            <li class="admin-category__item order"><a href="#">THỐNG KÊ ĐƠN HÀNG</a></li>
                         </ul>
                     </div>
                     <div class="admin-category__list">

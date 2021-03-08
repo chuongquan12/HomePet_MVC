@@ -1,4 +1,13 @@
 $(document).ready(function(){
+    // // -----DANH SÁCH THƯƠNG HIỆU----- 
+
+    // // Click vào danh sách thương hiệu 
+
+    $("#revenue").click(function(){
+        $(".revenue").fadeToggle(500);
+
+    });
+   
 
     // // -----DANH SÁCH ĐƠN HÀNG----- 
 
@@ -68,6 +77,37 @@ $(document).ready(function(){
         $("#notification-list").fadeToggle(500);
     });
 
+    // Biểu đồ ngày
 
+    var order = $('#myChart').data('order');
+    var listOfValue = [];
+    var listOfDay = [];
+    order.forEach(function(element){
+        listOfDay.push(element.Ngay);
+        listOfValue.push(element.TongDoanhSo);
+    });
+    console.log(listOfDay);
+    console.log(listOfValue);
+    listOfDay.forEach(function(element){
+        console.log(element);
+    });
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var chart = new Chart(ctx, {
+        // The type of chart we want to create
+        type: 'line',
 
+        // The data for our dataset
+        data: {
+            labels: listOfDay,
+            datasets: [{
+                label: 'Doanh thu',
+                backgroundColor: '#8EE5EE',
+                borderColor: '#7AC5CD',
+                data: listOfValue
+            }]
+        },
+
+        // Configuration options go here
+        options: {}
+    });
   });

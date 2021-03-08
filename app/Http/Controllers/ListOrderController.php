@@ -114,6 +114,18 @@ class ListOrderController extends Controller
             ->with('count', $count);
     }
 
+    public function chart()
+    {
+
+        $day = DB::table('tb_dathang')->get();
+        $notification =  DB::table('tb_hanghoa')->where('SoLuongHang', '<', '10')->get();
+        $count =  DB::table('tb_hanghoa')->where('SoLuongHang', '<', '10')->count();
+
+        return view('admin.order.chart')
+            ->with('notification', $notification)
+            ->with('count', $count);
+    }
+
     /**
      * Show the form for creating a new resource.
      *

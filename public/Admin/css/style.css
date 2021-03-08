@@ -146,7 +146,36 @@ ul {
     text-decoration: none;
     color: var(--color-2);
 }
+/* Revenue */
 
+.list-revenue {
+    padding: 1rem;
+    background-color: var(--color-2);
+    color: var(--color-3);
+}
+
+.list-revenue__sum > b{
+    margin: .5rem;
+    padding: .2rem .8rem;
+    font-size: 1.1rem;
+    border: 1px solid var(--color-3);
+    border-radius: 10px;
+}
+
+.list-revenue__btn > a {
+    margin-right: 3rem;
+    color: var(--color-3);
+    padding: .4rem .8rem;
+    border: 1px solid var(--color-3);
+    border-radius: 10px;
+}
+
+.list-revenue__btn:hover > a {
+    background-color: var(--color-3);
+    color: var(--color-2);
+    text-decoration: none;
+    transition: all 1000ms;
+}
 
 
 /* List Order */

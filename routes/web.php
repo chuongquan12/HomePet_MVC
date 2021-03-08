@@ -65,11 +65,23 @@ Route::get('/logout_admin', 'LogResController@logout_admin');
 
 Route::get('/admin', 'AdminController@index_admin');
 
+// ---------Revenue 
+
+Route::get('revenue-day', 'RevenueController@index');
+
+Route::get('revenue-acpect', 'RevenueController@acpect');
+
+Route::get('chart-day', 'RevenueController@chart_day');
+
+Route::get('chart-month', 'RevenueController@chart_month');
+
+
 // ---------Order  
 
 Route::get('list-order', 'ListOrderController@index');
 
 Route::get('list-order-confirm', 'ListOrderController@confirm');
+
 
 
 
