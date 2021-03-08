@@ -37,6 +37,8 @@ Route::get('/product/{idHH}', 'ProductDetailController@index');
 // STORE 
 Route::get('/store', 'StoreController@index');
 
+Route::post('/filter', 'StoreController@filter');
+
 // USER
 Route::get('/user', 'UserController@index');
 

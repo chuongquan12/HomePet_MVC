@@ -30,31 +30,74 @@ Session()->put('message', NULL);
     <div class="container-fluid mt-3">
         <div class="row">
             <div class="col-md-3 col-12 ">
+                <div class="row directory__title"><a href="{{URL:: to ('store')}}"><i class="fas fa-bars"></i> DANH MỤC SẢN PHẨM</a></div>
                 <div class="directory">
-                    <div class="row directory__title"><a href="{{URL:: to ('store')}}"><i class="fas fa-bars"></i> DANH MỤC SẢN PHẨM</a></div>
-                    <div class="directory__list">
-                        <ul id="trademark" class="row">
-                            <span>THƯƠNG HIỆU</span>
-                            @foreach($trademark as $key_trademark)
-                            @if($key_trademark->TenThuongHieu != 'No brand')
-                            <li class="directory__item"><a href="{{URL:: to ('store?th='.$key_trademark -> MaTH )}}">{{ $key_trademark ->TenThuongHieu }}</a></li>
-                            @endif
-                            @endforeach
-                        </ul>
-                    </div>
-                    @foreach($type_1 as $key_type_1)
-                    <div class="directory__list">
-                        <ul class="row">
-                            <span>{{ $key_type_1 -> TenThuCung }}</span>
-                            @foreach($type_2 as $key_type_2)
-                            @if( $key_type_1 -> MaTC == $key_type_2 -> MaTC )
-                            <li class="directory__item"><a href="{{URL:: to ('store?nhom='.$key_type_2 -> MaNhom )}}">{{ $key_type_2 -> TenNhom }}</a></li>
-                            @endif
-                            @endforeach
-                        </ul>
-                    </div>
-                    @endforeach
+                    <form action="{{URL :: to ('filter')}}" method="POST">
+                        {{ csrf_field() }}
 
+                        <div class=" directory__list">
+                            <ul class="col">
+                                <div class="row justify-content-end"><button type="submit" name="filter" class="icon-filter"><i class="fas fa-filter"></i></button></div>
+                                <span>Giá</span>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="price" id="price_1" value="1">
+                                    <label class="form-check-label" for="price_1">
+                                        0-100.000
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="price" id="price_2" value="2">
+                                    <label class="form-check-label" for="price_2">
+                                        100.000-200.000
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="price" id="price_3" value="5">
+                                    <label class="form-check-label" for="price_3">
+                                        200.000-500.000
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="price" id="price_4" value="10">
+                                    <label class="form-check-label" for="price_4">
+                                        Trên 500.000
+                                    </label>
+                                </div>
+                            </ul>
+                        </div>
+                        <div class="directory__list">
+                            <ul class="col">
+                                <span>THƯƠNG HIỆU</span>
+                                @foreach($trademark as $key_trademark)
+                                @if($key_trademark->TenThuongHieu != 'No brand')
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="trademark" id="trademark_{{ $key_trademark -> MaTH }}" value="{{ $key_trademark -> MaTH }}">
+                                    <label class="form-check-label" for="trademark_{{ $key_trademark -> MaTH }}">
+                                        {{ $key_trademark -> TenThuongHieu }}
+                                    </label>
+                                </div>
+                                @endif
+                                @endforeach
+                            </ul>
+                        </div>
+                        @foreach($type_1 as $key_type_1)
+                        <div class="directory__list">
+                            <ul class="col">
+                                <span>{{ $key_type_1 -> TenThuCung }}</span>
+                                @foreach($type_2 as $key_type_2)
+                                @if( $key_type_1 -> MaTC == $key_type_2 -> MaTC )
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="type_2" id="type_2_{{ $key_type_2 -> MaNhom }}" value="{{ $key_type_2 -> MaNhom }}">
+                                    <label class="form-check-label" for="type_2_{{ $key_type_2 -> MaNhom }}">
+                                        {{ $key_type_2 -> TenNhom }}
+                                    </label>
+                                </div>
+                                @endif
+                                @endforeach
+                            </ul>
+                        </div>
+                        @endforeach
+                    </form>
                 </div>
 
             </div>
