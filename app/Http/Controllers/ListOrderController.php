@@ -31,7 +31,7 @@ class ListOrderController extends Controller
             $order_detail = DB::table('tb_dathang')->where('SoDonDH', $idDH)->join('tb_khachhang', 'tb_dathang.MSKH', '=', 'tb_khachhang.MSKH')->first();
         }
 
-        $all_order = DB::table('tb_dathang')->join('tb_khachhang', 'tb_dathang.MSKH', '=', 'tb_khachhang.MSKH')->join('tb_nhanvien', 'tb_dathang.MSNV', '=', 'tb_nhanvien.MSNV')->where('TrangThai', '<>', 'Chờ xác nhận')->get();
+        $all_order = DB::table('tb_dathang')->join('tb_khachhang', 'tb_dathang.MSKH', '=', 'tb_khachhang.MSKH')->join('tb_nhanvien', 'tb_dathang.MSNV', '=', 'tb_nhanvien.MSNV')->where('TrangThai', '<>', 'Chờ xác nhận')->paginate(5);
         $notification =  DB::table('tb_hanghoa')->where('SoLuongHang', '<', '10')->get();
         $count =  DB::table('tb_hanghoa')->where('SoLuongHang', '<', '10')->count();
 
@@ -46,14 +46,13 @@ class ListOrderController extends Controller
     public function confirm()
     {
         $id_nhanvien = Session()->get('id_nhanvien');
-        if (!$id_nhanvien) {
-            return Redirect::to('home');
-        }
 
-        $all_order = DB::table('tb_dathang')->join('tb_khachhang', 'tb_dathang.MSKH', '=', 'tb_khachhang.MSKH')->where('TrangThai', 'Chờ xác nhận')->get();
+
+        $all_order = DB::table('tb_dathang')->join('tb_khachhang', 'tb_dathang.MSKH', '=', 'tb_khachhang.MSKH')->where('TrangThai', 'Chờ xác nhận')->paginate(5);
         $notification =  DB::table('tb_hanghoa')->where('SoLuongHang', '<', '10')->get();
         $count =  DB::table('tb_hanghoa')->where('SoLuongHang', '<', '10')->count();
 
+        $list_product = array();
         $order_detail = array();
         $tong_GT = 0;
         $idDH = '';
@@ -62,7 +61,8 @@ class ListOrderController extends Controller
             $idDH = $_GET['idDH'];
 
             if ($action == "detail") {
-                $order_detail = DB::table('tb_chitietdathang')->where('SoDonDH', $idDH)->join('tb_hanghoa', 'tb_chitietdathang.MSHH', '=', 'tb_hanghoa.MSHH')->get();
+                $list_product = DB::table('tb_chitietdathang')->where('SoDonDH', $idDH)->join('tb_hanghoa', 'tb_chitietdathang.MSHH', '=', 'tb_hanghoa.MSHH')->get();
+                $order_detail = DB::table('tb_dathang')->where('SoDonDH', $idDH)->join('tb_khachhang', 'tb_dathang.MSKH', '=', 'tb_khachhang.MSKH')->first();
 
                 // Lấy tổng giá trị đơn hàng
                 $temp = DB::table('tb_dathang')->where('SoDonDH', $idDH)->first();
@@ -108,6 +108,7 @@ class ListOrderController extends Controller
             ->with('all_order', $all_order)
             ->with('tong_GT', $tong_GT)
             ->with('idDH', $idDH)
+            ->with('list_product', $list_product)
             ->with('order_detail', $order_detail)
             ->with('notification', $notification)
             ->with('count', $count);

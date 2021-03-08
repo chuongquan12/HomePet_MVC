@@ -19,7 +19,7 @@ class TrademarkController extends Controller
      */
     public function index()
     {
-        $all_trademark = DB::table('tb_thuonghieu')->get();
+        $all_trademark = DB::table('tb_thuonghieu')->paginate(5);
         $notification =  DB::table('tb_hanghoa')->where('SoLuongHang', '<', '10')->get();
         $count =  DB::table('tb_hanghoa')->where('SoLuongHang', '<', '10')->count();
 

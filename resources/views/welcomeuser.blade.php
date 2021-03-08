@@ -77,7 +77,9 @@
                                 <a href="" data-toggle="dropdown"> THƯƠNG HIỆU </a>
                                 <div class="dropdown-content dropdown-menu">
                                     @foreach($trademark as $key)
+                                    @if($key->TenThuongHieu != 'No brand')
                                     <a class="dropdown-item" href="{{URL:: to ('store?th='.$key -> MaTH )}}">{{ $key -> TenThuongHieu }}</a>
+                                    @endif
                                     @endforeach
                                 </div>
                             </div>

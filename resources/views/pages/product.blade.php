@@ -75,7 +75,7 @@ Session()->put('message', NULL);
                             <?php } else { ?>
                                 <a href="{{ URL :: to('login')}}" class="add-to-cart --btn">Thêm vào giỏ hàng</a>
                             <?php
-                                Session()->put('message', 'Mời bạn đăng nhập');
+                                Session()->put('message', 'Mời bạn đăng nhập để bắt đầu mua hàng');
                             }
                             ?>
                         </div>

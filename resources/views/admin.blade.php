@@ -67,49 +67,50 @@
                     <div class="admin-category__list">
                         <ul id="list-order" class="row">
                             <span>QL ĐƠN HÀNG</span>
-                            <li class="admin-category__item order"><a href="{{URL:: to ('list-order')}}">DS ĐƠN HÀNG</a></li>
-                            <li class="admin-category__item order"><a href="{{URL:: to ('form-order')}}">THỐNG KÊ ĐƠN HÀNG</a></li>
+                            <li class="admin-category__item order"><a href="{{URL:: to ('list-order?page=1')}}">DS ĐƠN HÀNG</a></li>
+                            <li class="admin-category__item order"><a href="{{URL:: to ('list-order-confirm?page=1')}}">XÁC NHẬN ĐƠN</a></li>
+                            <li class="admin-category__item order"><a href="#">THỐNG KÊ ĐƠN HÀNG</a></li>
                         </ul>
                     </div>
                     <div class="admin-category__list">
                         <ul id="list-personnel" class="row">
                             <span>QL NHÂN VIÊN</span>
-                            <li class="admin-category__item personnel"><a href="{{URL:: to ('list-personnel')}}">DS NHÂN VIÊN</a></li>
+                            <li class="admin-category__item personnel"><a href="{{URL:: to ('list-personnel?page=1')}}">DS NHÂN VIÊN</a></li>
                             <li class="admin-category__item personnel"><a href="{{URL:: to ('add-personnel')}}">THÊM NHÂN VIÊN</a></li>
                         </ul>
                     </div>
                     <div class="admin-category__list">
                         <ul id="list-product-type-1" class="row">
                             <span>QL VẬT NUÔI</span>
-                            <li class="admin-category__item product-type-1"><a href="{{URL:: to ('list-type-1')}}">DS VẬT NUÔI</a></li>
+                            <li class="admin-category__item product-type-1"><a href="{{URL:: to ('list-type-1?page=1')}}">DS VẬT NUÔI</a></li>
                             <li class="admin-category__item product-type-1"><a href="{{URL:: to ('add-type-1')}}">THÊM VẬT NUÔI</a></li>
                         </ul>
                     </div>
                     <div class="admin-category__list">
                         <ul id="list-product-type-2" class="row">
                             <span>QL LOẠI SẢN PHẨM</span>
-                            <li class="admin-category__item product-type-2"><a href="{{URL:: to ('list-type-2')}}">DS LOẠI SP</a></li>
+                            <li class="admin-category__item product-type-2"><a href="{{URL:: to ('list-type-2?page=1')}}">DS LOẠI SP</a></li>
                             <li class="admin-category__item product-type-2"><a href="{{URL:: to ('add-type-2')}}">THÊM LOẠI SP</a></li>
                         </ul>
                     </div>
                     <div class="admin-category__list">
                         <ul id="list-trademark" class="row">
                             <span>QL THƯƠNG HIÊU</span>
-                            <li class="admin-category__item trademark"><a href="{{URL:: to ('list-trademark')}}">DS THƯƠNG HIỆU</a></li>
+                            <li class="admin-category__item trademark"><a href="{{URL:: to ('list-trademark?page=1')}}">DS THƯƠNG HIỆU</a></li>
                             <li class="admin-category__item trademark"><a href="{{URL:: to ('add-trademark')}}">THÊM THƯƠNG HIỆU</a></li>
                         </ul>
                     </div>
                     <div class="admin-category__list">
                         <ul id="list-product" class="row">
                             <span>QL SẢN PHẨM</span>
-                            <li class="admin-category__item product"><a href="{{URL:: to ('list-product')}}">DS SẢN PHẨM</a></li>
+                            <li class="admin-category__item product"><a href="{{URL:: to ('list-product?page=1')}}">DS SẢN PHẨM</a></li>
                             <li class="admin-category__item product"><a href="{{URL:: to ('add-product')}}">THÊM SẢN PHẨM</a></li>
                         </ul>
                     </div>
                     <div class="admin-category__list">
                         <ul id="list-image" class="row">
                             <span>QL HÌNH ẢNH</span>
-                            <li class="admin-category__item image"><a href="{{URL:: to ('list-slide')}}">DS HÌNH SLIDESHOW</a></li>
+                            <li class="admin-category__item image"><a href="{{URL:: to ('list-slide?page=1')}}">DS HÌNH SLIDESHOW</a></li>
                             <li class="admin-category__item image"><a href="{{URL:: to ('upload-slide')}}">UPLOAD HÌNH SLIDESHOW</a></li>
                         </ul>
                     </div>

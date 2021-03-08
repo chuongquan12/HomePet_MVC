@@ -36,7 +36,9 @@ Session()->put('message', NULL);
                         <ul id="trademark" class="row">
                             <span>THƯƠNG HIỆU</span>
                             @foreach($trademark as $key_trademark)
+                            @if($key_trademark->TenThuongHieu != 'No brand')
                             <li class="directory__item"><a href="{{URL:: to ('store?th='.$key_trademark -> MaTH )}}">{{ $key_trademark ->TenThuongHieu }}</a></li>
+                            @endif
                             @endforeach
                         </ul>
                     </div>

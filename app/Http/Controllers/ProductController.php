@@ -23,7 +23,7 @@ class ProductController extends Controller
             ->join('tb_thuonghieu', 'tb_hanghoa.MaTH', '=', 'tb_thuonghieu.MaTH')
             ->join('tb_nhomhanghoa', 'tb_hanghoa.MaNhom', '=', 'tb_nhomhanghoa.MaNhom')
             ->orderBy('MSHH', 'asc')
-            ->get();
+            ->paginate(5);
         $notification =  DB::table('tb_hanghoa')->where('SoLuongHang', '<', '10')->get();
         $count =  DB::table('tb_hanghoa')->where('SoLuongHang', '<', '10')->count();
 

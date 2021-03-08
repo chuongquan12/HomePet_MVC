@@ -65,6 +65,12 @@ body {
     width: 40px;
 }
 
+/* Pagination */
+
+.page-link {
+    padding: .2rem .6rem !important;
+}
+
 /* ---------Header---------- */
 /* ---------HeaderLogo---------- */
 /* __Logo */
@@ -177,6 +183,13 @@ ul {
 .table-list-product-title {
     font-weight: bold;
     padding: 0rem 1rem;
+}
+
+
+.table-list-order {
+    background-color: var(--color-1);
+    height: 5rem !important;
+    overflow: auto;
 }
 
 .table-list-product {
@@ -327,6 +340,7 @@ ul {
 
 .order-detail__price > div > input {
     border-radius: 15px;
+    font-size: .9rem;
     color: var(--color-2);
     text-align: center;
     background-color: var(--color-3) !important;

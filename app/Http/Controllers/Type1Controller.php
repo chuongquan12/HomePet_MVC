@@ -19,7 +19,7 @@ class Type1Controller extends Controller
      */
     public function index()
     {
-        $all_type_1 = DB::table('tb_thucung')->get();
+        $all_type_1 = DB::table('tb_thucung')->paginate(5);
         $notification =  DB::table('tb_hanghoa')->where('SoLuongHang', '<', '10')->get();
         $count =  DB::table('tb_hanghoa')->where('SoLuongHang', '<', '10')->count();
 

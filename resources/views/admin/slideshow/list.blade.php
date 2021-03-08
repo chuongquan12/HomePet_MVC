@@ -1,6 +1,8 @@
 <?php
 $id_nhanvien = Session()->get('id_nhanvien');
 $id_admin = Session()->get('id_admin');
+$extends = 'admin';
+
 
 if ($id_nhanvien) {
     $extends = 'personnel';
@@ -14,7 +16,11 @@ if ($id_admin) {
 @section('content')
 
 
-
+<nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-end   ">
+        {{ $all_image -> links() }}
+    </ul>
+</nav>
 <div class="row">
     <?php
     $message = Session()->get('message');

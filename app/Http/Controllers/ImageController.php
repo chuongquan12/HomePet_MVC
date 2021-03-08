@@ -19,7 +19,7 @@ class ImageController extends Controller
      */
     public function index()
     {
-        $all_image = DB::table('tb_hinh')->get();
+        $all_image = DB::table('tb_hinh')->paginate(5);
         $notification =  DB::table('tb_hanghoa')->where('SoLuongHang', '<', '10')->get();
         $count =  DB::table('tb_hanghoa')->where('SoLuongHang', '<', '10')->count();
 

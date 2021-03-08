@@ -11,6 +11,11 @@
     }
     Session()->put('message', NULL);
     ?>
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-end   ">
+            {{ $all_trademark -> links() }}
+        </ul>
+    </nav>
     <table class="table">
         <thead>
             <tr>

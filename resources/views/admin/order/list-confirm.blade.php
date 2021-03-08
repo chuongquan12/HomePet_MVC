@@ -1,13 +1,14 @@
 <?php
 $id_nhanvien = Session()->get('id_nhanvien');
 $id_admin = Session()->get('id_admin');
-
+$extends = 'admin';
 if ($id_nhanvien) {
     $extends = 'personnel';
 }
 if ($id_admin) {
     $extends = 'admin';
-} ?>
+}
+?>
 
 
 @extends($extends)
@@ -16,7 +17,12 @@ if ($id_admin) {
 
 <div class="col" id="tb-list-order">
     <div class="row">
-        <div class="col-8">
+        <div class="col">
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-end   ">
+                    {{ $all_order -> links() }}
+                </ul>
+            </nav>
             <table class="table">
                 <thead>
                     <tr>
@@ -41,7 +47,7 @@ if ($id_admin) {
                             <span class="icon"><a href="{{ URL :: to('list-order-confirm?action=accept&idDH='.$key ->SoDonDH)}}">Xác nhận</a></span>
                             <span class="icon"><a href="{{ URL :: to('list-order-confirm?action=cancel&idDH='.$key ->SoDonDH)}}">Hủy</a></span>
                         </td>
-                        <td class=" icon-minus"><a href="{{ URL :: to('list-order-confirm?action=detail&idDH='.$key ->SoDonDH)}}"><i class="fas fa-minus-circle"></i></a>
+                        <td class=" icon-minus"><a href="{{ url()->full().'&action=detail&idDH='.$key ->SoDonDH}}"><i class="fas fa-minus-circle"></i></a>
                         </td>
 
 
@@ -50,49 +56,50 @@ if ($id_admin) {
                 </tbody>
             </table>
         </div>
-        <div class="col-4">
-            <div class="row order-detail">
-                <div class="col">
-                    <div class="row order-detail__title">
-                        <span>CHI TIẾT ĐƠN HÀNG: #{{ $idDH }}</span>
+    </div>
+    <div class="row">
+        @if(isset($_GET['idDH']) && isset($_GET['action']))
+        <div class="col">
+            <div class="list-order-detail">
+                <div class="row">
+                    <div class="col-4">
+                        <h5>Chi tiết đơn hàng: #{{ $idDH }}</h5>
+                        <ul>
+                            <li>Họ tên khách hàng: <b>{{ $order_detail -> HoTenKH }}</b></li>
+                            <li>Địa chỉ: <b>{{ $order_detail -> DiaChi }}</b></li>
+                            <li>Số điện thoại: <b>{{ $order_detail -> SoDienThoai   }} </b></li>
+                            <li>Phí ship (COD): <b>30.000 VNĐ </b></li>
+                        </ul>
                     </div>
-                    <hr />
-                    <div class="row justify-content-center">
-                        <div class="col-10 cart-detail__body">
-                            @foreach($order_detail as $key_order_detail)
-                            <div class="row cart-detail__body--item align-items-center">
-                                <div class="col-4 cart-detail__body--item--img">
-                                    <img src="{{ asset('ImageUpload/Product/'.$key_order_detail -> Hinh)}}" class="img-fluid" alt="Responsive image" alt="sản phẩm" />
-                                </div>
-                                <div class="col-6 cart-detail__body--item--title">
-                                    <div class="row">
-                                        <a href="{{ URL :: to('product/'.$key_order_detail -> MSHH)}}">{{ $key_order_detail -> TenHH }}</a>
-                                    </div>
-                                </div>
-                                <div class="col-1 cart-detail__body--item--amount">
-                                    <div class="row">
-                                        <span>x{{ $key_order_detail -> SoLuong }}</span>
-                                    </div>
-                                </div>
+                    <div class="col-8">
+                        <h6>Danh sách sản phẩm: </h6>
+                        <div class="row table-list-product-title">
+                            <div class="col-2">Mã SP</div>
+                            <div class="col-6">Tên sản phẩm</div>
+                            <div class="col-2">Giá bán</div>
+                            <div class="col-2">SL</div>
+                        </div>
+                        <div class="table-list-product">
+                            @foreach($list_product as $product)
+                            <div class="row ">
+                                <div class="col-2">{{ $product -> MSHH  }}</div>
+                                <div class="col-6 address_confirm">{{ $product -> TenHH  }}</div>
+                                <div class="col-2">{{ number_format($product -> GiaDatHang, 0, ',', '.')}} VNĐ</div>
+                                <div class="col-2">x{{ $product -> SoLuong  }}</div>
                             </div>
                             @endforeach
-
                         </div>
                     </div>
-                    <hr />
-
-                    <div class="row order-detail__price">
-                        <div class="col">
-                            <label>Tổng giá trị</label>
-                        </div>
-                        <div class="col">
-                            <input type="text" class="form-control" value="{{number_format($tong_GT, 0, ',', '.') }} VNĐ" disabled />
-                        </div>
+                </div>
+                <hr>
+                <div class="row justify-content-end">
+                    <div class="col-4">
+                        <h6>Tổng thanh toán: {{number_format($order_detail -> TongThanhToan, 0, ',', '.') }} VNĐ</h6>
                     </div>
-                    <br />
                 </div>
             </div>
         </div>
+        @endif
     </div>
 
 </div>

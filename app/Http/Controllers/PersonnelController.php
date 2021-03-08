@@ -18,7 +18,7 @@ class PersonnelController extends Controller
      */
     public function index()
     {
-        $all_personnel = DB::table('tb_nhanvien')->get();
+        $all_personnel = DB::table('tb_nhanvien')->paginate(5);
         $notification =  DB::table('tb_hanghoa')->where('SoLuongHang', '<', '10')->get();
         $count =  DB::table('tb_hanghoa')->where('SoLuongHang', '<', '10')->count();
 

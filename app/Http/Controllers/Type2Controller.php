@@ -19,7 +19,7 @@ class Type2Controller extends Controller
      */
     public function index()
     {
-        $all_type_2 = DB::table('tb_nhomhanghoa')->join('tb_thucung', 'tb_nhomhanghoa.MaTC', '=', 'tb_thucung.MaTC')->get();
+        $all_type_2 = DB::table('tb_nhomhanghoa')->join('tb_thucung', 'tb_nhomhanghoa.MaTC', '=', 'tb_thucung.MaTC')->paginate(5);
         $notification =  DB::table('tb_hanghoa')->where('SoLuongHang', '<', '10')->get();
         $count =  DB::table('tb_hanghoa')->where('SoLuongHang', '<', '10')->count();
 

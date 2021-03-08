@@ -67,21 +67,21 @@
                     <div class="admin-category__list">
                         <ul id="list-order" class="row">
                             <span>QL ĐƠN HÀNG</span>
-                            <li class="admin-category__item order"><a href="{{URL:: to ('list-order-confirm')}}">XÁC NHẬN ĐƠN</a></li>
-                            <li class="admin-category__item order"><a href="{{URL:: to ('list-order')}}">DS ĐƠN HÀNG</a></li>
+                            <li class="admin-category__item order"><a href="{{URL:: to ('list-order-confirm?page=1')}}">XÁC NHẬN ĐƠN</a></li>
+                            <li class="admin-category__item order"><a href="{{URL:: to ('list-order?page=1')}}">DS ĐƠN HÀNG</a></li>
                         </ul>
                     </div>
                     <div class="admin-category__list">
                         <ul id="list-product" class="row">
                             <span>QL SẢN PHẨM</span>
-                            <li class="admin-category__item product"><a href="{{URL:: to ('list-product')}}">DS SẢN PHẨM</a></li>
+                            <li class="admin-category__item product"><a href="{{URL:: to ('list-product?page=1')}}">DS SẢN PHẨM</a></li>
                             <li class="admin-category__item product"><a href="{{URL:: to ('add-product')}}">THÊM SẢN PHẨM</a></li>
                         </ul>
                     </div>
                     <div class="admin-category__list">
                         <ul id="list-image" class="row">
                             <span>QL HÌNH ẢNH</span>
-                            <li class="admin-category__item image"><a href="{{URL:: to ('list-slide')}}">DS HÌNH SLIDESHOW</a></li>
+                            <li class="admin-category__item image"><a href="{{URL:: to ('list-slide?page=1')}}">DS HÌNH SLIDESHOW</a></li>
                             <li class="admin-category__item image"><a href="{{URL:: to ('upload-slide')}}">UPLOAD HÌNH SLIDESHOW</a></li>
                         </ul>
                     </div>

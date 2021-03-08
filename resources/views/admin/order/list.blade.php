@@ -1,6 +1,7 @@
 <?php
 $id_nhanvien = Session()->get('id_nhanvien');
 $id_admin = Session()->get('id_admin');
+$extends = 'admin';
 
 if ($id_nhanvien) {
     $extends = 'personnel';
@@ -16,7 +17,12 @@ if ($id_admin) {
 
 <div class="col" id="tb-list-order">
     <div class="row">
-        <div class="col-7">
+        <div class="col">
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-end   ">
+                    {{ $all_order -> links() }}
+                </ul>
+            </nav>
             <table class="table">
                 <thead>
                     <tr>
@@ -36,28 +42,30 @@ if ($id_admin) {
                         <td>{{ $key -> HoTenNV  }}</td>
                         <td>{{ $key -> NgayXN  }}</td>
                         <td>{{ $key -> TrangThai }}</td>
-                        <td class="icon-minus"><a href="{{ URL :: to('list-order?idDH='.$key ->SoDonDH)}}"><i class="fas fa-minus-circle"></i></a></td>
+                        <td class="icon-minus"><a href="{{ url()->full().'&idDH='.$key -> SoDonDH}}"><i class="fas fa-minus-circle"></i></a></td>
                     </tr>
                     @endforeach
                 </tbody>
             </table>
+
         </div>
+
+    </div>
+    <div class="row">
         @if(isset($_GET['idDH']))
-        <div class="col-5">
+        <div class="col">
             <div class="list-order-detail">
                 <div class="row">
-                    <div class="col">
+                    <div class="col-4">
                         <h5>Chi tiết đơn hàng: #{{ $order_detail -> SoDonDH }}</h5>
                         <ul>
                             <li>Họ tên khách hàng: <b>{{ $order_detail -> HoTenKH }}</b></li>
                             <li>Địa chỉ: <b>{{ $order_detail -> DiaChi }}</b></li>
                             <li>Số điện thoại: <b>{{ $order_detail -> SoDienThoai   }} </b></li>
+                            <li>Phí ship (COD): <b>30.000 VNĐ </b></li>
                         </ul>
                     </div>
-                </div>
-                <hr>
-                <div class="row">
-                    <div class="col">
+                    <div class="col-8">
                         <h6>Danh sách sản phẩm: </h6>
                         <div class="row table-list-product-title">
                             <div class="col-2">Mã SP</div>
@@ -70,7 +78,7 @@ if ($id_admin) {
                             <div class="row ">
                                 <div class="col-2">{{ $product -> MSHH  }}</div>
                                 <div class="col-6 address_confirm">{{ $product -> TenHH  }}</div>
-                                <div class="col-2">{{ number_format($product -> GiaDatHang, 0, ',', '.')}}</div>
+                                <div class="col-2">{{ number_format($product -> GiaDatHang, 0, ',', '.')}} VNĐ</div>
                                 <div class="col-2">x{{ $product -> SoLuong  }}</div>
                             </div>
                             @endforeach
@@ -78,8 +86,8 @@ if ($id_admin) {
                     </div>
                 </div>
                 <hr>
-                <div class="row">
-                    <div class="col">
+                <div class="row justify-content-end">
+                    <div class="col-4">
                         <h6>Tổng thanh toán: {{number_format($order_detail -> TongThanhToan, 0, ',', '.') }} VNĐ</h6>
                     </div>
                 </div>
