@@ -86,11 +86,7 @@ $(document).ready(function(){
         listOfDay.push(element.Ngay);
         listOfValue.push(element.TongDoanhSo);
     });
-    console.log(listOfDay);
-    console.log(listOfValue);
-    listOfDay.forEach(function(element){
-        console.log(element);
-    });
+
     var ctx = document.getElementById('myChart').getContext('2d');
     var chart = new Chart(ctx, {
         // The type of chart we want to create
