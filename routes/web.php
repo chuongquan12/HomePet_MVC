@@ -25,6 +25,8 @@ Route::get('/cart', 'CartController@index');
 
 Route::post('/add-cart', 'CartController@add_cart');
 
+Route::post('/add-address', 'CartController@add_address');
+
 // ORDER
 Route::get('/order', 'OrderController@index');
 

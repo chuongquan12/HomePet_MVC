@@ -1,7 +1,7 @@
 :root {
-    --color-1: #7AC5CD;
+    --color-1: #7ac5cd;
     /*màu xanh tối */
-    --color-2: #8EE5EE;
+    --color-2: #8ee5ee;
     /*màu xanh sáng */
     --color-3: white;
 }
@@ -12,21 +12,24 @@
 } */
 
 body {
-    padding: .5rem;
+    padding: 0.5rem;
 }
 /* Class chung */
 
-.col-3, .col-md-3 {
-    padding-left: 0px !important; 
-    padding-right: 0px !important; 
+.col-3,
+.col-md-3 {
+    padding-left: 0px !important;
+    padding-right: 0px !important;
 }
 
 .col-6 {
-    padding: .5rem !important;
+    padding: 0.5rem !important;
 }
 
 /* thẻ input */
-input[type=text]:focus, input[type=submit] {
+input[type="text"]:focus,
+input[type="submit"],
+button:focus {
     outline: none;
 }
 
@@ -47,8 +50,6 @@ input[type=text]:focus, input[type=submit] {
     text-decoration: none;
 }
 
-
-
 /* Dropdown */
 .dropdown-content {
     display: none;
@@ -59,7 +60,6 @@ input[type=text]:focus, input[type=submit] {
 .dropdown-content a {
     color: var(--color-2);
     padding: 10px 10px;
-
 }
 .dropdown-item {
     font-size: 0.8rem;
@@ -71,7 +71,7 @@ input[type=text]:focus, input[type=submit] {
     transition: all 1500ms;
 }
 
-.dropdown:hover  .dropdown-content {
+.dropdown:hover .dropdown-content {
     border-top: none;
     background: linear-gradient(100deg, var(--color-3) 50%, white);
     background-color: var(--color-3);
@@ -119,7 +119,7 @@ input[type=text]:focus, input[type=submit] {
 }
 
 .icon-cart > a {
-    padding: .7rem 1.2rem;
+    padding: 0.7rem 1.2rem;
     font-size: 1.2rem;
     border-radius: 20px;
     border: 2px solid var(--color-3);
@@ -137,11 +137,9 @@ input[type=text]:focus, input[type=submit] {
 }
 
 .icon-cart:hover {
-    transform: scale(1.15,1.15);
+    transform: scale(1.15, 1.15);
     transition: all 1000ms;
-    
 }
-
 
 /* ---------Header---------- */
 /* ---------HeaderLogo---------- */
@@ -157,7 +155,6 @@ input[type=text]:focus, input[type=submit] {
     height: 5rem;
     width: 16rem;
 }
-
 
 /* __Search */
 
@@ -198,14 +195,13 @@ input[type=text]:focus, input[type=submit] {
     width: 15rem;
     max-width: 15rem;
     max-height: 10rem;
-    margin-top: .2rem;
-    margin-left: .5rem;
+    margin-top: 0.2rem;
+    margin-left: 0.5rem;
     border: 1px solid var(--color-3);
     border-radius: 10px;
-    background: linear-gradient(100deg, var(--color-2) 60%, rgb(200, 200, 200)); 
-    z-index: 10; 
+    background: linear-gradient(100deg, var(--color-2) 60%, rgb(200, 200, 200));
+    z-index: 10;
     overflow: auto;
-
 }
 
 .notification-list::-webkit-scrollbar {
@@ -214,12 +210,11 @@ input[type=text]:focus, input[type=submit] {
 }
 
 .notification-list > li {
-    margin: .3rem .5rem;
-    font-size: .7rem;
+    margin: 0.3rem 0.5rem;
+    font-size: 0.7rem;
     font-style: italic;
     color: var(--color-3);
 }
-
 
 /* user */
 
@@ -227,38 +222,37 @@ input[type=text]:focus, input[type=submit] {
     position: absolute;
     display: none;
     width: 90%;
-    margin-top: .2rem;
-    margin-left: .5rem;
+    margin-top: 0.2rem;
+    margin-left: 0.5rem;
     border: 1px solid var(--color-3);
     border-radius: 10px;
     list-style-type: none;
     background: linear-gradient(100deg, var(--color-2) 60%, rgb(200, 200, 200));
-    z-index: 10; 
+    z-index: 10;
 }
 
 .user-list > li > a {
     color: var(--color-3);
-    margin: .5rem;
-    font-size: .7rem;
+    margin: 0.5rem;
+    font-size: 0.7rem;
     font-style: italic;
 }
 
-.user-list:hover > li > a{
+.user-list:hover > li > a {
     color: var(--color-3);
 }
 /* --btn */
 .header__list-title--btn {
     cursor: pointer;
-    width: 110% ;
-    margin-top: .5rem;
-    padding: .5rem;
+    width: 110%;
+    margin-top: 0.5rem;
+    padding: 0.5rem;
     border-radius: 20px;
     font-size: 0.8rem;
     font-weight: 400;
     color: var(--color-3);
-    background: linear-gradient(100deg, var(--color-2) 80%, white );
+    background: linear-gradient(100deg, var(--color-2) 80%, white);
     transition: all 1000ms;
-
 }
 
 .header__list-title--btn:hover {
@@ -267,7 +261,6 @@ input[type=text]:focus, input[type=submit] {
     background: linear-gradient(105deg, var(--color-3) 60%, white);
     transition: all 1000ms;
 }
-
 
 /* Menu */
 /* MenuList */
@@ -308,7 +301,7 @@ input[type=text]:focus, input[type=submit] {
 .menu__cart--icon a {
     display: inline-block;
     border-radius: 15px;
-    text-align: center  ;
+    text-align: center;
     width: 5rem;
     margin-top: 0.3rem;
     padding: 0.4rem 0rem;
@@ -336,7 +329,7 @@ input[type=text]:focus, input[type=submit] {
 }
 .breadcrumb-item > a {
     max-width: 10rem;
-    white-space: nowrap; 
+    white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     padding: 0.1rem 1rem;
@@ -349,9 +342,9 @@ input[type=text]:focus, input[type=submit] {
     border-bottom: 1px solid var(--color-3);
 }
 
-.breadcrumb-item+.breadcrumb-item::before {
+.breadcrumb-item + .breadcrumb-item::before {
     display: inline-block;
-    padding-right: .5rem;
+    padding-right: 0.5rem;
     color: var(--color-3) !important;
     content: "/";
 }
@@ -385,7 +378,6 @@ input[type=text]:focus, input[type=submit] {
 
 /* Slide Show */
 
-
 .slide-show__bg {
     margin-top: 1rem;
     padding: 3.5rem 1rem;
@@ -406,7 +398,7 @@ input[type=text]:focus, input[type=submit] {
 /* Slide Sale */
 
 .slide-sale {
-    right: .7rem;
+    right: 0.7rem;
     height: 23rem;
     margin-top: 1rem;
     padding: 0.5rem;
@@ -417,7 +409,7 @@ input[type=text]:focus, input[type=submit] {
 /* Sticker Sale */
 
 .slide-sale__sticker {
-    padding: .5rem 5rem .5rem 2rem;
+    padding: 0.5rem 5rem 0.5rem 2rem;
     margin-left: -1rem;
     border-top-left-radius: 15px;
     color: var(--color-3);
@@ -431,7 +423,7 @@ input[type=text]:focus, input[type=submit] {
 .card-sale {
     height: 80%;
     margin: 2rem;
-    padding-bottom: .5rem;
+    padding-bottom: 0.5rem;
     border: 2px solid var(--color-3);
     border-radius: 15px;
     background: linear-gradient(180deg, var(--color-1) 60%, white);
@@ -440,7 +432,7 @@ input[type=text]:focus, input[type=submit] {
 .card-sale__sticker {
     position: relative;
     margin-left: -1rem;
-    padding: 0rem .5rem .8rem .5rem;
+    padding: 0rem 0.5rem 0.8rem 0.5rem;
     background-color: red;
     font-size: 1.1rem;
     color: var(--color-3);
@@ -449,67 +441,64 @@ input[type=text]:focus, input[type=submit] {
     z-index: 1;
 }
 
-
-.card-sale__img > a > img{
+.card-sale__img > a > img {
     width: 90%;
     height: auto;
-    margin: -.6rem .5rem .5rem .5rem;
+    margin: -0.6rem 0.5rem 0.5rem 0.5rem;
     border-radius: 10px;
-    padding: .2rem;
+    padding: 0.2rem;
 }
 
 .card-sale__title > a {
     width: 95%;
-    margin-bottom: .5rem;
+    margin-bottom: 0.5rem;
     max-width: 90%;
-    white-space: nowrap; 
+    white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     color: var(--color-3);
     font-size: 0.8rem;
     font-weight: bolder;
-  
 }
 
 .card-sale__title:hover > a {
     text-decoration: none;
-    color: rgba(100, 100, 100, .3);
+    color: rgba(100, 100, 100, 0.3);
 }
 .card-sale__price {
     margin: 1rem;
 }
 .card-sale__price--1 {
-    margin-left: .5rem;
-    font-size: .7rem;
+    margin-left: 0.5rem;
+    font-size: 0.7rem;
     color: var(--color-3);
     text-decoration: line-through;
 }
 
 .card-sale__price--2 {
     padding-bottom: 1rem;
-    margin-left: .3rem;
+    margin-left: 0.3rem;
     font-size: 1.1rem;
     color: var(--color-3);
 }
 
 .card-sale__description > span {
-    width: 100%; 
+    width: 100%;
     height: 1rem;
-    margin-top: .5rem;
+    margin-top: 0.5rem;
     max-width: 90%;
-    white-space: nowrap; 
+    white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     margin-bottom: 1rem;
-    font-size: .8rem;
+    font-size: 0.8rem;
     font-style: italic;
     color: var(--color-3);
-   
 }
 
 .card-sale__buy > a {
-    padding: .4rem .8rem;
-    font-size: .9rem;
+    padding: 0.4rem 0.8rem;
+    font-size: 0.9rem;
     border: 1px solid var(--color-2);
     border-radius: 15px;
     color: var(--color-3);
@@ -518,13 +507,12 @@ input[type=text]:focus, input[type=submit] {
 
 .card-sale__buy:hover > a {
     text-decoration: none;
-    transform: scale(1.2,1.2);
+    transform: scale(1.2, 1.2);
     color: var(--color-2);
     background-color: var(--color-3);
     border: 1px solid var(--color-2);
     transition: all 500ms;
 }
-
 
 /* List Card */
 
@@ -539,13 +527,12 @@ input[type=text]:focus, input[type=submit] {
 .list-card__title > span {
     color: var(--color-3);
     font-weight: bolder;
-    padding: .5rem 1rem;
+    padding: 0.5rem 1rem;
 }
-
 
 .card-list {
     height: 95%;
-    margin: .5rem 0rem;
+    margin: 0.5rem 0rem;
     border-radius: 15px;
     border: 1px solid var(--color-2);
 }
@@ -555,7 +542,7 @@ input[type=text]:focus, input[type=submit] {
 .card__sticker {
     margin-left: -1rem;
     position: absolute;
-    padding: 0rem .5rem .8rem .5rem;
+    padding: 0rem 0.5rem 0.8rem 0.5rem;
     background-color: red;
     font-size: 1.1rem;
     color: var(--color-3);
@@ -563,8 +550,9 @@ input[type=text]:focus, input[type=submit] {
     clip-path: polygon(0% 0%, 100% 0, 100% 100%, 50% 80%, 0% 100%);
     z-index: 1;
 }
-.card__img,.card__img--store {
-    padding: .8rem;
+.card__img,
+.card__img--store {
+    padding: 0.8rem;
 }
 
 .card__img > a > img {
@@ -572,7 +560,7 @@ input[type=text]:focus, input[type=submit] {
     height: auto;
     min-height: 16.5rem;
     border-radius: 15px;
-    padding: .2rem;
+    padding: 0.2rem;
     cursor: pointer;
     object-fit: scale-down;
 }
@@ -582,21 +570,22 @@ input[type=text]:focus, input[type=submit] {
     height: auto;
     min-height: 11.5rem;
     border-radius: 15px;
-    padding: .2rem;
+    padding: 0.2rem;
     cursor: pointer;
     object-fit: scale-down;
 }
 
-.card__img--store:hover > a > img , .card__img:hover > a > img{
-    transform: scale(1.05,1.05);
+.card__img--store:hover > a > img,
+.card__img:hover > a > img {
+    transform: scale(1.05, 1.05);
     transition: all 500ms;
 }
 
 .card__title > a {
     width: 95%;
-    margin: .4rem;
+    margin: 0.4rem;
     max-width: 15rem;
-    white-space: nowrap; 
+    white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     color: var(--color-3);
@@ -606,19 +595,19 @@ input[type=text]:focus, input[type=submit] {
 
 .card__title:hover > a {
     text-decoration: none;
-    color: rgba(100, 100, 100, .3);
+    color: rgba(100, 100, 100, 0.3);
 }
 
 .card__price--1 {
-    margin-left: .7rem;
-    font-size: .7rem;
+    margin-left: 0.7rem;
+    font-size: 0.7rem;
     color: var(--color-3);
     text-decoration: line-through;
 }
 
 .card__price--2 {
-    margin-left: .5rem;
-    margin-bottom: .5rem;
+    margin-left: 0.5rem;
+    margin-bottom: 0.5rem;
     font-size: 1rem;
     color: var(--color-3);
 }
@@ -626,21 +615,21 @@ input[type=text]:focus, input[type=submit] {
 .card__description > span {
     width: 100%;
     height: 2rem;
-    margin: .2rem .8rem;
+    margin: 0.2rem 0.8rem;
     max-width: 87%;
-    white-space: nowrap; 
+    white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    font-size: .8rem;
+    font-size: 0.8rem;
     font-style: italic;
     color: var(--color-3);
 }
 
 .card__buy > a {
     display: inline-block;
-    margin-right: .5rem;
-    margin-bottom: .5rem;
-    padding: .5rem 1rem;
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+    padding: 0.5rem 1rem;
     font-size: 1rem;
     border: 1px solid var(--color-3);
     border-radius: 15px;
@@ -650,7 +639,7 @@ input[type=text]:focus, input[type=submit] {
 
 .card__buy:hover > a {
     text-decoration: none;
-    transform: scale(1.05,1.05);
+    transform: scale(1.05, 1.05);
     color: var(--color-2);
     background-color: var(--color-3);
     border: 1px solid var(--color-2);
@@ -700,22 +689,22 @@ input[type=text]:focus, input[type=submit] {
 .product__description > span {
     width: 90%;
     height: 6rem;
-    margin: .8rem;
+    margin: 0.8rem;
     font-size: 1rem;
     font-style: italic;
     color: var(--color-3);
 }
 
 .product__price--1 {
-    margin-left: .5rem;
-    font-size: .9rem;
+    margin-left: 0.5rem;
+    font-size: 0.9rem;
     color: var(--color-3);
     text-decoration: line-through;
 }
 
 .product__price--2 {
-    margin-left: .3rem;
-    margin-bottom: .5rem;
+    margin-left: 0.3rem;
+    margin-bottom: 0.5rem;
     font-size: 1.4rem;
     color: var(--color-3);
 }
@@ -723,7 +712,7 @@ input[type=text]:focus, input[type=submit] {
 /* Input Amount (Số lượng) */
 
 .btn-icon {
-    margin: 0 .2rem;
+    margin: 0 0.2rem;
     display: inline-block;
     border: none;
     color: var(--color-1);
@@ -765,12 +754,12 @@ input[type=text]:focus, input[type=submit] {
 /* Lọc sản phẩm */
 
 .form-check {
-    margin: .2rem .5rem;
+    margin: 0.2rem 0.5rem;
 }
 
 .icon-filter {
     position: absolute;
-    padding: .3rem .6rem; 
+    padding: 0.3rem 0.6rem;
     font-size: 1.2rem;
     border-radius: 5px;
     border: 1px solid var(--color-2);
@@ -787,7 +776,7 @@ input[type=text]:focus, input[type=submit] {
 /* Pagination */
 
 .page-link {
-    padding: .3rem .8rem !important;
+    padding: 0.3rem 0.8rem !important;
 }
 
 /* Directory */
@@ -803,7 +792,7 @@ input[type=text]:focus, input[type=submit] {
     width: 100%;
     color: var(--color-2);
     font-size: 1.1rem;
-    padding: .5rem;
+    padding: 0.5rem;
 }
 
 .directory__list {
@@ -814,11 +803,10 @@ input[type=text]:focus, input[type=submit] {
 
 .directory__list > ul > span {
     font-size: 1rem;
-    padding: .5rem 0rem;
-} 
+    padding: 0.5rem 0rem;
+}
 
-
-.directory__item  {
+.directory__item {
     width: 100%;
     margin: 0rem 1rem !important;
 }
@@ -826,39 +814,39 @@ input[type=text]:focus, input[type=submit] {
 .directory__item > a {
     width: 100%;
     color: var(--color-2);
-    font-size: .9rem;
-    padding: 1rem .5rem;
-    
+    font-size: 0.9rem;
+    padding: 1rem 0.5rem;
 }
 
-.directory__item:hover > a,  .directory__title:hover > a, .directory__list:hover > ul > span {
+.directory__item:hover > a,
+.directory__title:hover > a,
+.directory__list:hover > ul > span {
     text-decoration: none;
     color: var(--color-1);
 }
 
 /* List Product */
 
-
 /* Cart Product */
 
 .cart-product {
     width: 100%;
-    padding: .5rem;
-    margin: .5rem;
-    margin-left: .2rem !important;
+    padding: 0.5rem;
+    margin: 0.5rem;
+    margin-left: 0.2rem !important;
     border-radius: 15px;
-    background: linear-gradient(120deg, var(--color-2) 60%, white);  
+    background: linear-gradient(120deg, var(--color-2) 60%, white);
 }
 
 .cart-product__img > a > img {
     width: 100%;
-    padding: .5rem;
+    padding: 0.5rem;
     border-radius: 15px;
 }
 
 .cart-product__title > a {
     max-width: 90%;
-    white-space: nowrap; 
+    white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     font-size: 1rem;
@@ -872,26 +860,26 @@ input[type=text]:focus, input[type=submit] {
 
 .cart-product__amount {
     width: 130%;
-    padding: .3rem;
+    padding: 0.3rem;
     border-radius: 10px;
     color: var(--color-1);
-    font-size: .9rem;
+    font-size: 0.9rem;
     background-color: var(--color-3);
     cursor: pointer;
 }
 
 .cart-product__price > span {
     width: 80%;
-    padding: .3rem;
+    padding: 0.3rem;
     border-radius: 10px;
     color: var(--color-1);
-    font-size: .9rem;
+    font-size: 0.9rem;
     background-color: var(--color-3);
     cursor: pointer;
 }
 
-.cart-product__delete--icon > a{
-    padding: .5rem .8rem;
+.cart-product__delete--icon > a {
+    padding: 0.5rem 0.8rem;
     border-radius: 25px;
     font-size: 1.2rem;
     color: var(--color-3);
@@ -908,12 +896,13 @@ input[type=text]:focus, input[type=submit] {
 /*  Cart Detail */
 
 .cart-detail {
-    margin: .5rem 0rem !important;
+    margin: 0.5rem 0rem !important;
     border-radius: 15px;
-    background: linear-gradient(180deg, var(--color-2) 60%, white);  
+    background: linear-gradient(180deg, var(--color-2) 60%, white);
 }
 
-.cart-detail__title > span, .user__title > span {
+.cart-detail__title > span,
+.user__title > span {
     margin: 1rem 2rem;
     color: var(--color-3);
     font-size: 1.2rem;
@@ -924,16 +913,20 @@ input[type=text]:focus, input[type=submit] {
     border-top: 2px solid var(--color-3);
 }
 
-.cart-detail__ip, .user__ip {
-    padding: .5rem 2rem;
+.cart-detail__ip,
+.user__ip {
+    padding: 0.5rem 2rem;
 }
 
-.cart-detail__ip > label, .cart-detail__ip > div > label, .user__ip > label {
+.cart-detail__ip > label,
+.cart-detail__ip > div > label,
+.user__ip > label {
     color: var(--color-3);
     font-size: 1rem;
 }
 
-.cart-detail__ip > input, .user__ip >input {
+.cart-detail__ip > input,
+.user__ip > input {
     border-radius: 15px;
     color: var(--color-2);
 }
@@ -945,9 +938,24 @@ input[type=text]:focus, input[type=submit] {
     background-color: var(--color-3) !important;
 }
 
+.icon-add-address {
+    margin: 0.25rem;
+    padding: 0.25rem 0.75rem;
+    background-color: var(--color-3);
+    color: var(--color-2);
+    border: 1px solid var(--color-3);
+    border-radius: 15px;
+}
+
+.icon-add-address:hover,
+.icon-add-address:focus {
+    background-color: var(--color-2);
+    color: var(--color-3);
+}
+
 .cart-detail__add-order {
     margin-top: 1rem;
-    padding: .6rem 1.5rem;
+    padding: 0.6rem 1.5rem;
     border-radius: 15px;
     border: 1px solid var(--color-3);
     background-color: var(--color-2);
@@ -966,26 +974,26 @@ input[type=text]:focus, input[type=submit] {
 /* Order */
 /* Order Title */
 .order__bg {
-    margin: .5rem -.5rem .5rem .5rem;
+    margin: 0.5rem -0.5rem 0.5rem 0.5rem;
     background-color: var(--color-2);
     border-radius: 15px;
 }
 
 .order__title {
     /* margin-left: .8rem; */
-    padding: .5rem 2rem;
+    padding: 0.5rem 2rem;
     border-radius: 15px;
     color: var(--color-3);
     background-color: var(--color-2);
-    font-size: .9rem;
+    font-size: 0.9rem;
 }
 
 .order__table {
-    padding: .5rem;
+    padding: 0.5rem;
 }
 
 .order__table > table {
-    font-size: .7rem;
+    font-size: 0.7rem;
     color: var(--color-3);
 }
 
@@ -1001,21 +1009,22 @@ input[type=text]:focus, input[type=submit] {
     text-align: center;
 }
 
-.table > thead > tr > th, .table > tbody > tr > td  {
-    padding: .2rem;
+.table > thead > tr > th,
+.table > tbody > tr > td {
+    padding: 0.2rem;
 }
 
 /* Order Detail */
 
 .order-detail {
-    margin: .4rem 0rem !important;
+    margin: 0.4rem 0rem !important;
     border: 1px solid var(--color-3);
     border-radius: 15px;
     background: linear-gradient(90deg, var(--color-2) 60%, white);
     transition: all 1000ms;
 }
 
-.order-detail__title > span{
+.order-detail__title > span {
     margin: 1rem 2rem;
     color: var(--color-3);
     font-size: 1.2rem;
@@ -1049,16 +1058,16 @@ input[type=text]:focus, input[type=submit] {
 }
 
 .cart-detail__body--item {
-    margin-top: .3rem;
+    margin-top: 0.3rem;
 }
 
 .cart-detail__body--item--title > div > a {
     width: 95%;
     max-width: 95%;
-    white-space: nowrap; 
+    white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    font-size: .8rem;
+    font-size: 0.8rem;
     color: var(--color-2);
 }
 
@@ -1068,8 +1077,8 @@ input[type=text]:focus, input[type=submit] {
 }
 
 .cart-detail__body--item--amount > div > span {
-    padding: .7rem;
-    font-size: .8rem;
+    padding: 0.7rem;
+    font-size: 0.8rem;
     font-weight: bold;
     color: var(--color-2);
 }
@@ -1080,11 +1089,11 @@ input[type=text]:focus, input[type=submit] {
     margin: 1rem !important;
     /* padding: 1rem !important; */
     border-radius: 15px;
-    background: linear-gradient(180deg, var(--color-2) 60%, white);  
+    background: linear-gradient(180deg, var(--color-2) 60%, white);
 }
 
 .user__edit > div > button {
-    padding: .5rem 2rem;
+    padding: 0.5rem 2rem;
     border-radius: 15px;
     border: 1px solid var(--color-3);
     background-color: var(--color-2);
@@ -1108,18 +1117,21 @@ input[type=text]:focus, input[type=submit] {
     right: 0;
     left: 0;
     bottom: 0;
-    background-color: rgba(142, 229, 238, .4);
+    background-color: rgba(142, 229, 238, 0.4);
     z-index: 100;
     display: none;
     transition: all 1000ms;
 }
 
-.register, .form-edit, .form-add, .login {
+.register,
+.form-edit,
+.form-add,
+.login {
     margin: 1rem;
     width: 95%;
     padding: 2rem;
     border-radius: 15px;
-    background: linear-gradient(110deg, var(--color-2) 70%, white);  
+    background: linear-gradient(110deg, var(--color-2) 70%, white);
 }
 
 .log-re__title-1 > span {
@@ -1139,9 +1151,8 @@ input[type=text]:focus, input[type=submit] {
     color: var(--color-3);
 }
 
-
 .log-re__title-3 > a {
-    padding: .5rem 1rem;
+    padding: 0.5rem 1rem;
     color: var(--color-3);
 }
 
@@ -1157,15 +1168,16 @@ input[type=text]:focus, input[type=submit] {
 }
 
 .log-re__ip {
-    margin: .5rem;
+    margin: 0.5rem;
 }
 
 .log-re__ip > div > label {
-    font-size: .9rem;
+    font-size: 0.9rem;
     color: var(--color-3);
 }
 
-.log-re__ip > div > div > input,.log-re__ip > div > div > select {
+.log-re__ip > div > div > input,
+.log-re__ip > div > div > select {
     border-radius: 15px;
     color: var(--color-2);
 }
@@ -1174,18 +1186,20 @@ input[type=text]:focus, input[type=submit] {
     color: var(--color-2);
 }
 
-.log-re__btn-submit > button, .log-re__btn-submit > span, .log-re__btn-submit > label {
-    padding: .5rem 1.5rem;
+.log-re__btn-submit > button,
+.log-re__btn-submit > span,
+.log-re__btn-submit > label {
+    padding: 0.5rem 1.5rem;
     color: var(--color-3);
     border-radius: 15px;
     border: 1px solid var(--color-3);
-    background: linear-gradient(180deg, var(--color-2) 50%, white);  
+    background: linear-gradient(180deg, var(--color-2) 50%, white);
 }
 
 .log-re__btn-submit:hover > button {
     border-color: var(--color-2);
     color: var(--color-2);
-    background: linear-gradient(100deg, var(--color-3) 60%, rgb(200, 200, 200));  
+    background: linear-gradient(100deg, var(--color-3) 60%, rgb(200, 200, 200));
     transition: all 1000ms;
 }
 
@@ -1215,8 +1229,8 @@ input[type=text]:focus, input[type=submit] {
 }
 
 .error {
-    font-size: .8rem;
-    color: #CD0000;
+    font-size: 0.8rem;
+    color: #cd0000;
 }
 
 .form-control {
@@ -1230,27 +1244,26 @@ input[type=text]:focus, input[type=submit] {
 
 .admin__bg {
     padding: 2rem 1rem;
-    margin: 0rem 0rem .5rem .5rem;
+    margin: 0rem 0rem 0.5rem 0.5rem;
     background-color: var(--color-2);
     border-radius: 10px;
 }
 
 .admin__title {
     display: inline-block;
-    padding: .5rem 1rem;
-    margin-right: .2rem;
+    padding: 0.5rem 1rem;
+    margin-right: 0.2rem;
     color: var(--color-2);
     border: none;
-    background-color: var(--color-3 );
-    font-size: .8rem;
+    background-color: var(--color-3);
+    font-size: 0.8rem;
     border-top-right-radius: 15px;
     border-top-left-radius: 15px;
     cursor: pointer;
 }
 
-
 .admin__table > div > table {
-    font-size: .7rem;
+    font-size: 0.7rem;
     color: var(--color-3);
 }
 
@@ -1260,11 +1273,12 @@ input[type=text]:focus, input[type=submit] {
     transition: 1000ms;
 }
 
-
-
-.icon-tb > i,.icon-tb > a,.icon-tb > span >label,.icon-tb > span {
-    margin: .4rem;
-    font-size: .9rem;
+.icon-tb > i,
+.icon-tb > a,
+.icon-tb > span > label,
+.icon-tb > span {
+    margin: 0.4rem;
+    font-size: 0.9rem;
     color: var(--color-3);
     cursor: pointer;
 }
@@ -1284,11 +1298,10 @@ input[type=text]:focus, input[type=submit] {
     right: 0;
     left: 0;
     bottom: 0;
-    background-color: rgba(142, 229, 238, .4);
+    background-color: rgba(142, 229, 238, 0.4);
     z-index: 10;
     display: block;
 }
-
 
 .edit {
     position: fixed;
@@ -1297,7 +1310,7 @@ input[type=text]:focus, input[type=submit] {
     width: 50rem;
     padding: 2rem;
     border-radius: 15px;
-    background: linear-gradient(180deg, var(--color-1) 50%, white);  
+    background: linear-gradient(180deg, var(--color-1) 50%, white);
     z-index: 20;
 }
 
@@ -1317,4 +1330,3 @@ input[type=text]:focus, input[type=submit] {
 footer {
     color: var(--color-1);
 }
-

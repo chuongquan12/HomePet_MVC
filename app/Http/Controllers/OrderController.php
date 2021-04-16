@@ -69,7 +69,6 @@ class OrderController extends Controller
     {
         $request->validate([
             'name' => 'required|max:50',
-            'address' => 'required|max:200',
             'n_phone' => 'required|numeric',
         ], [
             'required' => ':attribute không được để trống',
@@ -77,27 +76,19 @@ class OrderController extends Controller
             'integer' => ':attribute phải nhập chỉ số',
         ], [
             'name' => 'Họ và tên',
-            'address' => 'Địa chỉ',
             'n_phone' => 'Số điện thoại',
         ]);
 
-        $data_kh = array();
         $data_order = array();
         $data_order_detail = array();
 
-        // Sửa đổi địa chỉ khách hàng
+        // lấy request
         $MSKH =  $request['idKH'];
-        $data_kh['HoTenKH'] =  $request['name'];
-        $data_kh['SoDienThoai'] =  $request['n_phone'];
-        $data_kh['DiaChi'] =  $request['address'];
-
-        DB::table('tb_khachhang')->where('MSKH', $MSKH)->update($data_kh);
-
-        // Tạo đơn hàng mới trong csdl
         $data_order['MSKH'] =  $request['idKH'];
         $data_order['NgayDH'] =  Carbon::now();
         $data_order['TrangThai'] =  'Chờ xác nhận';
         $data_order['TongThanhToan'] =  $request['tongGT'];
+        $data_order['MaDC'] =  $request['MaDC'];
 
         DB::table('tb_dathang')->insert($data_order);
 

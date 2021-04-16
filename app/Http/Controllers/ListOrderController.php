@@ -48,7 +48,7 @@ class ListOrderController extends Controller
         $id_nhanvien = Session()->get('id_nhanvien');
 
 
-        $all_order = DB::table('tb_dathang')->join('tb_khachhang', 'tb_dathang.MSKH', '=', 'tb_khachhang.MSKH')->where('TrangThai', 'Chờ xác nhận')->paginate(5);
+        $all_order = DB::table('tb_dathang')->join('tb_khachhang', 'tb_dathang.MSKH', '=', 'tb_khachhang.MSKH')->where('TrangThai', 'Chờ xác nhận')->join('tb_diachikh', 'tb_dathang.MaDC', '=', 'tb_diachikh.MaDC')->paginate(5);
         $notification =  DB::table('tb_hanghoa')->where('SoLuongHang', '<', '10')->get();
         $count =  DB::table('tb_hanghoa')->where('SoLuongHang', '<', '10')->count();
 

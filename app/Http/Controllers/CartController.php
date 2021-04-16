@@ -33,6 +33,7 @@ class CartController extends Controller
             $trademark = DB::table('tb_thuonghieu')->get();
             $type_1 =  DB::table('tb_thucung')->get();
             $type_2 = DB::table('tb_nhomhanghoa')->get();
+            $address = DB::table('tb_diachikh')->where('MSKH', $id_khachhang)->get();
             $notification =  DB::table('tb_dathang')->where('MSKH', $id_khachhang)->where('NgayXN', '>', $day_notification)->orderBy('SoDonDH', 'desc')->get();
             $count =  DB::table('tb_dathang')->where('MSKH', $id_khachhang)->where('NgayXN', '>', $day_notification)->count();
             $count_product =  DB::table('tb_giohang')->where('MSKH', $id_khachhang)->count();
@@ -55,6 +56,7 @@ class CartController extends Controller
                 ->with('trademark', $trademark)
                 ->with('type_1', $type_1)
                 ->with('type_2', $type_2)
+                ->with('address', $address)
                 ->with('notification', $notification)
                 ->with('count', $count)
                 ->with('count_product', $count_product)
@@ -92,5 +94,24 @@ class CartController extends Controller
 
             return Redirect::to('store');
         }
+    }
+
+    public function add_address(Request $request)
+    {
+        $id_khachhang = Session()->get('id_khachhang');
+
+        $data = array();
+
+        $data['MSKH'] = $request['idKH'];
+        $data['DiaChi'] = $request['add-address'];
+
+        // Thêm địa chỉ mới
+        DB::table('tb_diachikh')->insert($data);
+        Session()->put('message', 'Thêm địa chỉ thành công');
+        // Lấy MaDC mới thêm vào
+        $temp = DB::table('tb_diachikh')->where('MSKH', $id_khachhang)->orderBy('MaDC', 'desc')->first();
+        Session()->put('MaDC', $temp->MaDC);
+
+        return Redirect::to('cart');
     }
 }

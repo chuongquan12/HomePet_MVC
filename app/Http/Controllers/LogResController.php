@@ -105,6 +105,13 @@ class LogResController extends Controller
 
         DB::table('tb_khachhang')->insert($data);
 
+        $temp = DB::table('tb_khachhang')->orderBy('MSKH', 'desc')->first();
+        $data_address = array();
+        $data_address['MSKH'] = $temp->MSKH;
+        $data_address['DiaChi'] = $request['address'];
+
+        DB::table('tb_diachikh')->insert($data_address);
+
         Session()->put('message', 'Đăng ký thành công');
 
         return Redirect::to('login');
