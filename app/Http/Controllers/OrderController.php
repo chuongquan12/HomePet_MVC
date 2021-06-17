@@ -67,25 +67,29 @@ class OrderController extends Controller
 
     public function add_order(Request $request)
     {
-        $request->validate([
-            'name' => 'required|max:50',
-            'n_phone' => 'required|numeric',
-        ], [
-            'required' => ':attribute không được để trống',
-            'max' => ':attribute không được quá :max kí tự',
-            'integer' => ':attribute phải nhập chỉ số',
-        ], [
-            'name' => 'Họ và tên',
-            'n_phone' => 'Số điện thoại',
-        ]);
+        $MSKH =  $request['idKH'];
+
+        $temp = DB::table('tb_dathang')->where('MSKH', $MSKH)->orderBy('SoDonDH', 'desc')->first();
+        $temp_cart = DB::table('tb_giohang')->where('MSKH', $MSKH)->get();
+        $all_product = DB::table('tb_hanghoa')->join('tb_giohang', 'tb_hanghoa.MSHH', '=', 'tb_giohang.MSHH')->where('MSKH', $MSKH)->get();
+
+        // Kiểm tra số lượng sản phẩm và số lượng đặt hàng
+        foreach ($all_product as $key) :
+            if ($key->SoLuongHang < $key->SoLuong) {
+
+                DB::table('tb_giohang')->where('MSKH', $MSKH)->where('MSHH', $key->MSHH)->delete();
+
+                Session()->put('message', 'Đặt hàng không thành công, vui lòng cập nhật lại giỏ hàng');
+                return Redirect::to('store');
+            }
+        endforeach;
 
         $data_order = array();
         $data_order_detail = array();
 
         // lấy request
-        $MSKH =  $request['idKH'];
         $data_order['MSKH'] =  $request['idKH'];
-        $data_order['NgayDH'] =  Carbon::now();
+        $data_order['NgayDH'] =  Carbon::now('Asia/Ho_Chi_Minh');
         $data_order['TrangThai'] =  'Chờ xác nhận';
         $data_order['TongThanhToan'] =  $request['tongGT'];
         $data_order['MaDC'] =  $request['MaDC'];
@@ -93,8 +97,6 @@ class OrderController extends Controller
         DB::table('tb_dathang')->insert($data_order);
 
         // Tạo bảng chi tiết đặt hàng của đơn hàng trên 
-        $temp = DB::table('tb_dathang')->where('MSKH', $MSKH)->orderBy('SoDonDH', 'desc')->first();
-        $temp_cart = DB::table('tb_giohang')->where('MSKH', $MSKH)->get();
 
         foreach ($temp_cart as $key) :
             $data_order_detail['SoDonDH'] = $temp->SoDonDH;
@@ -109,11 +111,20 @@ class OrderController extends Controller
             // Thêm vào trong bảng chi tiết
             DB::table('tb_chitietdathang')->insert($data_order_detail);
 
+            // Cập nhật số luong hàng
+
+            $product = DB::table('tb_hanghoa')->where('MSHH', $key->MSHH)->first();
+            $amount = $product->SoLuongHang - $key->SoLuong;
+
+            DB::table('tb_hanghoa')->where('MSHH', $key->MSHH)->update(['SoLuongHang' => $amount]);
+
         endforeach;
 
         // Xóa giỏ hàng hiện tại
 
         DB::table('tb_giohang')->where('MSKH', $MSKH)->delete();
+
+
 
         Session()->put('message', 'Đặt hàng thành công');
 

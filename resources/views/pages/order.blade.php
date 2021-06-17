@@ -47,11 +47,11 @@ Session()->put('message', NULL);
                             @foreach($all_order as $order)
                             <tr>
                                 <td><a class="ID-order" href="{{ URL :: to('order?idDH='.$order ->SoDonDH)}}">{{ $order -> SoDonDH }}</a></td>
-                                <td>{{ $order -> NgayDH }}</td>
+                                <td>{{ date('d-m-Y G:i:s',strtotime($order -> NgayDH)) }}</td>
                                 @if($order -> NgayXN == NULL)
                                 <td>Trống</td>
                                 @else
-                                <td>{{ $order -> NgayXN }}</td>
+                                <td>{{ date('d-m-Y G:i:s',strtotime($order -> NgayXN))  }}</td>
                                 @endif
                                 <td>{{ $order -> TrangThai }}</td>
                                 <td><a class="ID-order" href="{{ URL :: to('order?idDH='.$order ->SoDonDH)}}"><i class="fas fa-minus-circle"></i></a></td>

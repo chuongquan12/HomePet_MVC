@@ -22,8 +22,8 @@ class ProductDetailController extends Controller
         $trademark = DB::table('tb_thuonghieu')->get();
         $type_1 =  DB::table('tb_thucung')->get();
         $type_2 = DB::table('tb_nhomhanghoa')->get();
-        $product_sale_first = DB::table('tb_hanghoa')->where('KhuyenMai', '>', '0')->orderBy('KhuyenMai', 'desc')->first();
-        $product_sale = DB::table('tb_hanghoa')->where('KhuyenMai', '>', '0')->orderBy('KhuyenMai', 'desc')->get();
+        $product_sale_first = DB::table('tb_hanghoa')->where('SoLuongHang', '>', 0)->where('KhuyenMai', '>', '0')->orderBy('KhuyenMai', 'desc')->first();
+        $product_sale = DB::table('tb_hanghoa')->where('KhuyenMai', '>', '0')->where('SoLuongHang', '>', 0)->orderBy('KhuyenMai', 'desc')->get();
         $product_detail = DB::table('tb_hanghoa')->where('MSHH', $idHH)->first();
         $product_detail_nhom = $product_detail->MaNhom;
         $product_recommend = DB::table('tb_hanghoa')->where('MaNhom', $product_detail_nhom)->paginate(5);

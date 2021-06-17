@@ -116,7 +116,7 @@ if ($id_admin) {
         </div>
         <div class="col-7">
             <div class="row">
-                <input type="file" class="form-control" id="image" name="image" required="true">
+                <input type="file" class="form-control" id="image" name="image" required="true" value="{{ $key -> Hinh }}">
             </div>
             <div class=" row">
                 <div><i class="error" id="error_4"></i></div>

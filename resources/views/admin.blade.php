@@ -70,14 +70,12 @@
                             <span>DOANH THU CỬA HÀNG</span>
                             <li class="admin-category__item revenue"><a href="{{URL:: to ('revenue-day')}}">KIỂM KÊ DOANH THU</a></li>
                             <li class="admin-category__item revenue"><a href="{{URL:: to ('chart-day')}}">THỐNG KÊ THEO NGÀY</a></li>
-                            <li class="admin-category__item revenue"><a href="{{URL:: to ('chart-month')}}">THỐNG KÊ THEO THÁNG</a></li>
                         </ul>
                     </div>
                     <div class="admin-category__list">
                         <ul id="list-order" class="row">
                             <span>QL ĐƠN HÀNG</span>
                             <li class="admin-category__item order"><a href="{{URL:: to ('list-order?page=1')}}">DS ĐƠN HÀNG</a></li>
-                            <li class="admin-category__item order"><a href="{{URL:: to ('list-order-confirm?page=1')}}">XÁC NHẬN ĐƠN</a></li>
                         </ul>
                     </div>
                     <div class="admin-category__list">

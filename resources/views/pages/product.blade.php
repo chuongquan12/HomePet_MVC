@@ -59,21 +59,37 @@ Session()->put('message', NULL);
                                 </div>
                             </div>
                             <div class="col-sm-6 col-6 align-self-center">
+                                @if($product_detail -> SoLuongHang != 0)
                                 <div class="row">
                                     <button class="btn-icon" id="icon_minus"><i class="fas fa-minus"></i></i></button>
                                     <input type="text" class="input-amount" id="input_amount" value="1" min="1" max="{{ $product_detail -> SoLuongHang }}" name="amount">
                                     <button class="btn-icon" id="icon_plus"><i class="fas fa-plus"></i></button>
                                 </div>
+                                @endif
+
                             </div>
                         </div>
                         <div class="row justify-content-center">
                             <?php if ($id_khachhang) { ?>
+                                @if($product_detail -> SoLuongHang == 0)
+                                <div class="row">
+                                    <span style="color: red">HẾT HÀNG</span>
+                                </div>
+                                @endif
+                                @if($product_detail -> SoLuongHang != 0)
                                 {{ csrf_field() }}
-                                <input type="hidden" name="MSKH" value="{{ $id_khachhang }}">
                                 <input type="hidden" name="MSHH" value="{{ $product_detail -> MSHH }}">
                                 <button class="add-to-cart --btn" type="submit" name="add-to-cart">Thêm vào giỏ hàng</button>
+                                @endif
                             <?php } else { ?>
+                                @if($product_detail -> SoLuongHang == 0)
+                                <div class="row">
+                                    <span style="color: red">HẾT HÀNG</span>
+                                </div>
+                                @endif
+                                @if($product_detail -> SoLuongHang != 0)
                                 <a href="{{ URL :: to('login')}}" class="add-to-cart --btn">Thêm vào giỏ hàng</a>
+                                @endif
                             <?php
                                 Session()->put('message', 'Mời bạn đăng nhập để bắt đầu mua hàng');
                             }

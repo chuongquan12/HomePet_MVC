@@ -114,6 +114,6 @@ class RevenueController extends Controller
 
         Session()->put('message', 'Xác nhận thành công');
 
-        return Redirect::to('chart');
+        return Redirect::to('chart-day');
     }
 }

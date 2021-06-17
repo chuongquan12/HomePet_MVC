@@ -29,10 +29,13 @@
                         <div class="row align-items-lg-end" style="height: 50px">
                             <div class="col">
                                 <form class="form-inline" action="{{URL:: to ('store?' )}}" method="GET">
-                                    <input class="header__search--ip" type="text" name="search" placeholder="Bạn muốn mua gì?" />
-                                    <button class="header__search--btn" type="submit">
+                                    <input class="header__search--ip" type="text" name="search" id="transcript" placeholder="Bạn muốn mua gì?" />
+                                    <button class="header__search--btn" id="btn-search" type="submit">
                                         <i class="fas fa-search"></i>
                                     </button>
+                                    <span id="voice-search">
+                                        <i class="fas fa-microphone"></i>
+                                    </span>
                                 </form>
                             </div>
                         </div>

@@ -38,15 +38,23 @@ class CartController extends Controller
             $count =  DB::table('tb_dathang')->where('MSKH', $id_khachhang)->where('NgayXN', '>', $day_notification)->count();
             $count_product =  DB::table('tb_giohang')->where('MSKH', $id_khachhang)->count();
             $all_product = DB::table('tb_hanghoa')->get();
-            $all_cart = DB::table('tb_giohang')->where('MSKH', $id_khachhang)->get();
+            $all_cart = DB::table('tb_giohang')->where('MSKH', $id_khachhang)->orderBy('NgayCN', 'desc')->get();
             $customer = DB::table('tb_khachhang')->where('MSKH', $id_khachhang)->first();
 
             //Delete Product
             if (isset($_GET['rm_product'])) {
                 $idHH = $_GET['rm_product'];
+                $product_amount = DB::table('tb_giohang')->where('MSHH', $idHH)->first();
 
                 DB::table('tb_giohang')->where('MSHH', $idHH)->delete();
                 Session()->put('message', 'Xóa sản phẩm khỏi giỏ hàng');
+
+                $product = DB::table('tb_hanghoa')->where('MSHH', $idHH)->first();
+
+
+                $amount = $product->SoLuongHang + $product_amount->SoLuong;
+
+                DB::table('tb_hanghoa')->where('MSHH', $idHH)->update(['SoLuongHang' => $amount]);
 
                 return Redirect::to('cart');
             }
@@ -75,18 +83,24 @@ class CartController extends Controller
         $data['MSHH'] = $request['MSHH'];
         // Kiểm tra sản phẩm đã có trong giỏ hàng hay chưa
         $temp = DB::table('tb_giohang')->where('MSHH', $data['MSHH'])->where('MSKH', $id_khachhang)->first();
+        $product = DB::table('tb_hanghoa')->where('MSHH', $data['MSHH'])->first();
         if ($temp) {
+
             $SoLuong = $request['amount'] + $temp->SoLuong;
+            if ($SoLuong > $product->SoLuongHang) {
+                DB::table('tb_giohang')->where('MSHH', $data['MSHH'])->update(['SoLuong' => $product->SoLuongHang]);
+                Session()->put('message', 'Thêm sản phẩm vào giỏ hàng thành công');
+            } else {
+                DB::table('tb_giohang')->where('MSHH', $data['MSHH'])->update(['SoLuong' => $SoLuong]);
 
-            DB::table('tb_giohang')->where('MSHH', $data['MSHH'])->update(['SoLuong' => $SoLuong]);
-
-            Session()->put('message', 'Thêm sản phẩm vào giỏ hàng thành công');
+                Session()->put('message', 'Thêm sản phẩm vào giỏ hàng thành công');
+            }
 
             return Redirect::to('store');
         } else {
-            $data['MSKH'] = $request['MSKH'];
+            $data['MSKH'] = $id_khachhang;
             $data['SoLuong'] = $request['amount'];
-            $data['NgayCN'] = Carbon::now();
+            $data['NgayCN'] = Carbon::now('Asia/Ho_Chi_Minh');
 
             DB::table('tb_giohang')->insert($data);
 

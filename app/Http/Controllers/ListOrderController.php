@@ -56,6 +56,7 @@ class ListOrderController extends Controller
         $order_detail = array();
         $tong_GT = 0;
         $idDH = '';
+
         if (isset($_GET['action']) && isset($_GET['idDH'])) {
             $action = $_GET['action'];
             $idDH = $_GET['idDH'];
@@ -73,20 +74,19 @@ class ListOrderController extends Controller
 
                 $data['MSNV'] = $id_nhanvien;
                 $data['TrangThai'] = "Đã xác nhận";
-                $data['NgayXN'] = Carbon::now();
+                $data['NgayXN'] = Carbon::now('Asia/Ho_Chi_Minh');
                 DB::table('tb_dathang')->where('SoDonDH', $idDH)->update($data);
                 $product_order = DB::table('tb_chitietdathang')->where('SoDonDH', $idDH)->join('tb_hanghoa', 'tb_chitietdathang.MSHH', '=', 'tb_hanghoa.MSHH')->get();
 
                 foreach ($product_order as $key) :
                     $temp['DaBan'] = $key->DaBan + $key->SoLuong;
-                    $temp['SoLuongHang'] = $key->SoLuongHang - $key->SoLuong;
 
                     DB::table('tb_hanghoa')->where('MSHH', $key->MSHH)->update($temp);
                 endforeach;
 
                 Session()->put('message', 'Xác nhận đơn hàng thành công');
 
-                return Redirect::to('list-order-confirm');
+                return Redirect::to('list-order-confirm?page=1');
             } elseif ($action == "cancel") {
                 $data = array();
 
@@ -96,9 +96,18 @@ class ListOrderController extends Controller
 
                 DB::table('tb_dathang')->where('SoDonDH', $idDH)->update($data);
 
+                $product_order = DB::table('tb_chitietdathang')->where('SoDonDH', $idDH)->join('tb_hanghoa', 'tb_chitietdathang.MSHH', '=', 'tb_hanghoa.MSHH')->get();
+
+                foreach ($product_order as $key) :
+                    $temp['SoLuongHang'] = $key->SoLuongHang + $key->SoLuong;
+
+                    DB::table('tb_hanghoa')->where('MSHH', $key->MSHH)->update($temp);
+                endforeach;
+
+
                 Session()->put('message', 'Xác nhận đơn hàng thành công');
 
-                return Redirect::to('list-order-confirm');
+                return Redirect::to('list-order-confirm?page=1');
             } else {
                 return Redirect::to('home');
             }

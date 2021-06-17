@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
 
 session_start();
@@ -73,7 +74,7 @@ class PersonnelController extends Controller
         $data['SoDienThoai'] = $request['n_phone'];
         $data['ChucVu'] = $request['position'];
         $data['Username'] = $request['username'];
-        $data['Password'] = md5($request['password']);
+        $data['Password'] = Hash::make($request['password']);
 
         DB::table('tb_nhanvien')->insert($data);
 

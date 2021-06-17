@@ -24,10 +24,10 @@ class HomeController extends Controller
         $type_2 = DB::table('tb_nhomhanghoa')->get();
         $slideshow_first = DB::table('tb_hinh')->first();
         $slideshow = DB::table('tb_hinh')->get();
-        $product_sale_first = DB::table('tb_hanghoa')->where('KhuyenMai', '>', '0')->orderBy('KhuyenMai', 'desc')->first();
-        $product_sale = DB::table('tb_hanghoa')->where('KhuyenMai', '>', '0')->orderBy('KhuyenMai', 'desc')->get();
-        $product_best_seller = DB::table('tb_hanghoa')->orderBy('DaBan', 'desc')->paginate(4);
-        $product_new = DB::table('tb_hanghoa')->orderBy('NgayCN', 'desc')->paginate(4);
+        $product_sale_first = DB::table('tb_hanghoa')->where('SoLuongHang', '>', 0)->where('KhuyenMai', '>', '0')->orderBy('KhuyenMai', 'desc')->first();
+        $product_sale = DB::table('tb_hanghoa')->where('SoLuongHang', '>', 0)->where('KhuyenMai', '>', '0')->orderBy('KhuyenMai', 'desc')->get();
+        $product_best_seller = DB::table('tb_hanghoa')->where('SoLuongHang', '>', 0)->orderBy('DaBan', 'desc')->paginate(4);
+        $product_new = DB::table('tb_hanghoa')->where('SoLuongHang', '>', 0)->orderBy('NgayCN', 'desc')->paginate(4);
         $notification =  DB::table('tb_dathang')->where('MSKH', $id_khachhang)->where('NgayXN', '>', $day_notification)->orderBy('SoDonDH', 'desc')->get();
         $count =  DB::table('tb_dathang')->where('MSKH', $id_khachhang)->where('NgayXN', '>', $day_notification)->count();
         $count_product =  DB::table('tb_giohang')->where('MSKH', $id_khachhang)->count();

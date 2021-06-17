@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 session_start();
 
@@ -101,7 +102,7 @@ class LogResController extends Controller
         $data['DiaChi'] = $request['address'];
         $data['SoDienThoai'] = $request['n_phone'];
         $data['Username'] = $request['username'];
-        $data['Password'] = md5($request['password']);
+        $data['Password'] = Hash::make($request['password']);
 
         DB::table('tb_khachhang')->insert($data);
 
@@ -120,11 +121,10 @@ class LogResController extends Controller
     public function getLogin(Request $request)
     {
         $username = $request->username;
-        $password = md5($request->password);
 
-        $result_1 = DB::table('tb_khachhang')->where('Username', $username)->where('Password', $password)->first();
-        $result_2 = DB::table('tb_nhanvien')->where('Username', $username)->where('Password', $password)->first();
-        $result_3 = DB::table('tb_admin')->where('Username', $username)->where('Password', $password)->first();
+        $result_1 = DB::table('tb_khachhang')->where('Username', $username)->first();
+        $result_2 = DB::table('tb_nhanvien')->where('Username', $username)->first();
+        $result_3 = DB::table('tb_admin')->where('Username', $username)->first();
 
         print_r($result_3);
 
@@ -133,20 +133,29 @@ class LogResController extends Controller
 
             return Redirect::to('login');
         } elseif ($result_1) {
-            Session()->put('id_khachhang', $result_1->MSKH);
-            Session()->put('message', 'Đăng nhập thành công');
-
-            return Redirect::to('/home');
+            if (Hash::check($request->password, $result_1->Password)) {
+                Session()->put('id_khachhang', $result_1->MSKH);
+                Session()->put('message', 'Đăng nhập thành công');
+                return Redirect::to('/home');
+            }
+            Session()->put('message', 'Đăng nhập thất bại, Vui lòng kiểm tra lại.');
+            return Redirect::to('login');
         } elseif ($result_2) {
-            Session()->put('id_nhanvien', $result_2->MSNV);
-            Session()->put('message', 'Đăng nhập thành công');
-
-            return Redirect::to('/presonnel');
+            if (Hash::check($request->password, $result_2->Password)) {
+                Session()->put('id_nhanvien', $result_2->MSNV);
+                Session()->put('message', 'Đăng nhập thành công');
+                return Redirect::to('/presonnel');
+            }
+            Session()->put('message', 'Đăng nhập thất bại, Vui lòng kiểm tra lại.');
+            return Redirect::to('login');
         } elseif ($result_3) {
-            Session()->put('id_admin', true);
-            Session()->put('message', 'Đăng nhập thành công');
-
-            return Redirect::to('/admin');
+            if (Hash::check($request->password, $result_3->Password)) {
+                Session()->put('id_admin', true);
+                Session()->put('message', 'Đăng nhập thành công');
+                return Redirect::to('/admin');
+            }
+            Session()->put('message', 'Đăng nhập thất bại, Vui lòng kiểm tra lại.');
+            return Redirect::to('login');
         }
     }
 

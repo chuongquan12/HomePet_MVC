@@ -83,12 +83,12 @@ Session()->put('message', NULL);
                             <hr class="hr">
                             <div class="row cart-detail__ip">
                                 <label for="name">Họ và tên: </label>
-                                <input type="text" class="form-control" id="name" name="name" value="{{ $customer -> HoTenKH }}">
+                                <input type="text" class="form-control" id="name" name="name" value="{{ $customer -> HoTenKH }}" disabled>
                                 <input type="hidden" class="form-control" name="idKH" value="{{ $id_khachhang }}">
                             </div>
                             <div class="row cart-detail__ip">
                                 <label for="n_phone">Số điện thoại: </label>
-                                <input type="text" class="form-control" id="n_phone" name="n_phone" value="{{ $customer -> SoDienThoai }}">
+                                <input type="text" class="form-control" id="n_phone" name="n_phone" value="{{ $customer -> SoDienThoai }}" disabled>
                             </div>
                             <div class=" row cart-detail__ip justify-content-between align-items-center">
                                 <label for="address">Địa chỉ: </label>
